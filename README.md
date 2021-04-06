@@ -28,3 +28,5 @@ Green manures and cover crops are an important part of land management for horti
 There are many different species and species mixes that are considered green manures or cover crops and each one has a particular application and is suited for different conditions. For example, some are for winter growing, others for summer. Some summer green manures die back naturally with cold weather, others need to be stopped/killed before the next crop can be sown.
 
 The purpose of the site is to be a repository of information about green manure, providing easy to locate facts and access to the experiences of other growers with specific varieties. It would be ideally suited to link in with a seed company that specialises in selling green manure seed.
+
+Note - turn off debug mode before submitting - in app.py
