@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="" type="text/css">
+    <!-- <link rel="icon" type="image/png" href="images/map-marker-icon.png">
+     -->
+    <title>Green Manure Resource</title>
+</head>
+<body>
+<!-- Navbar - from Bootstrap with custom CSS -->
+<nav class="navbar navbar-light">
+            <a class="navbar-brand" href="#">Green Manure Resource</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleGMNav">
+                <span><i class="fas fa-bars"></i></span></button>
+            
+            <div class="collapse navbar-collapse" id="collapsibleGMNav">
+                <ul class="navbar-nav navbar-right text-right">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+<main class="container">
+        {% block content %}
+        {% endblock %}
+</main>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>
