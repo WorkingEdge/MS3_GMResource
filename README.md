@@ -32,3 +32,4 @@ The purpose of the site is to be a repository of information about green manure,
 # Notes
 * Turn off debug mode before submitting - in app.py
 * Password for secret key created using randomkeygen
+* Favicon from https://iconarchive.com/browse.html
