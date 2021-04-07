@@ -22,6 +22,21 @@ def get_records():
     return render_template("records.html", records = records)
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
