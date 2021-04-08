@@ -22,6 +22,7 @@ def get_records():
     records = mongo.db.records.find()
     return render_template("records.html", records=records)
 
+
 # Registration based on the task manager walkthrough project
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -29,17 +30,17 @@ def register():
         username_taken = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
         if username_taken:
-            #flash("This username is not available. Please try another.")
+            flash("This username is not available. Please try another.")
             return render_template("register.html")
-
         register_user = {
             "username": request.form.get("username").lower(),
+            "email": request.form.get("email"),
             "password": generate_password_hash(request.form.get("password"))
         }
         mongo.db.users.insert_one(register_user)
 
         session["session_user"] = request.form.get("username").lower()
-        #flash("You've been registered. Welcome!")
+        flash("You've been registered. Welcome!")
     return render_template("register.html")
 
 
