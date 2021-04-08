@@ -15,8 +15,11 @@
         maxlength = "15" required />
         <br />
         <input type="submit" value="Register" title="Register" />
-        <input type="submit" value="Cancel" title="Cancel" />
+        <input type="reset" value="Cancel" title="Cancel">
     </form>
+    <div class="row">
+        <p>Already registered? You can log in <a href="{{ url_for('login') }}">here</a>.</p>
+    </div>
 </div>
 
 {% endblock%}
