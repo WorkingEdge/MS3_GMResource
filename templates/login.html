@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div id="contact-form">
+    <form id="ms3_registration" method="POST" action="{{ url_for('login') }}">
+        <h3>Log In</h3>
+        <div class="form-group">
+            <label for="name">Username</label>
+            <input class="form-control" type="text" id="username" name="username" required /></div>
+        <label for="password">Password</label>
+        <input class="form-control validate" type="password" id="password" name="password" pattern = "^[a-zA-Z0-9]{5,15}$" minlength="5" 
+        maxlength = "15" required />
+        <br />
+        <input type="submit" value="Log In" title="Log In" />
+        <input type="reset" value="Cancel" title="Cancel">
+    </form>
+    <div class="row">
+        <p>Not already registered? You can register <a href="{{ url_for('register') }}">here</a>.</p>
+    </div>
+</div>
+
+{% endblock%}
