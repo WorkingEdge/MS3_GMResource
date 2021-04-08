@@ -2,18 +2,20 @@
 
 {% block content %}
 <div id="contact-form">
-    <form id="ms3_registration" onsubmit="" class="form-group">
-        <h5>Register</h5>
+    <form id="ms3_registration" method="POST" action="{{ url_for('register') }}">
+        <h3>Register</h3>
         <div class="form-group">
-            <label for="name">Name</label>
-            <input class="form-control" type="text" id="name" name="name" required /></div>
-        <label for="email_1">Email Address</label>
-        <input class="form-control" type="email" id="email_1" name="email_address" required />
+            <label for="name">Username</label>
+            <input class="form-control" type="text" id="username" name="username" required /></div>
+        <label for="email">Email Address</label>
+        <input class="form-control" type="email" id="email" name="email" required />
         <br />
-        <label for="film_add_name">Password</label>
-        <input class="form-control" type="text" id="film_add_name" name="film_add_name" required />
+        <label for="password">Password</label>
+        <input class="form-control validate" type="password" id="password" name="password" pattern = "^[a-zA-Z0-9]{5,15}$" minlength="5" 
+        maxlength = "15" required />
         <br />
-        <input class="send-button" type="submit" value="Send my message" title="Send us your message" />
+        <input type="submit" value="Register" title="Register" />
+        <input type="submit" value="Cancel" title="Cancel" />
     </form>
 </div>
 
