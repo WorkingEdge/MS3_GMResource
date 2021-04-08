@@ -63,17 +63,33 @@ def login():
                 return redirect(url_for("login"))
         else:
             flash("The username or password you entered is not correct. Please try again.")
-            return redirect(url_for("login")) 
+            return redirect(url_for("login"))
+
     return render_template("login.html")
 
-
-@app.route("/profile/<username>")
+# Profile page based on task manager walkthrough
+@app.route("/profile/<username>", methods=["GET", "POST"])
 def show_profile(username):
     username = mongo.db.users.find_one(
-        {"username": session['session_user']})["username"]
-    return render_template("profile.html", username = username)
+        {"username": session["session_user"]})["username"]
+    if session["session_user"]:
+        return render_template("profile.html", username = username)
+    return redirect(url_for("login"))
 
-
+'''@app.route("/profile/<username>", methods = ["GET", "POST"])
+def show_profile(username):
+    if not session["session_user"]:
+        return redirect(url_for("login.html"))
+    else: 
+        username = mongo.db.users.find_one(
+        {"username": session["session_user"]})["username"]
+        return render_template("profile.html", username = username)
+'''
+@app.route("/logout")
+def logout():
+    flash("Goodbye. You have been logged out.")
+    session.pop("session_user")
+    return redirect (url_for("login"))
 
 
 
