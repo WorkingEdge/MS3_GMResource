@@ -14,7 +14,7 @@
       integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="" type="text/css" />
+    <link rel="stylesheet" href="#" type="text/css" />
     <link
       rel="icon"
       type="image/png"
@@ -25,7 +25,8 @@
   </head>
   <body>
     <!-- Navbar - from Bootstrap with custom CSS -->
-    <nav class="navbar navbar-light navbar-expand-md mr-auto">
+    <div>
+      <nav class="navbar navbar-light navbar-expand-md mr-auto">
       <a class="navbar-brand" href="#">Green Manure Resource</a>
       <span class="navbar-text"> For Growers, By Growers </span>
       <button
@@ -48,8 +49,21 @@
         </ul>
       </div>
     </nav>
-    
   </div>
+  <!-- Following div to show flash messages sourced from: https://pythonprogramming.net/flash-flask-tutorial/. Customization applied.-->
+  <div class="container" style="min-height:100% width:80%">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-warning alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">OK</span></button>
+        {{message}}
+        </div>
+      {% endfor %}
+      {% endif %}
+    {% endwith %}
+    </div>
+<!-- End flash  div from https://pythonprogramming.net/flash-flask-tutorial/-->    
     <main class="container">
       <div><img src="../static/images/mustard_orchard_crop.jpg" alt="Mustard green manure growing in orchard"></div>
 
