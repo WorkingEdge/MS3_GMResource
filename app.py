@@ -41,21 +41,23 @@ def register():
 
         session["session_user"] = request.form.get("username").lower()
         flash("You've been registered. Welcome!")
+        return redirect(url_for("show_profile", username = session["session_user"]))
     return render_template("register.html")
 
 
-
+# Login based on the task manager walkthrough project
 @app.route("/login", methods = ["GET", "POST"])
 def login():
     if request.method == "POST":
         user_exists = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
-        
         if user_exists:
             if check_password_hash(
-                user_exists["password"], request.form.get("password")):
+                    user_exists["password"], request.form.get("password")):
                     session["session_user"] = request.form.get("username").lower()
-                    flash("Welcome back{}".format(request.form.get("username")))   
+                    flash("Welcome back{}".format(request.form.get("username")))
+                    return redirect(url_for(
+                        "show_profile", username = session["session_user"]))   
             else:
                 flash("The username or password you entered is not correct. Please try again.")
                 return redirect(url_for("login"))
@@ -63,6 +65,17 @@ def login():
             flash("The username or password you entered is not correct. Please try again.")
             return redirect(url_for("login")) 
     return render_template("login.html")
+
+
+@app.route("/profile/<username>")
+def show_profile(username):
+    username = mongo.db.users.find_one(
+        {"username": session['session_user']})["username"]
+    return render_template("profile.html", username = username)
+
+
+
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
