@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div id="contact-form">
+    <form id="ms3_registration" onsubmit="" class="form-group">
+        <h5>Register</h5>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input class="form-control" type="text" id="name" name="name" required /></div>
+        <label for="email_1">Email Address</label>
+        <input class="form-control" type="email" id="email_1" name="email_address" required />
+        <br />
+        <label for="film_add_name">Password</label>
+        <input class="form-control" type="text" id="film_add_name" name="film_add_name" required />
+        <br />
+        <input class="send-button" type="submit" value="Send my message" title="Send us your message" />
+    </form>
+</div>
+
+{% endblock%}
