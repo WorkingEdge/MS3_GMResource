@@ -3,6 +3,7 @@ from flask import Flask, render_template, redirect, request, session, url_for, f
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import datetime
 if os.path.exists("env.py"):
     import env
 
@@ -91,9 +92,26 @@ def logout():
     session.pop("session_user")
     return redirect (url_for("login"))
 
-@app.route("/add_record")
+
+@app.route("/add_record", methods = ["GET","POST"])
 def add_record():
+    if request.method == "POST":
+        added_date = datetime.now()
+        record = {
+            "common_name": request.form.get("common_name"),
+            "botanical_name": request.form.get("botanical_name"),
+            "experience": request.form.get("experience"),
+            "summer": request.form.get("summer"),
+            "winter": request.form.get("winter"),
+            "added_by": session["session_user"],
+            "added_date": added_date, 
+            "image_link": request.form.get("image_url")   
+        }
+        mongo.db.records.insert_one(record)
+        flash("Record added. Thanks for your contribution.")
+        return redirect(url_for("get_records"))
     return render_template("add_record.html")
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),

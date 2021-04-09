@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container">
+<div class="container-fluid">
     <h2 class="text-center">New Record</h2>
-    <form class="form-horizontal" action="">
+    <form class="form-horizontal" method="POST" action="{{ url_for('add_record') }}" >
       <div class="form-group">
         <label class="control-label col-sm-2" for="common_name">Common Name</label>
         <div class="col-sm-10">
@@ -19,15 +19,15 @@
       
       <div class="form-group">        
         <div class="col-sm-offset-2 col-sm-10">
-         <label class="checkbox-inline"><input type="checkbox" value="">Summer</label>
-  <label class="checkbox-inline"><input type="checkbox" value="">Winter</label> 
+         <label class="checkbox-inline"><input type="checkbox" value="yes" name="summer">Summer</label>
+  <label class="checkbox-inline"><input type="checkbox" value="yes" name="winter">Winter</label> 
       
       
   <div class="checkbox">
-    <label><input type="checkbox" value="" >N-fixing</label>
+    <label><input type="checkbox" value="yes" name="n_fixing">N-fixing</label>
   </div>
   <div class="checkbox">
-    <label><input type="checkbox" value="" >Pollinator-friendly</label>
+    <label><input type="checkbox" value="yes" name="pollinator_f">Pollinator-friendly</label>
   </div>
         </div>
       </div>
@@ -50,14 +50,14 @@
       <div class="form-group">
         <label class="control-label col-sm-2" for="image_url">Editor Note</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="image_url" placeholder="Editor note" name="image_url">
+          <input type="text" class="form-control" id="editor_note" placeholder="Editor note" name="image_url">
         </div>
       </div>
       
       <div class="form-group">
         <label class="control-label col-sm-2" for="image_url">In Product</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="image_url" placeholder="This species is contained in..." name="image_url">
+          <input type="text" class="form-control" id="product" placeholder="This species is contained in..." name="product">
         </div>
       </div>
       
