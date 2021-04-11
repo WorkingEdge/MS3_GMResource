@@ -1,13 +1,41 @@
 {% extends "base.html" %}
 
 {% block content %}
-{{record._id}}
+<table class="table table-default">
+    <tr>
+        <td>Common Name</td>
+        <td>{{record.common_name}}</td>
+    </tr>
+    <tr>
+        <td>Botanical Name</td>
+        <td>{{record.botanical_name}}</td>
+    </tr>
+    <tr>
+        <td>Season</td>
+        <td>{{record.season}}</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+    </tr>
+    </table>
+<!--{{record._id}}
 {{record.common_name}}</a><br>
 {{record.botanical_name}}<br>
-{{record.season}}<br>
+{{record.season}}<br> -->
 
-{% for comment in record.comments %}
+<h3>Comments</h3>
+<table class="table table-default">
+    {% for comment in record.comments %}
+    <tr>
+        <td>{{comment.comment_by}}</td>
+        <td>{{comment.comment_text}}</td>
+    </tr>
+    {% endfor %}
+    </table>
+
+<!-- {% for comment in record.comments %}
 {{comment.comment_by}}:   {{comment.comment_text}}<br>
-{% endfor %}
+{% endfor %} -->
 
 {% endblock %}
