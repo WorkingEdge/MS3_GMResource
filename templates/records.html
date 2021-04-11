@@ -3,9 +3,11 @@
 {% block content %}
     
     {% for record in records %}
-        {{record.common_name}}<br>
+        {{record._id}}
+        <a href="{{ url_for('show_record', record_id = record._id) }}">{{record.common_name}}</a><br>
         {{record.botanical_name}}<br>
         {{record.season}}<br>
     {% endfor %}
 
 {% endblock%}
+
