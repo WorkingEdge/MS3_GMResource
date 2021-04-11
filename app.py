@@ -24,6 +24,14 @@ def get_records():
     return render_template("records.html", records=records)
 
 
+# Show details for selected record
+@app.route("/show_record/<record_id>")
+def show_record(record_id):
+    record = mongo.db.records.find_one({"_id": ObjectId(record_id)})
+    return render_template("show_record.html", record = record)
+
+
+
 # Registration based on the task manager walkthrough project
 @app.route("/register", methods=["GET", "POST"])
 def register():
