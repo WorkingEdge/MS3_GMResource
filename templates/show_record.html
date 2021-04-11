@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+{{record._id}}
+{{record.common_name}}</a><br>
+{{record.botanical_name}}<br>
+{{record.season}}<br>
+
+{% for comment in record.comments %}
+{{comment.comment_by}}:   {{comment.comment_text}}<br>
+{% endfor %}
+
+{% endblock %}
