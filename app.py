@@ -158,7 +158,8 @@ def add_record():
 
 @app.route("/products")
 def show_products():
-    return render_template("products.html")
+    products = list(mongo.db.products.find())
+    return render_template("products.html", products = products)
 
 
 if __name__ == "__main__":
