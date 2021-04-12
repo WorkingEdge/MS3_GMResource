@@ -119,24 +119,24 @@ def logout():
 @app.route("/add_record", methods = ["GET","POST"])
 def add_record():
     if request.method == "POST":
+        #Variables to hold data to store on db
         added_date = datetime.now()
         common_name = request.form.get("common_name").lower()
         user_id = mongo.db.users.find_one(
         {"username": session["session_user"]})["_id"]
-        
+        # Perform search to check if the entry exists in any product. Store this info as well
         contained_in = list(mongo.db.products.find(
         {"contains": common_name }))
-        
+        #Iterate over the returned list to get the product name (for embed) and product id (for reference by ObjectId)
         products = []
         for product in contained_in:
             prod_name = product.get("name")
             products.append(prod_name)
-        
         product_ids = []
         for product in contained_in:
             prod_id = product.get("_id")
             product_ids.append(prod_id)
-
+        #Create the object that will be inserted in the db
         record = {
             "common_name": common_name,
             "botanical_name": request.form.get("botanical_name"),
