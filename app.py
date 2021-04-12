@@ -136,6 +136,11 @@ def add_record():
     return render_template("add_record.html")
 
 
+@app.route("/products")
+def show_products():
+    return render_template("products.html")
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
