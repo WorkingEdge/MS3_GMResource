@@ -8,14 +8,23 @@
         <th>Note</th>
         <th>Price</th>
       </tr>
-      <tr>
-        <td>Meadow Mix</td>
-        <td>Phacelia, Mustard</td>
-        <td>Fast establishing</td>
-        <td>10</td>
-      </tr>
-      
-    </table>
+
+      {% for product in products %}
+    <tr>
+        <td>{{ product.name|title }}</td>
+        <td>{% for elem in product.contains %}
+          {{ elem | title }}, 
+          {% if loop.last %}
+          {{ elem | title }}
+          {% endif %}
+          {% endfor %}</td>
+        <td>{{ product.notes | title}}</td>
+        <td>{{ product.price | title}}</td>
+    </tr>
+    
+    {% endfor %}
+    
+  </table>
 
 
 {% endblock %}
