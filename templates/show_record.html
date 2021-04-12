@@ -34,6 +34,17 @@
     {% endfor %}
     </table>
 
+    {% if session.session_user %}
+    <h3>Add Comment</h3>
+<form class="form-horizontal" method="POST" action="{{ url_for('show_record', record_id = record._id) }}" >
+    <div class="form-group">
+        <label class="control-label col-sm-6" for="comment_text">Contribute to the pool of common knowledge!</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="comment_text" placeholder="Add a comment ..." name="comment_text">
+            <input type="submit" value="Comment" title="Comment" />
+            <input type="reset" value="Cancel" title="Cancel">
+        </div>
+    {% endif %}
 <!-- {% for comment in record.comments %}
 {{comment.comment_by}}:   {{comment.comment_text}}<br>
 {% endfor %} -->
