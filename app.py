@@ -127,8 +127,16 @@ def add_record():
         contained_in = list(mongo.db.products.find(
         {"contains": common_name }))
         
-        contained_in_id = list(mongo.db.products.find(
-        {"contains": common_name }))
+        products = []
+        for product in contained_in:
+            prod_name = product.get("name")
+            products.append(prod_name)
+        
+        product_ids = []
+        for product in contained_in:
+            prod_id = product.get("_id")
+            product_ids.append(prod_id)
+
         record = {
             "common_name": common_name,
             "botanical_name": request.form.get("botanical_name"),
@@ -139,8 +147,8 @@ def add_record():
             "user_id": user_id,
             "added_date": added_date, 
             "image_link": request.form.get("image_url"),
-            "contained_in": contained_in,
-            "contained_in_id": contained_in_id
+            "contained_in": products,
+            "contained_in_ids": product_ids
         }
         mongo.db.records.insert_one(record)
         flash("Record added. Thanks for your contribution.")
