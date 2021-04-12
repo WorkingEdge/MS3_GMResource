@@ -120,15 +120,27 @@ def logout():
 def add_record():
     if request.method == "POST":
         added_date = datetime.now()
+        common_name = request.form.get("common_name").lower()
+        user_id = mongo.db.users.find_one(
+        {"username": session["session_user"]})["_id"]
+        
+        contained_in = list(mongo.db.products.find(
+        {"contains": common_name }))
+        
+        contained_in_id = list(mongo.db.products.find(
+        {"contains": common_name }))
         record = {
-            "common_name": request.form.get("common_name"),
+            "common_name": common_name,
             "botanical_name": request.form.get("botanical_name"),
             "experience": request.form.get("experience"),
             "summer": request.form.get("summer"),
             "winter": request.form.get("winter"),
             "added_by": session["session_user"],
+            "user_id": user_id,
             "added_date": added_date, 
-            "image_link": request.form.get("image_url")   
+            "image_link": request.form.get("image_url"),
+            "contained_in": contained_in,
+            "contained_in_id": contained_in_id
         }
         mongo.db.records.insert_one(record)
         flash("Record added. Thanks for your contribution.")
