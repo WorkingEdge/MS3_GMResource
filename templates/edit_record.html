@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<table class="table table-default">
+    <tr>
+        <td>Title</td>
+        <td>{{record.title}}</td>
+    </tr>
+    <tr>
+        <td>Common Name</td>
+        <td>{{record.common_name}}</td>
+    </tr>
+    <tr>
+        <td>Botanical Name</td>
+        <td>{{record.botanical_name}}</td>
+    </tr>
+    <tr>
+        <td>Experience</td>
+        <td>{{record.experience}}</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+    </tr>
+    </table>
+    <div><img src = "{{record.image_link }}" class="img-fluid max-width: 100% height: auto"></div>
+
+
+{% endblock %}
