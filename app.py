@@ -16,7 +16,7 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
-
+#Home page, default index
 @app.route("/")
 @app.route("/get_records")
 def get_records():
@@ -50,13 +50,13 @@ def show_record(record_id):
         return redirect(url_for("show_record", record_id = record_id))
     return render_template("show_record.html", record = record)
 
-#Edit record
+
+# Edit record
 @app.route("/edit_record/<record_id>", methods=["GET", "POST"])
 def edit_record(record_id):
-    record = mongo.db.records.find_one({"_id": ObjectId(record_id)})
-        
+    record = mongo.db.records.find_one({"_id": ObjectId(record_id)})    
+    
     if request.method == "POST":
-        #Variables to hold data to store on db
         updated_date = datetime.now()
         common_name = request.form.get("common_name").lower()
         user_id = mongo.db.users.find_one(
@@ -88,9 +88,11 @@ def edit_record(record_id):
             "contained_in": products,
             "contained_in_ids": product_ids
         }
-        mongo.db.records.update({"_id": ObjectId(record_id)}, updated_record)
+        mongo.db.records.update({"_id": ObjectId(record_id)}, {"$set": updated_record})
         flash("Record updated. Thanks for your contribution.")
-    return render_template("edit_record.html", record = record)    
+        return redirect(url_for("show_record", record_id = record_id))
+    return render_template("edit_record.html", record = record)
+
 
 # Registration based on the task manager walkthrough project
 @app.route("/register", methods=["GET", "POST"])
