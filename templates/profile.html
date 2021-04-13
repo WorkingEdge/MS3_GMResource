@@ -3,4 +3,22 @@
 {% block content %}
 <h3>Profile for {{ username }}</h3>
 
+<h4>My Posts</h4>
+<table class="table table-default">
+    <tr>
+        <th>Post Name</th>
+        <th>Post Content</th>
+        <th>Date</th>
+        <th>Edit/Delete</th>
+      </tr>
+
+      {% for record in records %}
+    <tr>
+        <td><a href="{{ url_for('show_record', record_id = record._id) }}">{{record.common_name}}</td>
+        <td>{{ record.experience}}</td>
+        <td>{{ record.added_date}}</td>
+        <td></td>
+    </tr>
+    {% endfor %}
+
 {% endblock%}
