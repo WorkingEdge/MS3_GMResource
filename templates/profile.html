@@ -17,7 +17,7 @@
         <td><a href="{{ url_for('show_record', record_id = record._id) }}">{{record.common_name}}</td>
         <td>{{ record.experience}}</td>
         <td>{{ record.added_date}}</td>
-        <td></td>
+        <td><a href="{{ url_for('edit_record', record_id = record._id) }}">Edit</td>
     </tr>
     {% endfor %}
 
