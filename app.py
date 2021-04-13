@@ -50,6 +50,32 @@ def show_record(record_id):
         return redirect(url_for("show_record", record_id = record_id))
     return render_template("show_record.html", record = record)
 
+#Edit record
+@app.route("/edit_record/<record_id>", methods=["GET", "POST"])
+def show_record(record_id):
+    record = mongo.db.records.find_one({"_id": ObjectId(record_id)})
+    #return render_template("show_record.html", record = record)    
+    if request.method == "POST":
+        comment_date = datetime.now()
+        commenter_id = mongo.db.users.find_one(
+        {"username": session["session_user"]})["_id"]
+        mongo.db.records.update(
+            {"_id": ObjectId(record_id)},
+            {"$push": 
+                {"comments":
+                    {
+                    "comment_by": session["session_user"],
+                    "comment_text": request.form.get("comment_text"),
+                    "comment_date": comment_date,
+                    "commenter_id": commenter_id
+                }
+            }
+        }
+        )
+        flash("Comment added. Thanks for your contribution.")
+        return redirect(url_for("show_record", record_id = record_id))
+    return render_template("show_record.html", record = record)
+
 # Registration based on the task manager walkthrough project
 @app.route("/register", methods=["GET", "POST"])
 def register():
