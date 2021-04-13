@@ -21,8 +21,14 @@
         <td>{{record.experience}}</td>
     </tr>
     <tr>
-        <td></td>
-        <td></td>
+        <td>Products containing this seed</td>
+        <td>{% for elem in record.contained_in %}
+            {{ elem | title }}, 
+                {% if loop.last %}
+                {{ elem | title }}
+                {% endif %}
+            {% endfor %}
+            </td>
     </tr>
     </table>
     <div><img src = "{{record.image_link }}" class="img-fluid max-width: 100% height: auto"></div>
@@ -48,8 +54,6 @@
             <input type="reset" value="Cancel" title="Cancel">
         </div>
     {% endif %}
-<!-- {% for comment in record.comments %}
-{{comment.comment_by}}:   {{comment.comment_text}}<br>
-{% endfor %} -->
+
 
 {% endblock %}

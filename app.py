@@ -52,29 +52,45 @@ def show_record(record_id):
 
 #Edit record
 @app.route("/edit_record/<record_id>", methods=["GET", "POST"])
-def show_record(record_id):
+def edit_record(record_id):
     record = mongo.db.records.find_one({"_id": ObjectId(record_id)})
-    #return render_template("show_record.html", record = record)    
+        
     if request.method == "POST":
-        comment_date = datetime.now()
-        commenter_id = mongo.db.users.find_one(
+        #Variables to hold data to store on db
+        updated_date = datetime.now()
+        common_name = request.form.get("common_name").lower()
+        user_id = mongo.db.users.find_one(
         {"username": session["session_user"]})["_id"]
-        mongo.db.records.update(
-            {"_id": ObjectId(record_id)},
-            {"$push": 
-                {"comments":
-                    {
-                    "comment_by": session["session_user"],
-                    "comment_text": request.form.get("comment_text"),
-                    "comment_date": comment_date,
-                    "commenter_id": commenter_id
-                }
-            }
+        # Perform search to check if the entry exists in any product. Store this info as well
+        contained_in = list(mongo.db.products.find(
+        {"contains": common_name }))
+        #Iterate over the returned list to get the product name (for embed) and product id (for reference by ObjectId)
+        products = []
+        for product in contained_in:
+            prod_name = product.get("name")
+            products.append(prod_name)
+        product_ids = []
+        for product in contained_in:
+            prod_id = product.get("_id")
+            product_ids.append(prod_id)
+        #Create the object that will be inserted in the db
+        updated_record = {
+            "title": request.form.get("record_title"),
+            "common_name": common_name,
+            "botanical_name": request.form.get("botanical_name"),
+            "experience": request.form.get("experience"),
+            "summer": request.form.get("summer"),
+            "winter": request.form.get("winter"),
+            "added_by": session["session_user"],
+            "user_id": user_id,
+            "updated_date": updated_date, 
+            "image_link": request.form.get("image_url"),
+            "contained_in": products,
+            "contained_in_ids": product_ids
         }
-        )
-        flash("Comment added. Thanks for your contribution.")
-        return redirect(url_for("show_record", record_id = record_id))
-    return render_template("show_record.html", record = record)
+        mongo.db.records.update({"_id": ObjectId(record_id)}, updated_record)
+        flash("Record updated. Thanks for your contribution.")
+    return render_template("edit_record.html", record = record)    
 
 # Registration based on the task manager walkthrough project
 @app.route("/register", methods=["GET", "POST"])
@@ -168,6 +184,7 @@ def add_record():
             product_ids.append(prod_id)
         #Create the object that will be inserted in the db
         record = {
+            "title": request.form.get("record_title"),
             "common_name": common_name,
             "botanical_name": request.form.get("botanical_name"),
             "experience": request.form.get("experience"),
