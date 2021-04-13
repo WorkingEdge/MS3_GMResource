@@ -57,6 +57,9 @@
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('add_record') }}">Add</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('show_profile', username = session['session_user'])}}">Profile</a>
+          </li>
           {% else %}
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('register') }}">Register</a>
