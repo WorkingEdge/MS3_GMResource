@@ -31,6 +31,8 @@ def show_record(record_id):
     #return render_template("show_record.html", record = record)    
     if request.method == "POST":
         comment_date = datetime.now()
+        commenter_id = mongo.db.users.find_one(
+        {"username": session["session_user"]})["_id"]
         mongo.db.records.update(
             {"_id": ObjectId(record_id)},
             {"$push": 
@@ -39,6 +41,7 @@ def show_record(record_id):
                     "comment_by": session["session_user"],
                     "comment_text": request.form.get("comment_text"),
                     "comment_date": comment_date,
+                    "commenter_id": commenter_id
                 }
             }
         }
@@ -96,19 +99,20 @@ def login():
 def show_profile(username):
     username = mongo.db.users.find_one(
         {"username": session["session_user"]})["username"]
+    user_id = mongo.db.users.find_one(
+        {"username": session["session_user"]})["_id"]
+    records = list(mongo.db.records.find(
+        {"user_id": user_id }))
+    commented = list(mongo.db.records.find(
+        {"comments":{"$elemMatch": {"commenter_id": user_id}}}))
+    for post in commented:
+        comment_details = []
+
     if session["session_user"]:
-        return render_template("profile.html", username = username)
+        return render_template("profile.html", username = username, records = records)
     return redirect(url_for("login"))
 
-'''@app.route("/profile/<username>", methods = ["GET", "POST"])
-def show_profile(username):
-    if not session["session_user"]:
-        return redirect(url_for("login.html"))
-    else: 
-        username = mongo.db.users.find_one(
-        {"username": session["session_user"]})["username"]
-        return render_template("profile.html", username = username)
-'''
+
 @app.route("/logout")
 def logout():
     flash("Goodbye. You have been logged out.")
