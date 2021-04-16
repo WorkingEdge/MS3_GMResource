@@ -246,6 +246,43 @@ def add_product():
     return render_template("add_product.html")
 
 
+# Delete product 
+@app.route("/delete_product/<product_id>", methods=["POST"])
+def delete_product(product_id):
+    mongo.db.products.remove({"_id": ObjectId(product_id)})
+    flash("The product has been deleted.")
+    return redirect(url_for('show_products'))
+
+# Edit product
+@app.route("/edit_product/<product_id>", methods = ["GET","POST"])
+def edit_product(product_id):
+    if request.method == "POST":
+        #Variables to hold data to store on db
+        updated_date = datetime.now()
+        common_names = request.form.get("common_names").lower().split(", ")
+        user_id = mongo.db.users.find_one(
+        {"username": session["session_user"]})["_id"]
+        #Create the object that will be inserted in the db
+        updated_product = {
+            "prod_name": request.form.get("product_name"),
+            "contains_common": common_names,
+            "botanical_names": request.form.get("botanical_names"),
+            "summer": request.form.get("summer"),
+            "winter": request.form.get("winter"),
+            "n_fixing": request.form.get("winter"),
+            "added_by": session["session_user"],
+            "user_id": user_id,
+            "added_date": added_date, 
+            "image_link": request.form.get("image_url"),
+            "prod_notes": request.form.get("prod_notes"),
+            "prod_price": request.form.get("prod_price"),
+            "updated_date": updated_date
+        }
+        mongo.db.products.update({"_id": ObjectId(product_id)}, {"$set": updated_product})
+        flash("Product updated.")
+        return redirect(url_for("show_products"))
+    return render_template("edit_product.html", product = product)
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
