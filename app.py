@@ -63,16 +63,16 @@ def edit_record(record_id):
         {"username": session["session_user"]})["_id"]
         # Perform search to check if the entry exists in any product. Store this info as well
         contained_in = list(mongo.db.products.find(
-        {"contains": common_name }))
+        {"contains_common": common_name }))
         #Iterate over the returned list to get the product name (for embed) and product id (for reference by ObjectId)
         products = []
         for product in contained_in:
-            prod_name = product.get("name")
-            products.append(prod_name)
+            product_name = product.get("prod_name")
+            products.append(product_name)
         product_ids = []
         for product in contained_in:
-            prod_id = product.get("_id")
-            product_ids.append(prod_id)
+            product_id = product.get("_id")
+            product_ids.append(product_id)
         #Create the object that will be inserted in the db
         updated_record = {
             "title": request.form.get("record_title"),
@@ -181,16 +181,16 @@ def add_record():
         {"username": session["session_user"]})["_id"]
         # Perform search to check if the entry exists in any product. Store this info as well
         contained_in = list(mongo.db.products.find(
-        {"contains": common_name }))
+        {"contains_common": common_name }))
         #Iterate over the returned list to get the product name (for embed) and product id (for reference by ObjectId)
         products = []
         for product in contained_in:
-            prod_name = product.get("name")
-            products.append(prod_name)
+            product_name = product.get("prod_name")
+            products.append(product_name)
         product_ids = []
         for product in contained_in:
-            prod_id = product.get("_id")
-            product_ids.append(prod_id)
+            product_id = product.get("_id")
+            product_ids.append(product_id)
         #Create the object that will be inserted in the db
         record = {
             "title": request.form.get("record_title"),
