@@ -217,6 +217,34 @@ def show_products():
     products = list(mongo.db.products.find())
     return render_template("products.html", products = products)
 
+@app.route("/add_product", methods = ["GET","POST"])
+def add_product():
+    if request.method == "POST":
+        #Variables to hold data to store on db
+        added_date = datetime.now()
+        common_names = request.form.get("common_names").lower().split(", ")
+        user_id = mongo.db.users.find_one(
+        {"username": session["session_user"]})["_id"]
+        #Create the object that will be inserted in the db
+        product = {
+            "prod_name": request.form.get("product_name"),
+            "contains_common": common_names,
+            "botanical_names": request.form.get("botanical_names"),
+            "summer": request.form.get("summer"),
+            "winter": request.form.get("winter"),
+            "n_fixing": request.form.get("winter"),
+            "added_by": session["session_user"],
+            "user_id": user_id,
+            "added_date": added_date, 
+            "image_link": request.form.get("image_url"),
+            "prod_notes": request.form.get("prod_notes"),
+            "prod_price": request.form.get("prod_price")
+        }
+        mongo.db.products.insert_one(product)
+        flash("Product added.")
+        return redirect(url_for("show_products"))
+    return render_template("add_product.html")
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
