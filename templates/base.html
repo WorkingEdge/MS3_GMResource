@@ -60,6 +60,15 @@
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('show_profile', username = session['session_user'])}}">Profile</a>
           </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="{{ url_for('show_products') }}" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Admin
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#">Manage Products</a>
+              <a class="dropdown-item" href="#">Manage Users</a>
+            </div>
+          </li>
           {% else %}
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('register') }}">Register</a>
@@ -67,6 +76,7 @@
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('login') }}">Log In</a>
           </li>
+            
           {% endif %}
         </ul>
       </div>
