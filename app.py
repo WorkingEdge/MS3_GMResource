@@ -256,6 +256,7 @@ def delete_product(product_id):
 # Edit product
 @app.route("/edit_product/<product_id>", methods = ["GET","POST"])
 def edit_product(product_id):
+    product = mongo.db.products.find_one({"_id": ObjectId(product_id)})
     if request.method == "POST":
         #Variables to hold data to store on db
         updated_date = datetime.now()
@@ -272,7 +273,6 @@ def edit_product(product_id):
             "n_fixing": request.form.get("winter"),
             "added_by": session["session_user"],
             "user_id": user_id,
-            "added_date": added_date, 
             "image_link": request.form.get("image_url"),
             "prod_notes": request.form.get("prod_notes"),
             "prod_price": request.form.get("prod_price"),
