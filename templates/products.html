@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+{% if session.session_user %}
+<a class="btn btn-default btn-secondary" href="{{ url_for('add_product') }}">Add New Product</a>
+
+{% endif%}
 <table class="table table-default">
     <tr>
         <th>Name</th>
@@ -11,15 +16,15 @@
 
       {% for product in products %}
     <tr>
-        <td>{{ product.name|title }}</td>
-        <td>{% for elem in product.contains %}
+        <td>{{ product.prod_name|title }}</td>
+        <td>{% for elem in product.contains_common %}
           {{ elem | title }}, 
           {% if loop.last %}
           {{ elem | title }}
           {% endif %}
           {% endfor %}</td>
-        <td>{{ product.notes | title}}</td>
-        <td>{{ product.price | title}}</td>
+        <td>{{ product.prod_notes | title}}</td>
+        <td>{{ product.prod_price | title}}</td>
     </tr>
     
     {% endfor %}
