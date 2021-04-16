@@ -93,6 +93,13 @@ def edit_record(record_id):
         return redirect(url_for("show_record", record_id = record_id))
     return render_template("edit_record.html", record = record)
 
+# Delete record 
+@app.route("/delete_record/<record_id>", methods=["POST"])
+def delete_record(record_id):
+    mongo.db.records.remove({"_id": ObjectId(record_id)})
+    flash("The record has been deleted.")
+    return redirect(url_for('show_profile', username = session['session_user']))
+
 
 # Registration based on the task manager walkthrough project
 @app.route("/register", methods=["GET", "POST"])
