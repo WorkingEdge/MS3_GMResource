@@ -35,7 +35,7 @@
           {% endif %}</td>
         <td>
           <a class="btn btn-secondary btn-sm" href="{{ url_for('edit_product', product_id = product._id) }}">Edit</a>
-          <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal-{{ loop.index }}" data-routeInfo="{{ url_for('delete_product', product_id = product._id) }}">Delete</button>
+          <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal-{{ loop.index }}" data-routeinfo="{{ url_for('delete_product', product_id = product._id) }}">Delete</button>
         </td>
       </tr>
 
