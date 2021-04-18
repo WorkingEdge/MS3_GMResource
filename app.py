@@ -20,7 +20,7 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_records")
 def get_records():
-    records = mongo.db.records.find()
+    records = list(mongo.db.records.find({ }).sort([("_id", -1)]).limit(5))
     return render_template("records.html", records=records)
 
 
