@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3>Manage Users</h3>
+
+
+<table class="table table-default">
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Admin</th>
+        <th>Delete</th>
+      </tr>
+
+      {% for user in users %}
+    <tr>
+        <td>{{ loop.index }}</td>
+        <td>{% if user.name %} {# Check if a name has been entered, if not print 'Not provided' #}
+          {{ user.name }}
+          {% else %}
+          Not provided  
+          {% endif %}{{ user.name }}</td>
+        <td>
+          {{ user.username }}
+        </td>
+        <td>{% if user.email %} {# Check if an email address has been entered, if not print 'Not provided' #}
+          {{ user.email }}
+          {% else %}
+          Not provided  
+          {% endif %}</td>
+          <td>{% if user.admin %} {# Check if user.admin is truthy, if not print 'No' #}
+            {{ user.admin }}
+            {% else %}
+            No  
+            {% endif %}</td>
+        <td>
+          <a class="btn btn-secondary btn-sm" href="{{ url_for('make_admin', user_id = user._id) }}">Make Admin</a>
+          <a class="btn btn-secondary btn-sm" href="{{ url_for('revoke_admin', user_id = user._id) }}">Revoke Admin</a>
+          <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal-{{ loop.index }}" data-routeinfo="{{ url_for('delete_product', product_id = product._id) }}">Delete</button>
+        </td>
+      </tr>
+
+<!--Modal to confirm deletion-->
+<div class="modal fade" id="confirmDeleteModal-{{ loop.index }}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete this user?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Deleting the user will mean the person can no longer log in or add posts. Existing posts are not affected.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <form action="{{ url_for('delete_user', user_id = user._id) }}" method="POST">
+          <input type="submit" class="btn btn-danger" value="Delete"></form>
+      </div>
+    </div>
+  </div>
+</div>
+
+      {% endfor %}
+  </table>    
+    
+{% endblock %}
