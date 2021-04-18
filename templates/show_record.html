@@ -6,7 +6,7 @@
 <table class="table table-default mt-5">
     <tr>
         <td>Common Name</td>
-        <td>{{record.common_name}}</td>
+        <td>{{record.common_name|title}}</td>
     </tr>
     {% if record.botanical_name %} {# Check if botanical names have been entered for the product, if not don't show line #}
         <tr>
@@ -15,13 +15,17 @@
         </tr>   
           {% endif %}
     <tr>
-        <td>Products containing this seed</td>
-        <td>{% for elem in record.contained_in %}
+        <td>Products containing this seed:</td>
+        <td>
+            
+            {% for elem in record.contained_in %}
             {{ elem | title }}, 
                 {% if loop.last %}
                 {{ elem | title }}
                 {% endif %}
             {% endfor %}
+            <br>
+            <a href="{{ url_for('show_products') }}">Go to products page</a>
             </td>
     </tr>
     </table>
