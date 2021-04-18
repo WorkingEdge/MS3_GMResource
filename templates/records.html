@@ -1,13 +1,22 @@
 {% extends "base.html" %}
 
 {% block content %}
-    
+<h3>What are green manures?</h3>
+<div class="row mb-5">
+    <div class="col-md-6">Green manures and cover crops are an important part of land management for horticultural enterprises, particularly in an organic context. They have numerous benefits - for example, some green manures fix nitrogen from the air and reduce the need for the application of synthetic fertilizer. Others may be beneficial for pollinating insects or for soil conditioning.<br>
+    There are many different species and species mixes that are considered green manures or cover crops and each one has a particular application and is suited for different conditions. For example, some are for winter growing, others for summer. Some summer green manures die back naturally with cold weather, others need to be stopped/killed before the next crop can be sown.</div>
+    <div class="col-md-6"><img src ="static/images/mustard_orchard_crop.jpg" class="img-fluid max-width: 100% height: auto"></div>
+</div>
+<h3>About the site</h3>
+<div class="row mb-5">
+    <div class="col">
+    The purpose of the site is to be a repository of information about green manure, providing easy to locate facts and access to the experiences of other growers with specific varieties. It would be ideally suited to link in with a seed company that specialises in selling green manure seed.</div>
+</div>
+<h3>Latest Posts</h3>
+<ul>
     {% for record in records %}
-        {{record._id}}
-        <a href="{{ url_for('show_record', record_id = record._id) }}">{{record.common_name}}</a><br>
-        {{record.botanical_name}}<br>
-        {{record.season}}<br>
+        <li>{{record.title}} by <small>{{record.added_by}} about <a href="{{ url_for('show_record', record_id = record._id) }}">{{record.common_name}}</a></small></li>
     {% endfor %}
-
+</ul>
 {% endblock%}
 

@@ -30,8 +30,10 @@
     </tr>
     </table>
     <div class="row mb-5">
+        {% if record.image_link %}
         <div class="col-md-6"><img src = "{{record.image_link }}" class="img-fluid max-width: 100% height: auto"></div>
-        <div class="col-md-6">{{- record.experience|capitalize -}}</div>
+        {% endif %}
+        <div class="col-md-6">{{- record.experience -}}</div>
     </div>
 
 <h3>Comments</h3>
