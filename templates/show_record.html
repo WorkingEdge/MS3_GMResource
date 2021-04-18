@@ -2,24 +2,18 @@
 
 {% block content %}
 
-
-<table class="table table-default">
-    <tr>
-        <td>Title</td>
-        <td>{{record.title}}</td>
-    </tr>
+<h4 class="mt-5">{{record.title | title}}</h4> <small>by {{record.added_by}}</small>
+<table class="table table-default mt-5">
     <tr>
         <td>Common Name</td>
         <td>{{record.common_name}}</td>
     </tr>
-    <tr>
+    {% if record.botanical_name %} {# Check if botanical names have been entered for the product, if not don't show line #}
+        <tr>
         <td>Botanical Name</td>
         <td>{{record.botanical_name}}</td>
-    </tr>
-    <tr>
-        <td>Experience</td>
-        <td>{{record.experience}}</td>
-    </tr>
+        </tr>   
+          {% endif %}
     <tr>
         <td>Products containing this seed</td>
         <td>{% for elem in record.contained_in %}
@@ -31,14 +25,17 @@
             </td>
     </tr>
     </table>
-    <div><img src = "{{record.image_link }}" class="img-fluid max-width: 100% height: auto"></div>
+    <div class="row mb-5">
+        <div class="col-md-6"><img src = "{{record.image_link }}" class="img-fluid max-width: 100% height: auto"></div>
+        <div class="col-md-6">{{- record.experience|capitalize -}}</div>
+    </div>
 
 <h3>Comments</h3>
 <table class="table table-default">
     {% for comment in record.comments %}
     <tr>
         <td>{{comment.comment_by}}</td>
-        <td>{{comment.comment_text}}</td>
+        <td>{{comment.comment_text|capitalize}}</td>
     </tr>
     {% endfor %}
     </table>
