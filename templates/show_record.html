@@ -17,25 +17,31 @@
     <tr>
         <td>Products containing this seed:</td>
         <td>
-            
-            {% for elem in record.contained_in %}
-            {{ elem | title }}, 
-                {% if loop.last %}
-                {{ elem | title }}
-                {% endif %}
-            {% endfor %}
+            {% if record.contained_in %}
+                {% for elem in record.contained_in %}
+                {{- elem | title -}}
+                {{ "," if not loop.last else "" }}
+                {% endfor %}
+            {% else %}
+                Not currently supplied in a product
+            {% endif %}
             <br>
             <a href="{{ url_for('show_products') }}">Go to products page</a>
             </td>
     </tr>
     </table>
-    <div class="row mb-5">
+    <div class="row mb-2">
         {% if record.image_link %}
-        <div class="col-md-6"><img src = "{{record.image_link }}" class="img-fluid max-width: 100% height: auto"></div>
+        <div class="col-md-6"><img src = "{{ record.image_link }}" class="img-fluid max-width: 100% height: auto"></div>
         {% endif %}
-        <div class="col-md-6">{{- record.experience -}}</div>
+        <div class="col-md-6">
+            <h4>Experience</h4>
+            {{- record.experience -}}     
+        </div>
     </div>
-
+    {% if record.image_link %}
+    <div class="mt-0"><small>Image source: <a href="{{ ''.join(['', record.image_link]) }}" target="_blank">{{- record.image_link -}}</a></small></div>
+    {% endif %} 
 <h3>Comments</h3>
 <table class="table table-default">
     {% for comment in record.comments %}
