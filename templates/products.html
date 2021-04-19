@@ -10,7 +10,7 @@
 <h4>Seed Products</h4>
 <p>Custom mixes are available, subject to availability. Contact us with your requirements.</p>
 <br>
-{% if session.session_user %}
+{% if user_is_admin %}
 <a class="btn btn-default btn-secondary mb-5" href="{{ url_for('add_product') }}">Add New Product</a>
 {% endif%}
 
@@ -21,7 +21,9 @@
         <th>Contains</th>
         <th>Note</th>
         <th>Price</th>
+        {% if user_is_admin %}
         <th>Admin</th>
+        {% endif %}
       </tr>
 
       {% for product in products %}
@@ -40,15 +42,16 @@
           {{ product.prod_price }}
           {% else %}
           Contact us  
-          {% endif %}</td>
-        <td>
-          {% if session.session_user %}
-          <a class="btn btn-secondary btn-sm" href="{{ url_for('edit_product', product_id = product._id) }}">Edit</a>
-          <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal-{{ loop.index }}" data-routeinfo="{{ url_for('delete_product', product_id = product._id) }}">Delete</button>
-          {% else %}
-          Not authorized
           {% endif %}
         </td>
+          
+        {% if user_is_admin %}
+        <td>
+          
+          <a class="btn btn-secondary btn-sm" href="{{ url_for('edit_product', product_id = product._id) }}">Edit</a>
+          <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal-{{ loop.index }}" data-routeinfo="{{ url_for('delete_product', product_id = product._id) }}">Delete</button>
+        </td>
+        {% endif %}
       </tr>
       
 

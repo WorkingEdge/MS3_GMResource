@@ -62,8 +62,10 @@ def edit_record(record_id):
         user_id = mongo.db.users.find_one(
         {"username": session["session_user"]})["_id"]
         # Perform search to check if the entry exists in any product. Store this info as well
+
         contained_in = list(mongo.db.products.find(
-        {"contains_common": common_name }))
+        {"contains_common": {"$in": [common_name] }}))
+
         #Iterate over the returned list to get the product name (for embed) and product id (for reference by ObjectId)
         products = []
         for product in contained_in:
@@ -113,7 +115,8 @@ def register():
         register_user = {
             "username": request.form.get("username").lower(),
             "email": request.form.get("email"),
-            "password": generate_password_hash(request.form.get("password"))
+            "password": generate_password_hash(request.form.get("password")), 
+            "user_is_admin": ""
         }
         mongo.db.users.insert_one(register_user)
 
@@ -214,8 +217,12 @@ def add_record():
 
 @app.route("/products")
 def show_products():
+    user_is_admin = None
     products = list(mongo.db.products.find())
-    return render_template("products.html", products = products)
+    if session.get('session_user') is not None:
+        user_is_admin = mongo.db.users.find_one(
+        {"username": session["session_user"]})["user_is_admin"]
+    return render_template("products.html", products = products, user_is_admin = user_is_admin)
 
 @app.route("/add_product", methods = ["GET","POST"])
 def add_product():
