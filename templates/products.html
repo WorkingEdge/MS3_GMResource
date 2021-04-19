@@ -1,11 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
+<h3>MS3 Seeds</h3>
+<p>MS3 Seeds is happy to sponsor this knowledge-sharing platform for Irish growers. A shopping cart will be implemented at some point in the future. In the meantime, to order seeds please contact us using the contact page.</p>
+<p>Similarly, in case of any issues with the site, log in problems, or general questions - please get in touch and we'll be happy to help.</p>
 
+
+
+<h4>Seed Products</h4>
+<p>Custom mixes are available, subject to availability. Contact us with your requirements.</p>
+<br>
 {% if session.session_user %}
-<a class="btn btn-default btn-secondary" href="{{ url_for('add_product') }}">Add New Product</a>
+<a class="btn btn-default btn-secondary mb-5" href="{{ url_for('add_product') }}">Add New Product</a>
 {% endif%}
-
 
 <table class="table table-default">
     <tr>
@@ -35,11 +42,15 @@
           Contact us  
           {% endif %}</td>
         <td>
+          {% if session.session_user %}
           <a class="btn btn-secondary btn-sm" href="{{ url_for('edit_product', product_id = product._id) }}">Edit</a>
           <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal-{{ loop.index }}" data-routeinfo="{{ url_for('delete_product', product_id = product._id) }}">Delete</button>
-          
+          {% else %}
+          Not authorized
+          {% endif %}
         </td>
       </tr>
+      
 
 <!--Modal to confirm deletion-->
 <div class="modal fade" id="confirmDeleteModal-{{ loop.index }}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalTitle" aria-hidden="true">
