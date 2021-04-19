@@ -20,6 +20,7 @@ add_message: ms3_contact_form.message_text.value,
          function (){
            document.getElementById("ms3_contact_form").reset(); 
         })
-       ;
+        .then(
+          $('#formSubmitModal').modal('show'));
        return false; 
 }
