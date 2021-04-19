@@ -5,18 +5,18 @@
 <h4 class="mt-5">{{record.title | title}}</h4> <small>by {{record.added_by}}</small>
 <table class="table table-default mt-5">
     <tr>
-        <td>Common Name</td>
+        <td style="width: 50%;">Common Name</td>
         <td>{{record.common_name|title}}</td>
     </tr>
     {% if record.botanical_name %} {# Check if botanical names have been entered for the product, if not don't show line #}
         <tr>
-        <td>Botanical Name</td>
+        <td style="width: 50%;">Botanical Name</td>
         <td>{{record.botanical_name}}</td>
         </tr>   
           {% endif %}
     <tr>
-        <td>Products containing this seed:</td>
-        <td>
+        <td style="width: 50%;">Products containing this seed:</td>
+        <td style="width: 50%;">
             {% if record.contained_in %}
                 {% for elem in record.contained_in %}
                 {{- elem | title -}}

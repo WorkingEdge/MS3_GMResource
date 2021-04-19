@@ -31,7 +31,7 @@
     <div class="container-fluid">
       <div>
       <nav class="navbar navbar-light navbar-expand-md mr-auto">
-      <a class="navbar-brand ml-0" href="{{ url_for('get_records') }}">Green Manure Resource - For Growers by Growers</a>
+      <a class="navbar-brand ml-0" href="{{ url_for('get_records') }}">Green Manure Resource</a>
       
       <button
         class="navbar-toggler"
@@ -85,6 +85,21 @@
     </nav>
   </div>
     </div>
+<!-- Search bar-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6"></div>
+    <div class="col-md-6">
+      <form id="ms3_search" method="GET" action="{{ url_for('show_products') }}">
+        <div class="input-group rounded">
+          <input type="search" class="form-control rounded" placeholder="Search this site..." aria-label="Search"
+            aria-describedby="search-addon" />
+            <input type="submit"  class="input-group-text border-0" id="search-addon" value = "Search"/>
+        </div>
+    </form>
+      </div>
+    </div>
+  </div>
   <!-- Following div to show flash messages sourced from: https://pythonprogramming.net/flash-flask-tutorial/. Customization applied.-->
   <div class="container" style="min-height:100% width:80%">
     {% with messages = get_flashed_messages() %}
