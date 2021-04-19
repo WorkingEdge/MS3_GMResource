@@ -290,6 +290,12 @@ def edit_product(product_id):
         return redirect(url_for("show_products"))
     return render_template("edit_product.html", product = product)
 
+
+@app.route("/contact", methods=['GET', 'POST'])
+def contact():
+    return render_template("contact.html")
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

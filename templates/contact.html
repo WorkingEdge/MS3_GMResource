@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block head %}
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js">
+</script>
+<script type="text/javascript">
+    (function () {
+        emailjs.init("user_ddrXfeUvflt7uVEhnrkEJ");
+    })();
+</script>
+<script src="../static/js/mail.js"></script>
+{% endblock%}
+
+{% block content %}
+<div class="container-fluid">
+    <h2 class="text-center">Contact Us</h2>
+    
+    <!--Contact Form ----- Main Source: Bootstrap -->
+    <div id="contact-form">
+      <form method="POST" id="ms3_contact_form" onsubmit="return sendMail(this);" class="form-group">
+          <h5>Get in touch with MS3 Seeds.</h5>
+          <div class="form-group">
+              <label for="name">Name</label>
+              <input class="form-control" type="text" id="name" name="name" required /></div>
+          <label for="email_1">Email Address</label>
+          <input class="form-control" type="email" id="email_1" name="email_address" required />
+          <br />
+          <label for="query_type">Type of Query - Sales or Information?</label>
+          <input class="form-control" type="text" id="query_type" name="query_type" required />
+          <br />
+          <label for="grower_type">Are you a commercial or a hobby grower?</label>
+          <input class="form-control" type="text" id="grower_type" name="grower_type" required />
+          <br />
+          <label for="message_text">Message</label><br />
+          <textarea class="form-control" id="message_text" name="message_text" maxlength="400"
+              placeholder="Max 400 characters" required></textarea><br />
+          <input class="send-button" type="submit" value="Send my message" title="Send us your message" />
+      </form>
+  </div>
+
+{% endblock%}
+{# Add script how-to from: https://stackoverflow.com/questions/3412275/loading-external-script-with-jinja2-template-directive #}
