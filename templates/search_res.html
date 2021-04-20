@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3>Search Results</h3>
+<ul>
+  <ul>
+    {% for result in results %}
+        <li>{{result.title}} by <small>{{result.added_by}} about <a href="{{ url_for('show_record', record_id = result._id) }}">{{result.common_name}}</a></small></li>
+    {% endfor %}
+</ul>
+
+
+</ul>
+  
+    
+{% endblock %}

@@ -24,6 +24,18 @@ def get_records():
     return render_template("records.html", records=records)
 
 
+#Search
+@app.route("/search_res", methods=["GET", "POST"])
+def search_res():
+    if request.method == "POST":
+        search_term = request.form.get("search_term").lower()
+        results = list(mongo.db.records.find(
+        { "$text": { "$search": search_term } }))
+        return render_template("search_res.html", results = results)
+    return render_template("search_res.html")
+
+
+
 # Show details for selected record
 @app.route("/show_record/<record_id>", methods=["GET", "POST"])
 def show_record(record_id):
