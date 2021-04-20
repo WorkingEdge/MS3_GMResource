@@ -1,16 +1,25 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h3>Search Results</h3>
-<ul>
+<h4>Search Results in Posts</h4>
+{% if results %}
   <ul>
     {% for result in results %}
         <li>{{result.title}} by <small>{{result.added_by}} about <a href="{{ url_for('show_record', record_id = result._id) }}">{{result.common_name}}</a></small></li>
     {% endfor %}
 </ul>
+{% else %}
+Sorry, no results found in Posts. Pease try another search.
+{% endif %}
 
+{% if prod_results %}
 
+<h4>Search Results in Products</h4>
+<ul>
+  {% for prod_result in prod_results %}
+  <li>{{prod_result.prod_name}}</li>
+  {% endfor %}
 </ul>
-  
+{% endif %}  
     
 {% endblock %}

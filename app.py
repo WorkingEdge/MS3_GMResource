@@ -29,9 +29,16 @@ def get_records():
 def search_res():
     if request.method == "POST":
         search_term = request.form.get("search_term").lower()
+        # Find matches in records collection using wildcard text search
         results = list(mongo.db.records.find(
         { "$text": { "$search": search_term } }))
-        return render_template("search_res.html", results = results)
+        # Find matches in products collection, return result oredered by relevance, 
+        # weighted on title/contains/notes. Index set up in MongoDB
+        prod_results=mongo.db.products.find(
+        { "$text": { "$search": search_term } },
+        { "score": { "$meta": 'textScore' }}).sort([('score', {'$meta': 'textScore'})])
+
+        return render_template("search_res.html", results = results, prod_results = prod_results)
     return render_template("search_res.html")
 
 
