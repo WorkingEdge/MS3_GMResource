@@ -34,22 +34,18 @@
         
         <td>
             {% if record.season %}
-            {{- record.season -}}
+                {% for elem in record.season %}
+                {{- elem | title -}}
+                {{ "," if not loop.last else "" }}
+                {% endfor %}
             {% else %}
-            Not specified
-            {% endif %}
-        </td>
+                Not specified
+            {% endif %}        </td>
         </tr>
         <tr>
-            <td style="width: 50%;">Summer Growing</td>
-            <td>
-                {% if record.winter %}
-                Yes
-                {% else %}
-                Not provided
-                {% endif %}
-            </td>
-            </tr>
+
+            
+        </tr>
     </table>
     <div class="row mb-2">
         {% if record.image_link %}

@@ -222,7 +222,7 @@ def add_record():
             "experience": request.form.get("experience"),
             "summer": request.form.get("summer"),
             "winter": request.form.get("winter"),
-            "season": list(request.form.get("season")),
+            "season": request.form.getlist("season"),
             "added_by": session["session_user"],
             "user_id": user_id,
             "added_date": added_date, 
