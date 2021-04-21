@@ -1,0 +1,17 @@
+.jumbotron{
+    margin-top: 10px;
+}
+.bg-cover {
+        background-attachment: static;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+/* Tip to standardise the height of card images: https://stackoverflow.com/questions/37287153/how-to-get-images-in-bootstraps-card-to-be-the-same-height-width/53252725*/
+.card-img-top {
+        width: 100%;
+        height: 15vw;
+        object-fit: cover;
+        margin-top: 5px;
+    }
