@@ -1,3 +1,10 @@
+body{
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .jumbotron{
     margin-top: 10px;
 }
@@ -15,3 +22,10 @@
         object-fit: cover;
         margin-top: 5px;
     }
+#ms3-footer{
+    height: 50px;
+    background-color: teal;
+    margin-top: 15px;
+    text-align: center;
+    color: #fafafa;
+}
