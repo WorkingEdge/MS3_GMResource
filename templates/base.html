@@ -18,6 +18,7 @@
       integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="../static/css/style.css" type="text/css">
     <link
       rel="icon"
       type="image/png"
@@ -59,15 +60,6 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('show_profile', username = session['session_user'])}}">Profile</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="{{ url_for('show_products') }}" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Admin
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">Manage Products</a>
-              <a class="dropdown-item" href="#">Manage Users</a>
-            </div>
           </li>
           {% else %}
           <li class="nav-item">
