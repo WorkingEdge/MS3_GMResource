@@ -34,11 +34,21 @@ def search_res():
         { "$text": { "$search": search_term } }))
         # Find matches in products collection, return result oredered by relevance, 
         # weighted on title/contains/notes. Index set up in MongoDB
-        prod_results=mongo.db.products.find(
+        prod_results=list(mongo.db.products.find(
         { "$text": { "$search": search_term } },
-        { "score": { "$meta": 'textScore' }}).sort([('score', {'$meta': 'textScore'})])
-
-        return render_template("search_res.html", results = results, prod_results = prod_results)
+        { "score": { "$meta": 'textScore' }}).sort([('score', {'$meta': 'textScore'})]))
+        no_of_posts = len(results)
+        if no_of_posts < 10:
+            showing_posts = no_of_posts
+        else:
+            showing_posts = "ten"
+        no_of_products = len(prod_results)
+        if no_of_products < 6:
+            showing_products = no_of_products
+        else:
+            showing_products = "five"
+        return render_template("search_res.html", results = results, prod_results = prod_results, no_of_posts = no_of_posts, 
+        showing_posts = showing_posts, no_of_products = no_of_products, showing_products = showing_products )
     return render_template("search_res.html")
 
 

@@ -1,25 +1,41 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h4>Search Results in Posts</h4>
+<br>
+{% if prod_results %}
+
+<h5>Search Results in Products</h5>
+<h6>Showing {{ showing_products }} of {{ no_of_products }}</h6>
+
+  {% for prod_result in prod_results %}
+  <div class="card" >
+    <div class="card-body">
+      <h5 class="card-title">{{prod_result.prod_name | title }}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">MS3 Seeds</h6>
+      <a href="#" class="card-link">Go to product</a>
+    </div>
+  </div>
+  
+  {% endfor %}
+
+{% endif %}  
+<h5>Search Results in Posts</h5>
 {% if results %}
-  <ul>
-    {% for result in results %}
-        <li>{{result.title}} by <small>{{result.added_by}} about <a href="{{ url_for('show_record', record_id = result._id) }}">{{result.common_name}}</a></small></li>
-    {% endfor %}
-</ul>
+<h6>Showing {{ showing_posts }} of {{ no_of_posts }}</h6>
+{% for result in results %}
+<div class="card" >
+  <div class="card-body">
+    <h5 class="card-title">{{result.title | title}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Added by {{result.added_by}}, about {{result.common_name}}.</h6>
+    <a href="{{ url_for('show_record', record_id = result._id) }}" class="card-link">Go to post</a>
+  </div>
+</div>
+{% endfor %}
+  
 {% else %}
 Sorry, no results found in Posts. Pease try another search.
 {% endif %}
 
-{% if prod_results %}
 
-<h4>Search Results in Products</h4>
-<ul>
-  {% for prod_result in prod_results %}
-  <li>{{prod_result.prod_name}}</li>
-  {% endfor %}
-</ul>
-{% endif %}  
     
 {% endblock %}
