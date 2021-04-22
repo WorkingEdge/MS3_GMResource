@@ -1,79 +1,134 @@
-{% extends "base.html" %}
-
-{% block content %}
+{% extends "base.html" %} {% block content %}
 <div class="container-fluid">
-    <h2 class="text-center">New Record</h2>
-    
-    <form class="form-horizontal" method="POST" action="{{ url_for('add_record') }}" >
-      
+  <h2 class="text-center">New Record</h2>
+
+  <form
+    class="form-horizontal"
+    method="POST"
+    action="{{ url_for('add_record') }}"
+  >
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="record_title">Title</label>
+      <div class="col-sm-10">
+        <input
+          type="text"
+          class="form-control"
+          id="record_title"
+          placeholder="Title your post"
+          name="record_title"
+          required
+        />
+      </div>
+
       <div class="form-group">
-        
-        <label class="control-label col-sm-2" for="record_title">Title</label>
+        <label class="control-label col-sm-2" for="common_name"
+          >Common Name</label
+        >
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="record_title" placeholder="Title your post" name="record_title" required>
-        </div>
-      
-        <div class="form-group">
-        <label class="control-label col-sm-2" for="common_name">Common Name</label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" id="common_name" placeholder="Common name" name="common_name" required>
+          <input
+            type="text"
+            class="form-control"
+            id="common_name"
+            placeholder="Common name"
+            name="common_name"
+            required
+          />
         </div>
       </div>
 
       <div class="form-group">
-        <label class="control-label col-sm-2" for="botanical_name">Botanical Name</label>
-        <div class="col-sm-10">          
-          <input type="text" class="form-control" id="botanical_name" placeholder="Botanical name" name="botanical_name">
-        </div>
-      </div>
-      
-      <div class="form-group">        
-        <div class="col-sm-offset-2 col-sm-10">
-         <label class="checkbox-inline" for="summer"><input type="checkbox" value="Summer" name="season">Summer</label>
-        <label class="checkbox-inline" for="winter"><input type="checkbox" value="Winter" name="season">Winter</label> 
-      
-      
-  <div class="checkbox">
-    <label for="n_fixing"><input type="checkbox" value="yes" name="n_fixing">N-fixing</label>
-  </div>
-  <div class="checkbox">
-    <label for="pollinator_f"><input type="checkbox" value="yes" name="pollinator_f">Pollinator-friendly</label>
-  </div>
-        </div>
-      </div>
-      
-    <div class="form-group">
-        <label class="control-label col-sm-2" for="experience">Experience</label>
+        <label class="control-label col-sm-2" for="botanical_name"
+          >Botanical Name</label
+        >
         <div class="col-sm-10">
-          <textarea type="text" class="form-control" rows="5" id="experience" placeholder="My experience with this plant" name="experience" required></textarea>
+          <input
+            type="text"
+            class="form-control"
+            id="botanical_name"
+            placeholder="Botanical name"
+            name="botanical_name"
+          />
         </div>
       </div>
-      
-       
+
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <p>Season: <span><label class="checkbox-inline" for="summer"
+            ><input type="checkbox" value="Summer" name="season" /> Summer</label
+          >
+          <label class="checkbox-inline" for="winter"
+            ><input type="checkbox" value="Winter" name="season" /> Winter</label
+          ></span></p>
+          
+          <p>N-Fixing: <span><input type="radio" id="n-fixing_y" name="n_fixing" value="yes">
+            <label class="radio-inline" for="yes">Yes</label>
+            <input type="radio" id="n_fixing_n" name="n_fixing" value="no">
+            <label class="radio-inline" for="no">No</label></span></p>
+          
+          <p>Pollinator-friendly: <span><input type="radio" id="pollinator_y" name="pollinator" value="yes">
+            <label class="radio-inline" for="yes">Yes</label>
+            <input type="radio" id="pollinator_n" name="pollinator" value="no">
+            <label class="radio-inline" for="no">No</label></span></p>
+            
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="experience"
+          >Experience</label
+        >
+        <div class="col-sm-10">
+          <textarea
+            type="text"
+            class="form-control"
+            rows="5"
+            id="experience"
+            placeholder="My experience with this plant"
+            name="experience"
+            required
+          ></textarea>
+        </div>
+      </div>
+
       <div class="form-group">
         <label class="control-label col-sm-2" for="image_url">Image</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="image_url" placeholder="Image URL" name="image_url">
+          <input
+            type="text"
+            class="form-control"
+            id="image_url"
+            placeholder="Image URL"
+            name="image_url"
+          />
         </div>
       </div>
-      
+
       <div class="form-group">
         <label class="control-label col-sm-2" for="image_url">In Product</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="product" placeholder="This field is filled automatically on submit" name="product" disabled>
+          <input
+            type="text"
+            class="form-control"
+            id="product"
+            placeholder="This field is filled automatically on submit"
+            name="product"
+            disabled
+          />
         </div>
       </div>
-      
-      
-      <div class="form-group">        
+
+      <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
           <button type="submit" class="btn btn-default">Submit</button>
-          <a href="{{ url_for('show_profile', username = session['session_user'])}}">
-            <button type="button" class="btn btn-default">Cancel</button></a>
-          </div>
+          <a
+            href="{{ url_for('show_profile', username = session['session_user'])}}"
+          >
+            <button type="button" class="btn btn-default">Cancel</button></a
+          >
         </div>
       </div>
-    </form>
-  </div>
+    </div>
+  </form>
+</div>
 
 {% endblock%}

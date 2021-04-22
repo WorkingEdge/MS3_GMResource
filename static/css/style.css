@@ -14,7 +14,9 @@ body{
         background-repeat: no-repeat;
         background-size: cover;
     }
-
+.show_record_table{
+    color: #fafafa;
+}
 /* Tip to standardise the height of card images: https://stackoverflow.com/questions/37287153/how-to-get-images-in-bootstraps-card-to-be-the-same-height-width/53252725*/
 .card-img-top {
         width: 100%;
@@ -23,6 +25,7 @@ body{
         margin-top: 5px;
     }
 #ms3-footer{
+    margin-top: auto;
     height: 50px;
     background-color: teal;
     margin-top: 15px;

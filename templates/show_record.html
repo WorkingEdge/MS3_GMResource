@@ -3,7 +3,8 @@
 {% block content %}
 
 <h4 class="mt-5">{{record.title | title}}</h4> <small>by {{record.added_by}}</small>
-<table class="table table-default mt-5">
+<div class="jumbotron bg-cover text-white" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%), url(../static/images/jumbo_bg.jpg)">
+<table class="show_record_table table table-default mt-5">
     <tr>
         <td style="width: 50%;">Common Name</td>
         <td>{{record.common_name|title}}</td>
@@ -14,7 +15,41 @@
         <td>{{record.botanical_name}}</td>
         </tr>   
           {% endif %}
-    <tr>
+          <tr>
+            <td style="width: 50%;">Season</td>
+            
+            <td>
+                {% if record.season %}
+                    {% for elem in record.season %}
+                    {{- elem | title -}}
+                    {{ "," if not loop.last else "" }}
+                    {% endfor %}
+                {% else %}
+                    Not specified
+                {% endif %}        </td>
+            </tr>
+            <tr>
+                <td style="width: 50%;">N-Fixing</td>
+                
+                <td>
+                    {% if record.n_fixing %}
+                        {{ record.n_fixing | title }}
+                    {% else %}
+                        Not specified
+                    {% endif %}        </td>
+                </tr>
+                <tr>
+                    <td style="width: 50%;">Pollinator friendly?</td>
+                    
+                    <td>
+                        {% if record.pollinator_friendly %}
+                            {{- record.pollinator_friendly | title -}}
+                        {% else %}
+                            Not specified
+                        {% endif %}        </td>
+                    </tr>
+    
+          <tr>
         <td style="width: 50%;">Products containing this seed:</td>
         <td style="width: 50%;">
             {% if record.contained_in %}
@@ -29,24 +64,13 @@
             <a href="{{ url_for('show_products') }}">Go to products page</a>
             </td>
     </tr>
-    <tr>
-        <td style="width: 50%;">Season</td>
-        
-        <td>
-            {% if record.season %}
-                {% for elem in record.season %}
-                {{- elem | title -}}
-                {{ "," if not loop.last else "" }}
-                {% endfor %}
-            {% else %}
-                Not specified
-            {% endif %}        </td>
-        </tr>
+    
         <tr>
 
             
         </tr>
     </table>
+</div>
     <div class="row mb-2">
         {% if record.image_link %}
         <div class="col-md-6 mb-2"><img src = "{{ record.image_link }}" class="img-fluid max-width: 100% height: auto"></div>

@@ -205,6 +205,7 @@ def add_record():
         # Perform search to check if the entry exists in any product. Store this info as well
         contained_in = list(mongo.db.products.find(
         {"contains_common": common_name }))
+        
         #Iterate over the returned list to get the product name (for embed) and product id (for reference by ObjectId)
         products = []
         for product in contained_in:
@@ -219,9 +220,10 @@ def add_record():
             "title": request.form.get("record_title"),
             "common_name": common_name,
             "botanical_name": request.form.get("botanical_name"),
+            "season": request.form.getlist("season"),
+            "n_fixing": request.form.get("n_fixing"),
+            "pollinator_friendly": request.form.get("pollinator"),
             "experience": request.form.get("experience"),
-            "summer": request.form.get("summer"),
-            "winter": request.form.get("winter"),
             "season": request.form.getlist("season"),
             "added_by": session["session_user"],
             "user_id": user_id,
