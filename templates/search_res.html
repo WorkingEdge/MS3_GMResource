@@ -12,7 +12,7 @@
     <div class="card-body">
       <h5 class="card-title">{{prod_result.prod_name | title }}</h5>
       <h6 class="card-subtitle mb-2 text-muted">MS3 Seeds</h6>
-      <a href="#" class="card-link">Go to product</a>
+      <a href="{{ url_for('show_product', product_id = prod_result._id) }}" class="card-link">Go to product</a>
     </div>
   </div>
   

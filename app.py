@@ -257,6 +257,15 @@ def show_products():
         {"username": session["session_user"]})["user_is_admin"]
     return render_template("products.html", products = products, user_is_admin = user_is_admin)
 
+
+#Show an individual record
+@app.route("/show_product/<product_id>")
+def show_product(product_id):
+    product = mongo.db.products.find_one(
+        {"_id": ObjectId(product_id)})
+    return render_template("show_product.html", product = product)
+
+
 @app.route("/add_product", methods = ["GET","POST"])
 def add_product():
     if request.method == "POST":

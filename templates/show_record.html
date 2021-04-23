@@ -54,7 +54,7 @@
         <td style="width: 50%;">
             {% if record.contained_in %}
                 {% for elem in record.contained_in %}
-                {{- elem | title -}}
+                <a href="#">{{- elem | title -}}</a>
                 {{ "," if not loop.last else "" }}
                 {% endfor %}
             {% else %}
