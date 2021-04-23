@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 
 {% block head %}
-
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js">
 </script>
 <script type="text/javascript">
@@ -14,19 +13,20 @@
 
 {% block content %}
 <div class="container-fluid">
-    <h2 class="text-center">Contact Us</h2>
     
     <!--Contact Form ----- Main Source: Bootstrap -->
-    <div id="contact-form">
+    <div class="jumbotron bg-cover text-white" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%), url(../static/images/contact_us_tiny.jpg">
+      <div id="contact-form">
       <form method="POST" id="ms3_contact_form" onsubmit="return sendMail(this);" class="form-group">
-          <h5>Get in touch with MS3 Seeds.</h5>
+        <h2 class="text-center">Contact Us</h2>
+        <h5>Get in touch with MS3 Seeds:</h5>
           <div class="form-group">
               <label for="name">Name</label>
               <input class="form-control" type="text" id="name" name="name" required /></div>
           <label for="email_1">Email Address</label>
           <input class="form-control" type="email" id="email_1" name="email_address" required />
           <br />
-          <label for="query_type">Type of Query - Sales or Information?</label>
+          <label for="query_type">Type of Query - Website issues, Sales, or Information?</label>
           <input class="form-control" type="text" id="query_type" name="query_type" required />
           <br />
           <label for="grower_type">Are you a commercial or a hobby grower?</label>
@@ -38,7 +38,8 @@
           <input class="send-button" type="submit" value="Send my message" title="Send us your message" data-toggle="modal"
           data-target="#formSubmitModal"/>
       </form>
-  </div>
+  </div></div>
+
   <!--Form submitted modal-->
   <div class="modal fade" id="formSubmitModal" tabindex="-1" role="dialog" aria-labelledby="formSubmitModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -60,5 +61,3 @@
   </div>
 
 {% endblock%}
-
-{# Add script how-to from: https://stackoverflow.com/questions/3412275/loading-external-script-with-jinja2-template-directive #}
