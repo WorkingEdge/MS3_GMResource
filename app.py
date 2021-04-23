@@ -220,11 +220,9 @@ def add_record():
         products = []
         for product in contained_in:
             product_name = product.get("prod_name")
-            products.append(product_name)
-        product_ids = []
-        for product in contained_in:
             product_id = product.get("_id")
-            product_ids.append(product_id)
+            prod_details = {"product_name": product_name, "product_id": product_id}
+            products.append(prod_details)
         #Create the object that will be inserted in the db
         record = {
             "title": request.form.get("record_title"),
@@ -239,8 +237,7 @@ def add_record():
             "user_id": user_id,
             "added_date": added_date, 
             "image_link": request.form.get("image_url"),
-            "contained_in": products,
-            "contained_in_ids": product_ids
+            "contained_in": products
         }
         mongo.db.records.insert_one(record)
         flash("Record added. Thanks for your contribution.")

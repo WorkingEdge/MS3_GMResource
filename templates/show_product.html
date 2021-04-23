@@ -2,32 +2,35 @@
 
 {% block content %}
 
-<div class="jumbotron bg-cover text-white" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%), url(../static/images/jumbo_bg.jpg)">
+<div class="jumbotron bg-cover text-black" style="background-image: linear-gradient(to bottom, rgba(255,255,255,0.6) 0%,rgba(255,255,255,0.9) 100%), url(../static/images/jumbo_bg.jpg)">
     <h1 class="display-4">{{ product.prod_name|title }}</h1>
-    <p>{{ product.prod_name|title }}</p>
-    <table class="show_record_table table table-default mt-5">
-    <tr>
-        <td style="width: 50%;">Season</td>
-        <td>Winter or summer</td>
-    </tr>
-    <tr>
-        <td style="width: 50%;">Contains</td>
-        <td>Details</td>
-    </tr>
-    <tr>
-        <td style="width: 50%;">Sowing Months</td>
-        <td>Details</td>
-    </tr>
-    <tr>
-        <td style="width: 50%;">Weeks to Flowering</td>
-        <td>Details</td>
-    </tr>
-    <tr>
-        <td style="width: 50%;">Rate of Sowing</td>
-        <td>Details</td>
-    </tr>
-</table>
+    
+    <p class="lead">Green manures are plant species grown before, after, or between cash crops for the benefits they bring in relation to soil fertility, pest and weed suppression, biodiverstiy and soil health. They are an important part of land management for horticultural enterprises, particularly in an organic context. Green manures can be grown as a single species or as a multi-species mix and they have numerous benefits. </p>
+    <hr class="my-4"><table class="show_record_table table table-default mt-5">
+        <tr>
+            <td style="width: 50%;">Season</td>
+            <td>Winter or summer</td>
+        </tr>
+        <tr>
+            <td style="width: 50%;">Contains</td>
+            <td>Details</td>
+        </tr>
+        <tr>
+            <td style="width: 50%;">Sowing Months</td>
+            <td>Details</td>
+        </tr>
+        <tr>
+            <td style="width: 50%;">Weeks to Flowering</td>
+            <td>Details</td>
+        </tr>
+        <tr>
+            <td style="width: 50%;">Rate of Sowing</td>
+            <td>Details</td>
+        </tr>
+    </table>
+    
 </div>
+
     <div class="row mb-2">
         {% if product.image_link %}
         <div class="col-md-6 mb-2"><img src = "{{ product.image_link }}" class="img-fluid max-width: 100% height: auto"></div>
@@ -41,6 +44,7 @@
         <div class="col-md-6">{% if product.image_link %}
             <div class="mt-0"><small>Image source: <a href="{{ ''.join(['', product.image_link]) }}" target="_blank">{{- product.image_link -}}</a></small></div>
             {% endif %}</div>
+        <div class="col-md-6"></div>
     </div> 
 
 

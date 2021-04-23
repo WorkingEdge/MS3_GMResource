@@ -1,10 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-<h4 class="mt-5">{{record.title | title}}</h4> <small>by {{record.added_by}}</small>
 <div class="jumbotron bg-cover text-white" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%), url(../static/images/jumbo_bg.jpg)">
-<table class="show_record_table table table-default mt-5">
+    <h4>{{record.title | title}}</h4> <small>by {{record.added_by}}</small>
+    <table class="show_record_table_white table table-default mt-5 borderless">
     <tr>
         <td style="width: 50%;">Common Name</td>
         <td>{{record.common_name|title}}</td>
@@ -54,7 +53,7 @@
         <td style="width: 50%;">
             {% if record.contained_in %}
                 {% for elem in record.contained_in %}
-                <a href="#">{{- elem | title -}}</a>
+                <a href="{{ url_for('show_product', product_id = elem.product_id) }}">{{- elem.product_name | title -}}</a>
                 {{ "," if not loop.last else "" }}
                 {% endfor %}
             {% else %}

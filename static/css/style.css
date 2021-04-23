@@ -14,9 +14,17 @@ body{
         background-repeat: no-repeat;
         background-size: cover;
     }
-.show_record_table{
-    color: #fafafa;
+.show_record_table_black{
+    color: black;
 }
+.show_record_table_white{
+    color:#fafafa;
+    border-top: none;
+}
+.tbody{
+    border-top: none;
+}
+
 /* Tip to standardise the height of card images: https://stackoverflow.com/questions/37287153/how-to-get-images-in-bootstraps-card-to-be-the-same-height-width/53252725*/
 .card-img-top {
         width: 100%;
