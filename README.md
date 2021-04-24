@@ -19,6 +19,8 @@
 - [Testing](#testing)
 - [Known Issues](#known-issues)
 - [Deployment](#deployment)
+    - [Deploy to Heroku](#deploy-to-heroku)
+    - [Connect MongoDB and Create PyMongo Instance](#connect-mongodb-and-create-pymongo-instance)
 - [Credits](#credits)
 - [Notes](#notes)
 - [Appendix](#appendix)
@@ -111,7 +113,79 @@ Latest posts are displayed as (Bootstrap) cards with image tops. The image in th
 # Known Issues 
 
 # Deployment
+The deployment steps below are the procedure followed for this app. 
+The order of steps is based on that followed for the task manager walkthrough project. 
 
+### Deploy to Heroku
+1. Create a requirements.txt file. In (Gitpod) terminal, type:
+  ```shell
+  pip3 freeze --local > requirements.txt
+  ```
+2. Create a Procfile. (This step also creates  __pycache__ ). 
+   In the terminal, type:
+   ```shell
+   echo web: python app.py > Procfile
+   ```
+3. Remove any stray blank line at the end of the Procfile.
+4. Go to Heroku.com and log in.
+5. Choose *New* -> *Create New App*
+6. Enter an app name.
+7. Choose the region (Europe).
+8. Click *Create App*.
+9.  On the *Deploy* tab, choose Github as the deployment method but do not deploy yet!
+10. Find the Github repo for the app and connect.
+11. Configure the secret keys corresponding to the values in the *env.py* for the app. Do this in *Settings* -> *Config Vars*. Enter values for IP, PORT, SECRET_KEY, MONGO_URI, MONGO_DBNAME. Note: The value for MONGO_URI must be retrieved from the MongoDB account (cluster) being used for the app. Hide the config vars.
+12.  Back in the Gitpod workspace, commit and then push the Procfile and requirements.txt files created in steps 1 and 2.
+13.  In Heroku, go to the *Deploy* tab and enable automatic deploys. This means that updates pushed to the Github repo are automatically mpped to Heroku.
+14.  Go to manual deploys -> Deploy branch (master).
+
+### Connect MongoDB and Create PyMongo Instance
+(Official documentation: https://flask-pymongo.readthedocs.io/en/latest/)
+
+The steps below assume you have a MongoDB account and a cluster available to connect the app.
+
+1. Install Flask PyMongo by typing the following command in the terminal:
+   ```shell
+   pip3 install flask-pymongo
+   ```
+2. Install dnspython:
+   ```shell
+   pip3 install dnspython
+   ```
+3. Make sure these are added to the app requirements:
+   ```shell
+   pip3 freeze --local > requirements.txt
+   ```
+4. Add PyMongo to the app. 
+   In app.py, add:
+   ```py
+   from flask-pymongo import PyMongo
+   from bson.objectid import ObjectId
+   ```
+5. Get the connection string from MongoDB:
+   1. Log in to your MongoDB account.
+   2. Choose *Cluster* -> *Connect*.
+   3. Choose *Connect your application*.
+   4. Verify the driver (Python) and the version (3.6 or later).
+   5. Get the connection string and add it to the env.py file:
+      ```python
+      os.environ.setdefault("MONGO_URI", "<connection string>")
+      ```
+6. In app.py, configure the connection (these values must correspond with those entered in Heroku config vars):
+   ```python
+   app.config["MONGO_DBNAME]=os.environ.get("MONGO_DBNAME")
+   app.config["MONGO_URI]=os.environ.get("MONGO_URI")
+   app.secret_key=os.environ.get("SECRET_KEY")
+7. Make sure to add the MONGO_URI connection string info to the config vars in Heroku.
+8. Create a PyMongo instance to connect the app and the database. In app.py, add:
+    ```python
+    mongo = PyMongo(app)
+    ```
+
+
+
+
+  
 # Credits
 
 # Notes
