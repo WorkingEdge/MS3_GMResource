@@ -189,11 +189,16 @@ def show_profile(username):
         {"user_id": user_id }))
     commented = list(mongo.db.records.find(
         {"comments":{"$elemMatch": {"commenter_id": user_id}}}))
+    poster_status = None
+    if len(records) > 5:
+        poster_status = "gold"
+    commenter_status = len(commented)    
+
     for post in commented:
         comment_details = []
 
     if session["session_user"]:
-        return render_template("profile.html", username = username, records = records)
+        return render_template("profile.html", username = username, records = records, poster_status = poster_status, commenter_status = commenter_status)
     return redirect(url_for("login"))
 
 
