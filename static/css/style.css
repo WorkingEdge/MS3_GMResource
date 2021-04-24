@@ -4,7 +4,7 @@ body{
     flex-direction: column;
     justify-content: space-between;
 }
-
+/*-------------------------------------------------------- Jumbotron*/
 .jumbotron{
     margin-top: 10px;
 }
@@ -14,17 +14,46 @@ body{
         background-repeat: no-repeat;
         background-size: cover;
     }
-.show_record_table_black{
+
+ /*------------------------------------------------------ Tables for data display*/   
+.botanical_name{
+    font-style: italic;
+}
+
+ .show_record_table_black{
     color: black;
 }
+.show_record_table_black a{
+    color:#fafafa;
+}
+.show_record_table_black a:hover{
+    color: gold;
+}
+
+
+
 .show_record_table_white{
     color:#fafafa;
     border-top: none;
 }
-.tbody{
-    border-top: none;
+.show_record_table_white a{
+    color: #fafafa;
+}
+.show_record_table_white a:hover{
+    color:gold;
+}
+#myposts_table{
+    background-color: teal;
+    color: #fafafa;   
 }
 
+#myposts_table a{
+    color: #fafafa;
+}
+#myposts_table a:hover{
+    color: gold;
+}
+/*---------------------------------------------------Cards for latest posts*/
 /* Tip to standardise the height of card images: https://stackoverflow.com/questions/37287153/how-to-get-images-in-bootstraps-card-to-be-the-same-height-width/53252725*/
 .card-img-top {
         width: 100%;
@@ -32,9 +61,11 @@ body{
         object-fit: cover;
         margin-top: 5px;
     }
+
+/*--------------------------------------------------------Footer*/    
 #ms3-footer{
     margin-top: auto;
-    height: 50px;
+    height: 80px;
     background-color: teal;
     margin-top: 15px;
     text-align: center;

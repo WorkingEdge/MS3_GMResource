@@ -1,10 +1,27 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h3>Profile for {{ username }}</h3>
+<div class="jumbotron bg-cover text-white" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%), url(../static/images/jumbo_bg.jpg)">
+  <h2>Hi {{ username }} !</h2>
+  {% if poster_status %}
+  <p class="lead">
+    Looks like you have more than five posts. Thanks for your contribution to the site. We hope you're gaining some knowledge too. 
+    Keep going - when you hit any multiples of ten, we'll send you a free sample from MS3 seeds.
+    {% else %}
+    You don't have very many posts yet but we look forward to hearing more from you. When you hit ten posts, we'll semd you a free sample from MS3 seeds.
+    (You have commented {{ commenter_status }} times.)
+    {% endif %}</p>
+  <p class="lead">
+  </p>
+    <hr class="my-4">
+    <p class = "lead">If you need to change your password or update your email address, please contact us using the contact form. <br>
+      You can edit or delete your previous posts using the options below.
+    </p>
 
-<h4>My Posts</h4>
-<table class="table table-default">
+</div>
+
+<h2 class="text-center">My Posts</h2>
+<table class="table table-default" id="myposts_table">
     <tr>
         <th>#</th>
         <th>Post Name</th>
@@ -19,7 +36,8 @@
         
         <td>{{ record.added_date}}</td>
         <td><a class="btn btn-secondary btn-sm" href="{{ url_for('edit_record', record_id = record._id) }}">Edit</a>
-          <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal-{{ loop.index }}" data-routeInfo="{{ url_for('delete_record', record_id = record._id) }}">Delete</button></td>
+          <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" 
+          data-target="#confirmDeleteModal-{{ loop.index }}" data-routeinfo="{{ url_for('delete_record', record_id = record._id) }}">Delete</button></td>
     </tr>
 
 
