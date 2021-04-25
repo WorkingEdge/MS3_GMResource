@@ -22,6 +22,7 @@
     - [General](#general)
     - [Future Features](#future-features)
 - [Technologies Used](#technologies-used)
+- [Content Sources:](#content-sources)
 - [Testing](#testing)
 - [Known Issues](#known-issues)
 - [Deployment](#deployment)
@@ -136,7 +137,6 @@ An example of this in practice in the app is the record for a single user post:
 * Functionality for a signed-in user to manage their profile - that is, to edit or delete posts that they have created previously
 * Functionality for a signed-in user to log out
   
-  
 ### Admin Perspective
 * Functionality to add a new product listing
 * Functionality to edit an existing product listing
@@ -165,6 +165,33 @@ For the next iteration, the following features are on the wish-list:
    * Add a 'notify me' or subscribe function whereby users who have opted in get notified when there is a new post
 
 # Technologies Used
+* MongoDB
+  
+  [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/lp/try2?utm_source=google&utm_campaign=gs_emea_ireland_search_core_brand_atlas_desktop&utm_term=mongodb%20atlas&utm_medium=cpc_paid_search&utm_ad=e&utm_ad_campaign_id=12212624527&gclid=Cj0KCQjwppSEBhCGARIsANIs4p4TIAFshh9aJ1kpUVX5dc5NMR76hqbUMaLzzFHHQUtV0I4SMHnlS2gaAmQ7EALw_wcB) is the database provider for the application.
+
+*  [Python](https://www.python.org/downloads/release/python-388/) (3.8.8) and several Python-related frameworks and libraries are used to build the main functionality, in particular:
+   *  **Flask** is a Python-based micro-framework for developing web applications. See [Flask documentation](https://flask.palletsprojects.com/en/1.1.x/).
+   *  **Jinja** is a templating engine that works with Flask to speed up the development process and aid development using HTML templates. See [Jinja documentation](https://jinja.palletsprojects.com/en/2.11.x/)
+   *  **Werkzeug** is a Web Server Gateway Interface (WSGI) library. In this application, it has primarily been used to handle password hashing. See [Werkzeug documentation](https://werkzeug.palletsprojects.com/en/1.0.x/)
+   *  **Flask-PyMongo** serves as a way of providing the communication required between the Flask app and MongoDB. See [Flask-PyMongo docs](https://flask-pymongo.readthedocs.io/en/latest/#flask_pymongo.PyMongo)
+   *  There are several other minor dependencies that are outlined in the app's rquirements.txt file:
+      *  click==7.1.2
+      *  dnspython==2.1.0
+      *  Flask==1.1.2
+      *  Flask-PyMongo==2.3.0
+      *  itsdangerous==1.1.0
+      *  pymongo==3.11.3
+      *  Werkzeug==1.0.1 
+  
+
+* [HTML](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5) is used to build the page layouts.
+* [CSS](https://developer.mozilla.org/en-US/docs/Glossary/CSS) is used, to provide visual styling.
+* [Bootstrap](https://getbootstrap.com/) is used to provide responsive layout elements such as the 'card', 'jumbotron' and modal window elements.
+* [Javascript](https://developer.mozilla.org/en-US/docs/Glossary/JavaScript) is used to provide the support for EmailJS and form validation.
+* [EmailJS](https://www.emailjs.com/) provides the contact form -> email functionality. 
+* [TinyJPG](https://tinyjpg.com/) was used to comptress image files.
+    
+# Content Sources:
 
 # Testing
 
