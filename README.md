@@ -108,14 +108,14 @@ Latest posts are displayed as (Bootstrap) cards with image tops. The image in th
 **Note:** The deafult/fallback image is used only for the cards - inside the post itself, no image appears unless it has been specified by the user.
 
 # Design - Database
-![Collections in the databases](../MS3_GMResource/readme_assets/readme_images/ms3_gm_resources_db.png)
+![Collections in the databases](readme_assets/readme_images/ms3_gm_resources_db.png)
 
 The app uses MongoDB as the database. MongoDB is a NoSQL (non-relational) database and stores data in documents, as opposed to the tables of traditional relational databases. As such, it is capable of working with unstructured data. While the database is non-relational - connections between database 'collections' are established to aid clear data structure and avoid any future issues regarding the MongoDB size limit for a single document (16MB). 
 
 Essentially, the design was set up in accordance with the following MongoDB principle "data that is accessed together should be stored together". The rationale here is that if all the data returned for a given query can be returned in a single call to one db document, it allows for very fast/efficient operation. Along with this, manual references are established between collections to allow easy follow-on queries where these are likely. (For more info, see: https://docs.mongodb.com/manual/reference/database-references/#std-label-document-references)
 
 An example of this in practice in the app is the record for a single user post:
-![Database design](../MS3_GMResource/readme_assets/readme_images/embeds_references_mongodb.png) 
+![Database design](readme_assets/readme_images/embeds_references_mongodb.png) 
 
 * The entry for the record embeds the comments for that record. The comments are displayed together with the rest of the post content and the use case for the app makes it unlikely that there would ever be sufficient comments to approach the document size limit.
 * Each comment entry is itself an object containing the 4 key:value pairs - comment text, commenter ID, date, and user name. The commenter_id is a reference to an ObjectId in the users collection.
