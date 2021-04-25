@@ -21,6 +21,8 @@
 - [Deployment](#deployment)
     - [Deploy to Heroku](#deploy-to-heroku)
     - [Connect MongoDB and Create PyMongo Instance](#connect-mongodb-and-create-pymongo-instance)
+      - [Note on Environment Variables](#note-on-environment-variables)
+  - [Forking](#forking)
 - [Credits](#credits)
 - [Notes](#notes)
 - [Appendix](#appendix)
@@ -114,13 +116,14 @@ Latest posts are displayed as (Bootstrap) cards with image tops. The image in th
 
 # Deployment
 The deployment steps below are the procedure followed for this app. 
-The order of steps is based on that followed for the task manager walkthrough project. 
+The order of steps is based on that followed for the task manager walkthrough project.
+** Note: The required environment variables are not contained in the README. ** 
 
 ### Deploy to Heroku
 1. Create a requirements.txt file. In (Gitpod) terminal, type:
-  ```shell
-  pip3 freeze --local > requirements.txt
-  ```
+   ```shell
+   pip3 freeze --local > requirements.txt
+   ```
 2. Create a Procfile. (This step also creates  __pycache__ ). 
    In the terminal, type:
    ```shell
@@ -181,6 +184,50 @@ The steps below assume you have a MongoDB account and a cluster available to con
     ```python
     mongo = PyMongo(app)
     ```
+## Deploying Locally
+To download the code and open it in your own IDE, do the following:
+1. On the repository home page on Github, find the download code button above the table with the commit history and open the dropdown menu.
+2. Choose * Download ZIP*.
+3. Locate the download in the *Downloads* folder on your computer and store it in a suitable dedicated folder.
+4. Extract the ZIP.
+5. Open the project files from your IDE. For example, if using VSCode, choose *File* -> *Open Folder* and choose the folder just created in step 4.
+
+#### Note on Local Deployment:
+
+To run the app from the copied files would require that you have installed all required components in your development environment, for example Flask and PyMongo. Requirements are listed in the requirements.txt file.
+In a clean environment, you can install all the requirements together using the following command:
+
+   ```shell
+   pip3 install -r requirements.txt
+   ```
+   (pip or pip3? Either is ok, depending on your Python version. If you have Python 3, use pip3. For more, see: https://techwithtech.com/python-pip-vs-pip3/ )
+
+If you already have some packages installed, you can install packages individually, for example:
+   * To install flask:
+      ```shell
+      pip3 install Flask
+      ```
+   Official Documentation: https://flask.palletsprojects.com/en/1.1.x/installation/
+   * To install PyMongo: 
+      ```shell
+      pip3 install flask-pymongo
+      ```
+   Official documentation: https://pymongo.readthedocs.io/en/stable/
+
+#### Note on Environment Variables
+
+Running the app locally requires that you have access to the environment variables. These are stored in a .gitignore file and are not provided in the README or as part of the downloaded ZIP. For MS3 grading, these are provided separately for the tester.
+
+## Forking
+If you have a Github account, you can fork the repository to your own account. This will create a copy with which you can then work.
+The proviso above regarding environment variables also applies in this instance.
+To fork your own copy of the repository:
+1. While in the repository you wish to fork (ie, this one), click the *Fork* icon in the top-right corner of the screen.
+2. You can confirm whether you want to use the fork as a basis for your own project or as a copy via which to contribute to the original (using pull requests).
+
+**The proviso above regarding environment variables also applies in this instance.**
+
+Full deatils about forking a Github repository can be found here: https://docs.github.com/en/github/getting-started-with-github/fork-a-repo
 
 
 
