@@ -16,7 +16,12 @@
       - [Cards](#cards)
 - [Design - Database](#design---database)
 - [Features](#features)
-- [Technolgies Used](#technolgies-used)
+    - [User Perspective](#user-perspective)
+    - [Admin Perspective](#admin-perspective)
+    - [Site Owner Perspective](#site-owner-perspective)
+    - [General](#general)
+    - [Future Features](#future-features)
+- [Technologies Used](#technologies-used)
 - [Testing](#testing)
 - [Known Issues](#known-issues)
 - [Deployment](#deployment)
@@ -123,8 +128,43 @@ An example of this in practice in the app is the record for a single user post:
 
 
 # Features
+### User Perspective
+* Functionality for a user to register with the site
+* Functionality for a registered user to sign in
+* Functionality for a signed-in user to add a post
+* Functionality for a signed-in user to add a comment
+* Functionality for a signed-in user to manage their profile - that is, to edit or delete posts that they have created previously
+* Functionality for a signed-in user to log out
+  
+  
+### Admin Perspective
+* Functionality to add a new product listing
+* Functionality to edit an existing product listing
+* If I don't have price information to hand, the app automatically populates the price field with a message (eg 'Contact us')
 
-# Technolgies Used
+### Site Owner Perspective
+* Users experience a clear, welcoming, and informative space
+* Users that are active on the site feel valued (eg custom message on reaching a certain number of posts)
+* When a user adds a post about a particular species, the system autiomatically searches the contents of all listed products to check if it is conatined in any of them. If it is, the name of the product is automatically added to the post content allowing a user to easily navigate from a post to a related product page.
+* Site navigation is dynamically generated depending on user status (not sigened in, signed in, signed in and admin) so that no unauthorized editing of product or price information is posible.
+* Contact form has validation so the database is not muddied with invalid or useless data
+* Sign in has validation so that a user cannot take a username already used
+* A footer provides additional contact info and links to social media
+
+### General
+* Site displays well and is user-friendly on all device sizes (responsive design)
+* Easy to digest home page that clearly indicates the site purpose and contains links to the latest posts in a visually appealing way
+* Contact page that allows any user (logged in or not) to contact the site
+* Navigation is clear and functions as expected
+
+### Future Features
+For the next iteration, the following features are on the wish-list:
+   * Integrate shopping cart functionality for online sales
+   * Allow direct upload of user images
+   * Support conversation threads in the comments
+   * Add a 'notify me' or subscribe function whereby users who have opted in get notified when there is a new post
+
+# Technologies Used
 
 # Testing
 
