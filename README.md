@@ -22,7 +22,9 @@
     - [General](#general)
     - [Future Features](#future-features)
 - [Technologies Used](#technologies-used)
-- [Content Sources:](#content-sources)
+    - [Additional Services](#additional-services)
+    - [UI-Content Sources](#ui-content-sources)
+    - [IDE, Version Control, Storage, and Deployment](#ide-version-control-storage-and-deployment)
 - [Testing](#testing)
 - [Known Issues](#known-issues)
 - [Deployment](#deployment)
@@ -188,10 +190,21 @@ For the next iteration, the following features are on the wish-list:
 * [CSS](https://developer.mozilla.org/en-US/docs/Glossary/CSS) is used, to provide visual styling.
 * [Bootstrap](https://getbootstrap.com/) is used to provide responsive layout elements such as the 'card', 'jumbotron' and modal window elements.
 * [Javascript](https://developer.mozilla.org/en-US/docs/Glossary/JavaScript) is used to provide the support for EmailJS and form validation.
+
+### Additional Services
 * [EmailJS](https://www.emailjs.com/) provides the contact form -> email functionality. 
 * [TinyJPG](https://tinyjpg.com/) was used to comptress image files.
+* [Balsamiq](https://balsamiq.com/) was used to create wireframes.
+* [Randomkeygen](https://randomkeygen.com/) was used to generate the secret key.
     
-# Content Sources:
+### UI-Content Sources
+* [Unsplash](https://unsplash.com/) was used to source images. For specific credits, see the Credits section of this doc.
+* [FontAwesome](https://fontawesome.com/) was used to source icons.
+* [Google Fonts](https://fonts.google.com/) was used to source fonts.
+* [Icon Archive](https://iconarchive.com/browse.html) was used to source the favicon.
+
+### IDE, Version Control, Storage, and Deployment
+Development was done in [GitPod](https://www.gitpod.io/), with version control using git (git add, git commit, git push), and files are stored in GitHub. The live site is deployed using [Heroku](https://www.heroku.com/home) and uses autonatic deployment from the GitHub repo when new code is pushed.
 
 # Testing
 
@@ -312,16 +325,12 @@ To fork your own copy of the repository:
 
 Full deatils about forking a Github repository can be found here: https://docs.github.com/en/github/getting-started-with-github/fork-a-repo
 
-
-
-
   
 # Credits
 
 # Notes
 * Turn off debug mode before submitting - in app.py
-* Password for secret key created using randomkeygen
-* Favicon from https://iconarchive.com/browse.html
+
 
 # Appendix
 Background:
