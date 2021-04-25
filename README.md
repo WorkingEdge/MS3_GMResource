@@ -9,11 +9,12 @@
     - [Contributing or Frequent User](#contributing-or-frequent-user)
     - [MS3 Seeds Admin User](#ms3-seeds-admin-user)
     - [Site Owner](#site-owner)
-- [Design](#design)
+- [Design - UI](#design---ui)
     - [Colour](#colour)
     - [Typography](#typography)
     - [Images](#images)
       - [Cards](#cards)
+- [Design - Database](#design---database)
 - [Features](#features)
 - [Technolgies Used](#technolgies-used)
 - [Testing](#testing)
@@ -86,7 +87,7 @@ There are 3 user types  currently envisaged for the site:
 * The site facilitates the emergence of a discussion community around green manures with the brand name central to that discussion
 * Sales Generation: When any user adds a post, they must enter the 'common name' of the plant species that is the topic of their post. This is automatically used as a search criteria against all seed mixes and a link is automatically inserted on the post to link readers to the corresponding product. 
 
-# Design
+# Design - UI
 The site revolves around meaningful content. As such, the design should not get in the way of clear communication. 
 Furthermore, as organic growers or farmers, users are probably not 24/7 internet users - the interface should be clean and easy to follow and any forms easy and straighforward to fill out.
 
@@ -105,6 +106,21 @@ To differentiate pages that arise from the MS3 Seeds shop, the overlay becomes w
 Latest posts are displayed as (Bootstrap) cards with image tops. The image in the card should match the image provided by the user for that post. However, the *Image URL* field is not mandatory for a user post. Therefore, as there may be cards that do not have a specified image, a default image is used. This keeps the presentation of the latest posts correct. Only one default image is used and it is quite unspecific, indicating to the user (especially any frequent user) that it is a default image.
 
 **Note:** The deafult/fallback image is used only for the cards - inside the post itself, no image appears unless it has been specified by the user.
+
+# Design - Database
+![Collections in the databases](../MS3_GMResource/readme_assets/readme_images/ms3_gm_resources_db.png)
+
+The app uses MongoDB as the database. MongoDB is a NoSQL (non-relational) database and stores data in documents, as opposed to the tables of traditional relational databases. As such, it is capable of working with unstructured data. While the database is non-relational - connections between database 'collections' are established to aid clear data structure and avoid any future issues regarding the MongoDB size limit for a single document (16MB). 
+
+Essentially, the design was set up in accordance with the following MongoDB principle "data that is accessed together should be stored together". The rationale here is that if all the data returned for a given query can be returned in a single call to one db document, it allows for very fast/efficient operation. Along with this, manual references are established between collections to allow easy follow-on queries where these are likely. (For more info, see: https://docs.mongodb.com/manual/reference/database-references/#std-label-document-references)
+
+An example of this in practice in the app is the record for a single user post:
+![Database design](../MS3_GMResource/readme_assets/readme_images/embeds_references_mongodb.png) 
+
+* The entry for the record embeds the comments for that record. The comments are displayed together with the rest of the post content and the use case for the app makes it unlikely that there would ever be sufficient comments to approach the document size limit.
+* Each comment entry is itself an object containing the 4 key:value pairs - comment text, commenter ID, date, and user name. The commenter_id is a reference to an ObjectId in the users collection.
+* A similar approach is taken with the 'conatained_in' key. This is an array of objects, with each object containing two key:value pairs. The first key value is the product_name for display together with the rest of the post data (no separate query required to get this). The second key:value pair contains the product_id as an ObjectId in the products collection.
+
 
 # Features
 
