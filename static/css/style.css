@@ -6,7 +6,11 @@
 
 
 /*--------------------------------------------------------*/
-/*--------------------------------------------------------*/
+/*-------------------------------------------------------- MS3 Seeds Branding*/ 
+.ms3-text{
+    font-family: "Goudy Bookletter 1911", sans-serif;
+    font-weight: 600;
+}
 /*-------------------------------------------------------- Navbar*/
 .main-head{
     background-color: teal;
@@ -59,12 +63,51 @@ body{
         background-repeat: no-repeat;
         background-size: cover;
     }
+.jumbo-header-neutral{
+    font-family: "Oswald", sans-serif;
+     text-transform: uppercase;
+     letter-spacing: 2px;
+}
+.jumbotron .lead{
+    font-family: "Raleway", sans-serif;
+}
+.jumbotron-para-reg{
+    font-family: "Raleway", sans-serif;
+}
+.jumbotron .my-4{
+    background-color: gold;
+}
+ /*------------------------------------------------------ Cards for latest posts display*/
+ .cards-header{
+     font-family: "Oswald", sans-serif;
+     text-transform: uppercase;
+     letter-spacing: 2px;
+ }
+ .card{
+     padding-left: 0px;
+     padding-right: 0px;
+     padding-top:0px;
+ } 
+ .card-title{
+    font-family: "Oswald", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+ }
+
+.card-body{
+    background-color: #f8f9fa;
+}
+.card-text{
+    font-family: "Raleway", sans-serif;
+}
+.card-body .btn-info{
+    background-color: teal;
+}
 
  /*------------------------------------------------------ Tables for data display*/   
 .botanical_name{
     font-style: italic;
 }
-
  .show_record_table_black{
     color: black;
 }
