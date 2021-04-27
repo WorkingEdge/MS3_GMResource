@@ -207,6 +207,7 @@ For the next iteration, the following features are on the wish-list:
 Development was done in [GitPod](https://www.gitpod.io/), with version control using git (git add, git commit, git push), and files are stored in GitHub. The live site is deployed using [Heroku](https://www.heroku.com/home) and uses autonatic deployment from the GitHub repo when new code is pushed.
 
 # Testing
+For testing details see [Testing](readme_assets/testing.md).
 
 # Known Issues 
 
