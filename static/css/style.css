@@ -1,3 +1,48 @@
+/*------------------------------------------------------ Fonts from Google Fonts*/
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500&family=Raleway:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;1,300;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&display=swap');
+
+
+
+/*--------------------------------------------------------*/
+/*--------------------------------------------------------*/
+/*-------------------------------------------------------- Navbar*/
+.main-head{
+    background-color: teal;
+    color: #fafafa;
+    
+}
+#txt-logo{
+    color: #fafafa;
+    font-family: "Goudy Bookletter 1911", sans-serif;
+}
+.navbar-light .navbar-nav .nav-link {
+    color:#fafafa;
+    font-family: "Goudy Bookletter 1911", sans-serif;
+}
+.fa-bars{
+    color: #fafafa;
+}
+.navbar-toggler{
+    border: 0;
+    outline: 0;
+}
+
+/*-------------------------------------------------------- Subheading and search*/
+.sub-head-div{
+    background-color: teal;
+    padding-bottom: 10px;
+}
+.sub-title{
+    color: #fafafa;
+    font-family: "Goudy Bookletter 1911", sans-serif;
+    padding-left: 30px;
+}
+
+/*--------------------------------------------------------*/
+/*--------------------------------------------------------*/
+
 body{
     display: flex;
     min-height: 100vh;
@@ -64,10 +109,24 @@ body{
 
 /*--------------------------------------------------------Footer*/    
 #ms3-footer{
-    margin-top: auto;
-    height: 80px;
     background-color: teal;
     margin-top: 15px;
     text-align: center;
     color: #fafafa;
+}
+.footer-element{
+    padding-top: 15px;
+    padding-bottom: 20px;
+    font-family: "Goudy Bookletter 1911", sans-serif;
+    font-size: large;
+}
+.fab{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.footer-element a{
+    color: #fafafa;
+}
+.footer-element a:hover{
+    color:gold;
 }

@@ -30,13 +30,14 @@
   
   <body>
     <!-- Navbar - from Bootstrap with custom CSS -->
-    <div class="container-fluid">
-      <div>
+    <div class="container-fluid main-head">
+      <div class="nav-container">
       <nav class="navbar navbar-light navbar-expand-md mr-auto">
-      <a class="navbar-brand ml-0" href="{{ url_for('get_records') }}">Green Manure Resource</a>
+      <a class="navbar-brand ml-0" href="{{ url_for('get_records') }}"><h3 id="txt-logo">Green Manure Resource</h3></a>
       
       <button
-        class="navbar-toggler"
+        id="hambuger-box"
+        class="navbar-toggler ml-auto"
         type="button"
         data-toggle="collapse"
         data-target="#collapsibleGMNav"
@@ -80,9 +81,9 @@
     </div>
 <!-- Search bar-->
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-md-6"></div>
-    <div class="col-md-6">
+  <div class="row sub-head-div">
+    <div class="col-md-6 sub-title"><h5>For Growers by Growers - Sponsored by MS3 Seeds</h5></div>
+    <div class="col-md-6 search">
       <form id="ms3_search" method="POST" action="{{ url_for('search_res') }}">
         <div class="input-group rounded">
           <input type="search" id="search_term"
@@ -115,9 +116,16 @@
     
 </main>
 <div style="flex-grow:1"></div>
-<footer id="ms3-footer" class="container-fluid">
-  <div class="row text-center" >
-    Contact Us 090 0087654321
+<footer id="ms3-footer" class="container-fluid" style="flex-grow-1">
+  <div class="row" >
+    <div class="col-md-4 footer-element"><i class="fas fa-phone-volume"></i>  090 0087654321</div>
+    <div class="col-md-4 footer-element">
+      <p>100 Stony Park, Galway</p>
+</div>
+    <div class="col-md-4 footer-element">
+      <a href="https://github.com/WorkingEdge/MS3_GMResource" target="_blank"><span><i class="fab fa-github fa-2x"></i></span></a>
+      <a href="https://www.instagram.com/" target="_blank"><span><i class="fab fa-instagram fa-2x"></i></span></a>
+    </div>
   </div>
 </footer>
 
