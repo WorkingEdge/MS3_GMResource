@@ -1,17 +1,18 @@
-- [Testing for MS3](#testing-for-ms3)
-  - [Tests For First-Time or Infrequent User](#tests-for-first-time-or-infrequent-user)
-    - [As a first-time visitor, the purpose and overall content of the site is clear and easy to navigate](#as-a-first-time-visitor-the-purpose-and-overall-content-of-the-site-is-clear-and-easy-to-navigate)
-    - [As a non-logged in user, I can register on the site (including client-side validation)](#as-a-non-logged-in-user-i-can-register-on-the-site-including-client-side-validation)
-    - [As a new user trying to register, I cannot use a username already taken (server-side validation)](#as-a-new-user-trying-to-register-i-cannot-use-a-username-already-taken-server-side-validation)
-    - [As a non logged in user, I can use the contact form](#as-a-non-logged-in-user-i-can-use-the-contact-form)
-    - [As a non-logged in user, I cannot post a comment by going directly to the url for adding a post](#as-a-non-logged-in-user-i-cannot-post-a-comment-by-going-directly-to-the-url-for-adding-a-post)
-    - [Search Functionality](#search-functionality)
-    - [As a non-logged in user, I can search for a term and see results in user posts and, separately, results in the 'MS3 Seeds' product information](#as-a-non-logged-in-user-i-can-search-for-a-term-and-see-results-in-user-posts-and-separately-results-in-the-ms3-seeds-product-information)
-  - [Appendix](#appendix)
-
-
-# Testing for MS3
+# Testing for MS3 <!-- omit in toc -->
 The testing oultined below is organised by user stories (US) (individually or grouped).
+Note: Testing is ongoing with final changes to the appearance of the site. Some of the screenshots may not match exactly with the submitted version in terms of the appearance.
+ 
+- [Tests For First-Time or Infrequent User](#tests-for-first-time-or-infrequent-user)
+  - [As a first-time visitor, the purpose and overall content of the site is clear and easy to navigate](#as-a-first-time-visitor-the-purpose-and-overall-content-of-the-site-is-clear-and-easy-to-navigate)
+  - [As a non-logged in user, I can register on the site (including client-side validation)](#as-a-non-logged-in-user-i-can-register-on-the-site-including-client-side-validation)
+  - [As a new user trying to register, I cannot use a username already taken (server-side validation)](#as-a-new-user-trying-to-register-i-cannot-use-a-username-already-taken-server-side-validation)
+  - [As a non logged in user, I can use the contact form](#as-a-non-logged-in-user-i-can-use-the-contact-form)
+  - [As a non-logged in user, I cannot post a comment by going directly to the url for adding a post](#as-a-non-logged-in-user-i-cannot-post-a-comment-by-going-directly-to-the-url-for-adding-a-post)
+  - [As a non-registered or logged in user, I can use the Search functionality](#as-a-non-registered-or-logged-in-user-i-can-use-the-search-functionality)
+- [Appendix](#appendix)
+
+
+
 ## Tests For First-Time or Infrequent User
 
 ### As a first-time visitor, the purpose and overall content of the site is clear and easy to navigate
@@ -81,7 +82,7 @@ Test case step:
 Result: ok - I get a key error: 'session_user' when trying to subvert the requirement to be logged in to make a post.
 To do: Make a custom error page to handle this.
 
-### Search Functionality
+### As a non-registered or logged in user, I can use the Search functionality
 Any user should be able to use the search regardless of whether they are logged in or not.
 Test case steps:
 1. Make sure your user is logged out.
@@ -89,7 +90,7 @@ Test case steps:
 3. Search for the term.
 4. Results should be displayed in two batches - results in post content and result in product content.
 
-Result: ok. The screenshot shows the results for s test search on 'red'. (The nonsense product names are simply placeholders.)
+Result: ok. The screenshot shows the results for a test search on 'red'. (The nonsense product names are simply placeholders.)
 ![Search Results](../readme_assets/readme_images/search-results.png)
 
 
@@ -97,7 +98,6 @@ Result: ok. The screenshot shows the results for s test search on 'red'. (The no
 
 
 
-### As a non-logged in user, I can search for a term and see results in user posts and, separately, results in the 'MS3 Seeds' product information
 
 
 
