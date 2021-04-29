@@ -1,6 +1,7 @@
 /*jshint esversion: 6*/
 //Send email using EmailJS template, report success on console and clear the form.
 
+
 function sendMail(ms3_contact_form){
     emailjs.send("service_iiut1qe","template_1py6mif",{
 from_name: ms3_contact_form.name.value,
