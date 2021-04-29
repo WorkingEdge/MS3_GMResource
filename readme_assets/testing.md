@@ -1,7 +1,9 @@
 - [Testing for MS3](#testing-for-ms3)
   - [Tests For First-Time or Infrequent User](#tests-for-first-time-or-infrequent-user)
     - [As a first-time visitor, the purpose and overall content of the site is clear and easy to navigate](#as-a-first-time-visitor-the-purpose-and-overall-content-of-the-site-is-clear-and-easy-to-navigate)
-    - [As a non-logged in user, I can register on the site](#as-a-non-logged-in-user-i-can-register-on-the-site)
+    - [As a non-logged in user, I can register on the site (including client-side validation)](#as-a-non-logged-in-user-i-can-register-on-the-site-including-client-side-validation)
+    - [As a new user trying to register, I cannot use a username already taken (server-side validation)](#as-a-new-user-trying-to-register-i-cannot-use-a-username-already-taken-server-side-validation)
+    - [As a non-logged in user, I can use the contact form](#as-a-non-logged-in-user-i-can-use-the-contact-form)
     - [As a non-logged in user, I can search for a term and see results in user posts and, separately, results in the 'MS3 Seeds' product information](#as-a-non-logged-in-user-i-can-search-for-a-term-and-see-results-in-user-posts-and-separately-results-in-the-ms3-seeds-product-information)
   - [Appendix](#appendix)
 
@@ -26,18 +28,40 @@ Test case steps:
     
         Result: ok
     
-### As a non-logged in user, I can register on the site
-    Test case steps:
-    1. Go to the Register option in the navigation bar and register on the site, as follows:
-    2. Try to register without providing an email address - this should be prevented by client-side validation
-    3. Try to register with out a username - this should be prevented by client-side validation
-    4. Try to register without a password - this should be prevented by client side validation.
-    5. Try to register with all required fields filled - this should be successful and the app issues a message to say you have registered successfully and you are logged in. Verify you now have the option to add a post or a comment or another contributor's post.
+### As a non-logged in user, I can register on the site (including client-side validation)
+Test case steps:
+1. Go to the Register option in the navigation bar and register on the site, as follows:
+2. Try to register without providing an email address - this should be prevented by client-side validation
+3. Try to register with out a username - this should be prevented by client-side validation
+4. Try to register without a password - this should be prevented by client side validation.
+5. Try to register with all required fields filled - this should be successful and the app issues a message to say you have registered successfully and you are logged in. Verify you now have the option to add a post or a comment or another contributor's post.
    
     
-        *Result: When providing the required info I can register. When I do this, the additional navigation option to add a post is displayed and I can also add a comment on an existing post - ok.
+*Result: When providing the required info I can register. When I do this, the additional navigation option to add a post is displayed and I can also add a comment on an existing post - ok.
         
-        However, when I try to log in without a password to match the required pattern, the HTML validation catches it but there is no message to tell me what the requirement (pattern) is - test case not 100% ok. This should be fixed using a custom JS validation function. To do.
+However, when I try to log in without a password to match the required pattern, the HTML validation catches it but there is no message to tell me what the requirement (pattern) is - test case not 100% ok. This should be fixed using a custom JS validation function. To do.
+
+### As a new user trying to register, I cannot use a username already taken (server-side validation)
+Registration should use server-side validation to check that the entered username is not already taken.
+Test case steps: 
+1. After registering using the steps for creating a new user above, log out and retry using the same name and valid email/password. A message should display informing you that the username is not available.
+ 
+Result: ok - see screenshot:
+![Username is not available](../readme_assets/readme_images/username_not_available.png)
+
+### As a non-logged in user, I can use the contact form
+Any user should be able to use the contact form.
+Test case steps:
+1. Navigate to the Contact page.
+2. Enter some values in the required fields.
+3. Send the message.
+4. Check for a confirmation that your message has been sent.
+5. Check for an email copy of your contact submission.
+
+Result: ok. I can add some deatils to the contact form and send it. When the message sends, a modal appears to confirm that it has sent sucessfully. Also, a copy of the contact form is received by the email address provided in the form:
+
+![Contact Form prior to Submission](../readme_assets/readme_images/contact_form.png)
+![Email confirmation/copy of the contact form submission](../readme_assets/readme_images/contact_form_email.png)
 
 
 ### As a non-logged in user, I can search for a term and see results in user posts and, separately, results in the 'MS3 Seeds' product information
