@@ -9,6 +9,13 @@ Note: Testing is ongoing with final changes to the appearance of the site. Some 
   - [As a non logged in user, I can use the contact form](#as-a-non-logged-in-user-i-can-use-the-contact-form)
   - [As a non-logged in user, I cannot post a comment by going directly to the url for adding a post](#as-a-non-logged-in-user-i-cannot-post-a-comment-by-going-directly-to-the-url-for-adding-a-post)
   - [As a non-registered or logged in user, I can use the Search functionality](#as-a-non-registered-or-logged-in-user-i-can-use-the-search-functionality)
+- [Tests for Logged In/Contributing User](#tests-for-logged-incontributing-user)
+  - [I can add a post or add a comment on an existing post when logged in](#i-can-add-a-post-or-add-a-comment-on-an-existing-post-when-logged-in)
+  - [I can add a comment on an existing post when logged in](#i-can-add-a-comment-on-an-existing-post-when-logged-in)
+  - [As a user who has previously submitted comments, I can choose to delete them](#as-a-user-who-has-previously-submitted-comments-i-can-choose-to-delete-them)
+  - [As a user who has previously submitted comments, I have te option to edit these when logged in](#as-a-user-who-has-previously-submitted-comments-i-have-te-option-to-edit-these-when-logged-in)
+  - [As a registered user who has logged in, I do not have access tothe admin functionality](#as-a-registered-user-who-has-logged-in-i-do-not-have-access-tothe-admin-functionality)
+  - [As a registered user, I get a personalized message from MS3 seeds](#as-a-registered-user-i-get-a-personalized-message-from-ms3-seeds)
 - [Appendix](#appendix)
 
 
@@ -93,8 +100,74 @@ Test case steps:
 Result: ok. The screenshot shows the results for a test search on 'red'. (The nonsense product names are simply placeholders.)
 ![Search Results](../readme_assets/readme_images/search-results.png)
 
+## Tests for Logged In/Contributing User
 
+### I can add a post or add a comment on an existing post when logged in
+Steps:
+1. Log in with username and password.
+2. Navigate to 'Add' to add a post.
+3. Enter some values in the required fields and click submit.
+4. Verify that a confirmation (flash) appears to confirm the post creation. 
+5. Verify that the new post appears in teh list of latest posts on the home page.
+6. Verify that you can view the post by clicking the link from the home page.
 
+Result - All steps test ok.
+
+### I can add a comment on an existing post when logged in
+Steps:
+1. Go to a post that has been entered by another (or your own user - doesn't matter).
+2. Scroll down and verify that the option exists to add a comment (this is not possible if not logged in)
+3. Check the HTML validation by clicking the 'Comment' button before entering any value in the comment field. This should not be allowed.
+4. Add some value in the comment filed and click the Comment button again.
+5. Verify that the comment appears under the post aloongside your username.
+
+Result: All steps test ok.
+
+### As a user who has previously submitted comments, I can choose to delete them
+Steps:
+1. Go to the Profile page.
+2. Verify that a table exists titles My Posts. This shows a list of all posts and includes the post title and the date it was posted.
+3. Make a not of the number of posts in the list.
+4. Select a post and make a note of the title.
+5. Click the Delete option for this post.
+6. Verify that the post is not yet deleted - instead the user is presented with  modal asking them to confirm the delete action.
+7. Confirm the deletion.
+8. Verify that a flash message appears to confirm the deletion was successful.
+9. Go to the list of posts again and verify that the length of the list has decreased by 1 and that the selected title is no longer there.
+    
+Result: All steps test ok and the behaviour is as expected.
+
+### As a user who has previously submitted comments, I have te option to edit these when logged in
+Steps:
+1. Go to the Profile page for the user and click the edit button for a post in the list of My posts.
+2. Verify that the form fields are prefilled with the existing content.
+3. Add or change the information for a single field while making a note of the content of another field which you will not change.
+4. Click Edit.
+5. Verify that the content you edited has been changed and the fields that were not edited have not been changed.
+   
+Result: All steps test ok and the behaviour is as expected:
+
+![Edit Function Testing](../readme_assets/readme_images/test_edit_function.png)
+
+### As a registered user who has logged in, I do not have access tothe admin functionality
+MS3 Seeds admin users have the option to edit Product entries. This depends on the ``` user_is_admin ``` value stored for the user in MongoDB.
+When this is ```"yes"```, the user can add or edit products. otherwise, they can add posts and comments only.
+Steps:
+1. Log in as a user that is not an admin.
+2. Go to the Products page.
+3. Verify that there is no option to add a new product or edit/delete existing products.
+
+Result: The behaviour here is as expected. Logged in as a non-admin user, there is no option to add, edit, or delete products.
+
+### As a registered user, I get a personalized message from MS3 seeds
+The app checks the number of posts a user currently has and gives a message on their profile page. If the number is low, the message is different to that seen by a user who has contributed often.
+1. Verify that when logged in as a user with 5 or less posts, the app displays a corresponding message.
+2. Add more posts and verify that when the number reaches a threshold (6), the message changes.
+
+Result: Tests ok
+
+![Five posts or less customised message](../readme_assets/readme_images/five_posts_message.png)
+![Six posts or more customised message](../readme_assets/readme_images/six_posts_message.png)
 
 
 
