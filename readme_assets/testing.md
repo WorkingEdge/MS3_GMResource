@@ -16,6 +16,8 @@ Note: Testing is ongoing with final changes to the appearance of the site. Some 
   - [As a user who has previously submitted comments, I have te option to edit these when logged in](#as-a-user-who-has-previously-submitted-comments-i-have-te-option-to-edit-these-when-logged-in)
   - [As a registered user who has logged in, I do not have access tothe admin functionality](#as-a-registered-user-who-has-logged-in-i-do-not-have-access-tothe-admin-functionality)
   - [As a registered user, I get a personalized message from MS3 seeds](#as-a-registered-user-i-get-a-personalized-message-from-ms3-seeds)
+- [Tests For an Admin User User Stories](#tests-for-an-admin-user-user-stories)
+  - [As an admin user, I can add or edit products](#as-an-admin-user-i-can-add-or-edit-products)
 - [Appendix](#appendix)
 
 
@@ -169,9 +171,24 @@ Result: Tests ok
 ![Five posts or less customised message](../readme_assets/readme_images/five_posts_message.png)
 ![Six posts or more customised message](../readme_assets/readme_images/six_posts_message.png)
 
+## Tests For an Admin User User Stories
 
+### As an admin user, I can add or edit products
+User story to test:
+> In addition to the post/comment functionality of a contributing user, I also have the option to administer the products. That means, I can add details for a
+>  new product, update existing details for a product (add or remove a particular species from a seed mix, for example) or delete a product from the list.
 
-
+Steps:
+1. Log in as an admin user.
+2. Verify that the same functinoality in relatino to posts and comments is still available as it is for a logged-in but non-admin user.
+3. Naviage tot he Products page.
+4. Verify that buttons exist to add a new product and edit or delete existing products.
+5. Add a new product by clicking the Add new Product button and provifding the required details.
+6. Verify that the product shows up in the list.
+7. Edit the product clicking the edit button and then adding or removing some content.
+8. Save the edit and verify that the changed product details have been saved.
+   
+Result : Ok. All steps test ok.
 
 
 
