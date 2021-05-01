@@ -18,6 +18,8 @@ Note: Testing is ongoing with final changes to the appearance of the site. Some 
   - [As a registered user, I get a personalized message from MS3 seeds](#as-a-registered-user-i-get-a-personalized-message-from-ms3-seeds)
 - [Tests For an Admin User User Stories](#tests-for-an-admin-user-user-stories)
   - [As an admin user, I can add or edit products](#as-an-admin-user-i-can-add-or-edit-products)
+- [Tests for Site Owner User Stories](#tests-for-site-owner-user-stories)
+    - [When a user adds a post, the app automatically adds the related product info if applicable](#when-a-user-adds-a-post-the-app-automatically-adds-the-related-product-info-if-applicable)
 - [Appendix](#appendix)
 
 
@@ -190,9 +192,22 @@ Steps:
    
 Result : Ok. All steps test ok.
 
+## Tests for Site Owner User Stories
+The main point for the site owner is that the site looks and functins well. In terms of testing functinality, there are a few things to check that add to the overall experience of the site and enhances the benefit for the owner iin terms of generating customers.
 
+#### When a user adds a post, the app automatically adds the related product info if applicable
+The full description here is that when a regular user adds a new post and adds a species 'common name' to the required 'common name' field, the app automatically checks if this name is contained in any of the maintained listings for the various product contents. So, is species 'mustard' is an element of product mixes 'Meadow Mix and 'Bee Heaven' and if a user adds a post about mustard - these two products are automatically linked from the post.
 
+Test steps:
+1. Check the species listing for a product and make a note of one of the species. (For example, product 'Bee Heaven' contains buckwheat.)
+2. Go to the Add page and add a new post. Enter the species from step 1 in the 'common name' field.
+3. Enter some dummy values for any other required fields and create the post.
+4. Go to the latest posts and open the link for the newly added post.
+5. Check the table row named 'Products containing this seed' and verify that the product containing the species is listed and is available via a link. A link to the overall products page is also available, even if there is no product mix. 
 
+Result: ok app performs as expected:
+
+![Related Product Catch](../readme_assets/readme_images/test_related_product_catch.png)
 
 
 
