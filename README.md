@@ -42,53 +42,36 @@ This is the (fictional) scenario for which the site exists:
 **MS3 Seeds** is a niche supplier of seeds, specialising in <a href="https://en.wikipedia.org/wiki/Green_manure" target="_blank">green manures</a>.
 It has set up this site to do the following:
 * Generate awareness for their company among the relevant community of growers
-* Establish their name as being recognized as a thought leader in the area
+* Establish their name as a recognized thought leader in the area
 * Establish their name as being a trustworthy and open source of unbiased information as well as quality seeds
 * Generate customers by facilitating an easy through-flow from the information-sharing site to the store
 * Build a community of growers who automatically think 'MS3 Seeds' when they think of green manure
 
 # User Experience
-There are 3 user types  currently envisaged for the site:
+There are 3 user types currently envisaged for the site:
 * Infrequent or first-time vistor who has not registered as a user
 * Contributing users who may add posts or comment on other contributors' posts
 * Admin user who represents MS3 seeds in the posts and comments and who also has the ability to add or update the specific products shown as available from MS3 Seeds
 
 ## User Stories by User Type
 ### First-time or Infrequent Vistor
-* As a first-time visitor, the purpose and overall content of the site is clear and easy to navigate
-* I want to easily browse the site for posts and/or products that I may be interested in
-* I can search for a term and see results in user posts and separately, results in the 'MS3 Seeds' product information
-* I can read all content but I cannot comment on posts
-* The site feels informative, authorative, and welcoming
-* I can contact MS3 seeds directly from the site without having to register as a user
-* I can see additional contact info - phone, address, social media
-* I can easily register to become a contributing user of the site
-* As a grower, I can see valuable, relevant information, including:
-    * Common and latin name
-    * Growing season
-    * N-fixing ability of a species
-    * Seeding rate
-    * Main benefits
-    * Cost
-    * Experiences of other growers/photos  
+* As a first-time visitor, the purpose and overall content of the site is clear and easy to navigate. I can see additional contact info - phone, address, social media and I can view all content - ie user posts and product info.  [Test Case](readme_assets/testing.md#as-a-first-time-visitor-the-purpose-and-overall-content-of-the-site-is-clear-and-easy-to-navigate)
+* I can search for a term and see results in user posts and separately, results in the 'MS3 Seeds' product information. [Test Case](#as-a-non-registered-or-logged-in-user-i-can-use-the-search-functionality)
+* I can read all content but I cannot comment on posts. [Test Case](readme_assets/testing.md#as-a-non-logged-in-user-i-cannot-post-a-comment-by-going-directly-to-the-url-for-adding-a-post)
+* I can contact MS3 seeds directly from the site without having to register as a user [Test Case](readme_assets/testing.md#as-a-non-logged-in-user-i-can-use-the-contact-form)
+* I can easily register to become a contributing user of the site. [Test Case](readme_assets/testing.md#as-a-non-logged-in-user-i-can-register-on-the-site-including-client-side-validation)
+* As a registered user, my username cannot be taken or duplicated by another user. [Test Case](readme_assets/testing.md#as-a-new-user-trying-to-register-i-cannot-use-a-username-already-taken-server-side-validation)
 
 ### Contributing or Frequent User
-* I can easily see the latest posts that have been added to the site, allowing me to recognize immediately if new content has been added
-* I can view posts by other users and comment on any posts that interest me or where I want to communicate with the poster
-* For any post that interests me, I can easily navigate from the post directly to the relevant MS3 product or products that contain the species that is the topic of the post. This may be to get purchase information, or to consult the additional information provided by MS3 Seeds on that particular seed type
-* I can easily log in and add a post
-* I can add an image url for the species that is the topic of my post
-* I can see and go to the source of any images in other user posts. *A future feature would allow direct upload of images as preferable to hot-linking*
-* On my profile page, I can see all posts that I have previously submitted and can navigate directly to any of them
-* I can choosse to update or delete any post that I have previously submitted
-* I cannot easily delete a post by mistake as there is a confirmation required
-* I feel like a valued member of the discussion community with a custom message from MS3 Seeds on my profile page
-* If I have any website issues, I can use the contact form without being logged in to submit a support request
+* I can view posts by other users and comment on any posts that interest me or where I want to communicate with the poster. [Test Case]((readme_assets/testing.md#i-can-add-a-comment-on-an-existing-post-when-logged-in))
+* For any post that interests me, I can easily navigate from the post directly to the relevant MS3 product or products that contain the species that is the topic of the post. This may be to get purchase information, or to consult the additional information provided by MS3 Seeds on that particular seed type. [Test case covered by admin user story](readme_assets/testing.md#when-a-user-adds-a-post-the-app-automatically-adds-the-related-product-info-if-applicable)
+* I can choosse to view, update or delete any post that I have previously submitted [Test Case](readme_assets/testing.md#as-a-user-who-has-previously-submitted-comments-i-have-te-option-to-edit-these-when-logged-in)
+* I cannot easily delete a post by mistake as there is a confirmation required. [Test Case](readme_assets/testing.md#as-a-user-who-has-previously-submitted-comments-i-can-choose-to-delete-them)
+* I feel like a valued member of the discussion community with a custom message from MS3 Seeds on my profile page. [Test Case](readme_assets/testing.md#as-a-registered-user-i-get-a-personalized-message-from-ms3-seeds)
+* If I have any website issues, I can use the contact form without being logged in to submit a support request. [Test Case - already mentioned above](readme_assets/testing.md#as-a-non-logged-in-user-i-can-use-the-contact-form)
     
 ### MS3 Seeds Admin User
-* I have all the post/comment functionality of a contributing user
-* In case of an offending post, I have the option to delete that post, regardless of user - **not implemented yet**
-* In addition to the post/comment functinoality of a contributing user, I also have the option to administer the products. That means, I can add details for a new product, update existing details for a product (add or remove a particular species from a seed mix, for example) or delete a product from the list.
+* In addition to the post/comment functionality of a contributing user, I also have the option to administer the products. That means, I can add details for a new product, update existing details for a product (add or remove a particular species from a seed mix, for example) or delete a product from the list. [Test Case](readme_assets/testing.md#as-an-admin-user-i-can-add-or-edit-products)
 
 ### Site Owner
 * The site presents a positive image for the brand
@@ -96,14 +79,15 @@ There are 3 user types  currently envisaged for the site:
 * Sales Generation: When any user adds a post, they must enter the 'common name' of the plant species that is the topic of their post. This is automatically used as a search criteria against all seed mixes and a link is automatically inserted on the post to link readers to the corresponding product. See [here](readme_assets/testing.md#when-a-user-adds-a-post-the-app-automatically-adds-the-related-product-info-if-applicable)
 
 # Design - UI
-The site revolves around meaningful content. As such, the design should not get in the way of clear communication. 
-Furthermore, as organic growers or farmers, users are probably not 24/7 internet users - the interface should be clean and easy to follow and any forms easy and straighforward to fill out.
+The site revolves around meaningful content. As such, the design should not get in the way of clear communication. Images are primarily used a meaningful content and the accuracy (though provided by users) is important. Images that are used for solely design purposes are not fully visible and are obviously not intended to macth a specific species. For example the images that are used as a background in the contact form and post info sections.
+
 
 ### Colour
-In line with the site content, the main colours used are teal, gold, white.
+The main colours used are teal, gold, white. 
 
 ### Typography 
-** To be decided ** I 
+The site uses several fonts:
+ 
 
 ### Images
 Images are a central part of the site 'data'. As they convey information and are not simply a design element, they are used sparingly outside of the dedicated image spaces.
@@ -204,7 +188,8 @@ For the next iteration, the following features are on the wish-list:
 * [Icon Archive](https://iconarchive.com/browse.html) was used to source the favicon.
 
 ### IDE, Version Control, Storage, and Deployment
-Development was done in [GitPod](https://www.gitpod.io/), with version control using git (git add, git commit, git push), and files are stored in GitHub. The live site is deployed using [Heroku](https://www.heroku.com/home) and uses autonatic deployment from the GitHub repo when new code is pushed.
+Development was done in [GitPod](https://www.gitpod.io/), with version control using [git](https://git-scm.com/)(git add, git commit, git push), and files are stored in [GitHub](https://github.com/). 
+The live site is deployed using [Heroku](https://www.heroku.com/home) and uses autonatic deployment from the GitHub repo when new code is pushed.
 
 # Testing
 For testing details see [Testing](readme_assets/testing.md).
@@ -214,7 +199,7 @@ For testing details see [Testing](readme_assets/testing.md).
 # Deployment
 The deployment steps below are the procedure followed for this app. 
 The order of steps is based on that followed for the task manager walkthrough project.
-** Note: The required environment variables are not contained in the README. ** 
+** Note: The required environment variables are not contained in the README. Deployment will fail without access to these variables.** 
 
 ### Deploy to Heroku
 1. Create a requirements.txt file. In (Gitpod) terminal, type:
@@ -297,9 +282,9 @@ In a clean environment, you can install all the requirements together using the 
    ```shell
    pip3 install -r requirements.txt
    ```
-   (pip or pip3? Either is ok, depending on your Python version. If you have Python 3, use pip3. For more, see: https://techwithtech.com/python-pip-vs-pip3/ )
+   (Should I use pip or pip3? This depends on your Python version. If you have Python 3, use pip3. For more, see: https://techwithtech.com/python-pip-vs-pip3/ )
 
-If you already have some packages installed, you can install packages individually, for example:
+If you already have some of the required packages installed, you can install packages individually, for example:
    * To install flask:
       ```shell
       pip3 install Flask
