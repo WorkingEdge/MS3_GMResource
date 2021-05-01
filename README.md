@@ -10,6 +10,7 @@
     - [MS3 Seeds Admin User](#ms3-seeds-admin-user)
     - [Site Owner](#site-owner)
 - [Design - UI](#design---ui)
+    - [Wireframes](#wireframes)
     - [Colour](#colour)
     - [Typography](#typography)
     - [Images](#images)
@@ -79,7 +80,12 @@ There are 3 user types currently envisaged for the site:
 * Sales Generation: When any user adds a post, they must enter the 'common name' of the plant species that is the topic of their post. This is automatically used as a search criteria against all seed mixes and a link is automatically inserted on the post to link readers to the corresponding product. See [here](readme_assets/testing.md#when-a-user-adds-a-post-the-app-automatically-adds-the-related-product-info-if-applicable)
 
 # Design - UI
-The site revolves around meaningful content. As such, the design should not get in the way of clear communication. Images are primarily used a meaningful content and the accuracy (though provided by users) is important. Images that are used for solely design purposes are not fully visible and are obviously not intended to macth a specific species. For example the images that are used as a background in the contact form and post info sections.
+### Wireframes
+before development began, the basic layout of the site was set out in wireframes:
+* [Wireframe - Mobile or tablet](readme_assets/wireframes/MS3_GreenManure_Mobile.pdf)
+* [Wireframe - Desktop](readme_assets/wireframes/MS3_GreenManure_Desktop.pdf)
+
+As development progressed, the layout deviated in several respects. The main points of difference and the reason are as follows:
 
 
 ### Colour
