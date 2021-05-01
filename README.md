@@ -93,7 +93,7 @@ There are 3 user types  currently envisaged for the site:
 ### Site Owner
 * The site presents a positive image for the brand
 * The site facilitates the emergence of a discussion community around green manures with the brand name central to that discussion
-* Sales Generation: When any user adds a post, they must enter the 'common name' of the plant species that is the topic of their post. This is automatically used as a search criteria against all seed mixes and a link is automatically inserted on the post to link readers to the corresponding product. 
+* Sales Generation: When any user adds a post, they must enter the 'common name' of the plant species that is the topic of their post. This is automatically used as a search criteria against all seed mixes and a link is automatically inserted on the post to link readers to the corresponding product. See [here](readme_assets/testing.md#when-a-user-adds-a-post-the-app-automatically-adds-the-related-product-info-if-applicable)
 
 # Design - UI
 The site revolves around meaningful content. As such, the design should not get in the way of clear communication. 
