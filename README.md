@@ -27,6 +27,7 @@
     - [UI-Content Sources](#ui-content-sources)
     - [IDE, Version Control, Storage, and Deployment](#ide-version-control-storage-and-deployment)
 - [Testing](#testing)
+    - [Smartbear Cross Browser Testing](#smartbear-cross-browser-testing)
 - [Known Issues](#known-issues)
 - [Deployment](#deployment)
     - [Deploy to Heroku](#deploy-to-heroku)
@@ -198,7 +199,35 @@ Development was done in [GitPod](https://www.gitpod.io/), with version control u
 The live site is deployed using [Heroku](https://www.heroku.com/home) and uses autonatic deployment from the GitHub repo when new code is pushed.
 
 # Testing
-For testing details see [Testing](readme_assets/testing.md).
+For individual test case details see [Testing](readme_assets/testing.md).
+
+In addition to the specific test cases above, cross-browser and multi-device testing was carried out by myself and some family members. The purpose of these was to find any issues with display or functionality on mobile, tablet or laptop devices using a variety or browsers. 
+Test case: Test appearance across the site, particularly Home/landing page, individual post page, contact form:
+
+Opera on laptop (Linux Ubuntu) - tested appearance, search, contact form. Result: ok
+Firefox on laptop (Linux Ubuntu) - as above
+Chrome on laptop (Linux Ubuntu) - as above
+Chrome laptop (Windows) - 
+Firefox on laptop (Windows) - 
+IE on laptop (Windows)
+Safari on iPad - 
+Chrome on iPad - 
+Safari on iPhone - 
+Chrome on Android (Moto G7) - 
+Chrome on Mac - 
+Safari on Mac - 
+
+### Smartbear Cross Browser Testing
+The site has also been checked using a trial account with [SmartBear CrossBrowserTesting](https://crossbrowsertesting.com/).
+
+The trial version allows testing on a variety of virtual device and browser combinations. It facilitates live testing and screenshot testing.
+At the link you can view a recording of a live test on a virtual Mac OSX 10.14 using Google Chrome 90: 
+
+[Watch Test](https://app.crossbrowsertesting.com/public/i484cf03e80ef0a1/livetests/61792521/videos/zd24a9ac46468b8b5f4a?test_hash=cbbf1e3b)
+
+Screenshot test [result](https://app.crossbrowsertesting.com/public/i484cf03e80ef0a1/screenshots/z4e34afe96c476ba28bd):
+![Smartbear SAcreenshot Test Result](readme_assets/readme_images/smartbear_screenshot_test.png)
+
 
 # Known Issues 
 
