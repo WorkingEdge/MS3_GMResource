@@ -10,18 +10,24 @@
         
         <label class="control-label col-sm-2" for="product_name">Product Name</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="product_name" placeholder="Product name" name="product_name">
+          <input type="text" class="form-control" id="product_name" placeholder="Product name" name="product_name" required>
         </div>
-      
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="leading_info">Headline Info</label>
+        <div class="col-sm-10">
+          <textarea type="text" class="form-control" rows="5" id="leading_info" placeholder="1 or 2 sentences as a leader." name="leading_info" required></textarea>
+        </div>
+      </div>
         <div class="form-group">
         <label class="control-label col-sm-2" for="common_names">Common Names</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="common_names" placeholder="Common names" name="common_names">
+          <input type="text" class="form-control" id="common_names" placeholder="Common names" name="common_names" required>
         </div>
       </div>
 
       <div class="form-group">
-        <label class="control-label col-sm-2" for="botanical_names">Botanical Names (Optional)</label>
+        <label class="control-label col-sm-2" for="botanical_names">Botanical Names</label>
         <div class="col-sm-10">          
           <input type="text" class="form-control" id="botanical_names" placeholder="Botanical names" name="botanical_names">
         </div>
@@ -29,30 +35,29 @@
       
       <div class="form-group">        
         <div class="col-sm-offset-2 col-sm-10">
-         <label class="checkbox-inline" for="summer"><input type="checkbox" value="yes" name="summer">Summer</label>
-  <label class="checkbox-inline" for="winter"><input type="checkbox" value="yes" name="winter">Winter</label> 
+         <label class="checkbox-inline" for="summer"><input type="checkbox" value="yes" name="summer"> Summer</label>
+          <label class="checkbox-inline" for="winter"><input type="checkbox" value="yes" name="winter"> Winter</label> 
       
-      
-  <div class="checkbox">
-    <label for="n_fixing"><input type="checkbox" value="yes" name="n_fixing">N-fixing</label>
-  </div>
-  <div class="checkbox">
-    <label for="pollinator_f"><input type="checkbox" value="yes" name="pollinator_f">Pollinator-friendly</label>
-  </div>
-        </div>
+      <div class="checkbox">
+      <label for="n_fixing"><input type="checkbox" value="yes" name="n_fixing"> N-fixing</label>
+      </div>
+      <div class="checkbox">
+      <label for="pollinator_f"><input type="checkbox" value="yes" name="pollinator_f"> Pollinator-friendly</label>
+      </div>
+      </div>
       </div>
       
-    <div class="form-group">
+      <div class="form-group">
         <label class="control-label col-sm-2" for="experience">Notes</label>
         <div class="col-sm-10">
-          <textarea type="text" class="form-control" rows="5" id="prod_notes" placeholder="Product notes" name="prod_notes"></textarea>
+          <textarea type="text" class="form-control" rows="5" id="prod_notes" placeholder="Product notes" name="prod_notes" required></textarea>
         </div>
       </div>
 
       <div class="form-group">
         <label class="control-label col-sm-2" for="price">Price</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="prod_price" placeholder="Price" name="prod_price"></input>
+          <input type="text" class="form-control" id="prod_price" placeholder="Price" name="prod_price">
         </div>
       </div>
       

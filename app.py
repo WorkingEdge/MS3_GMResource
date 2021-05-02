@@ -304,11 +304,12 @@ def add_product():
         # Create the object that will be inserted in the db
         product = {
             "prod_name": request.form.get("product_name"),
+            "leading_info": request.form.get("leading_info"),
             "contains_common": common_names,
             "botanical_names": request.form.get("botanical_names"),
             "summer": request.form.get("summer"),
             "winter": request.form.get("winter"),
-            "n_fixing": request.form.get("winter"),
+            "n_fixing": request.form.get("n_fixing"),
             "added_by": session["session_user"],
             "user_id": user_id,
             "added_date": added_date,

@@ -5,28 +5,36 @@
 <div class="jumbotron bg-cover text-black" style="background-image: linear-gradient(to bottom, rgba(255,255,255,0.6) 0%,rgba(255,255,255,0.9) 100%), url(../static/images/jumbo_bg.jpg)">
     <h1 class="display-4">{{ product.prod_name|title }}</h1>
     
-    <p class="lead">Green manures are plant species grown before, after, or between cash crops for the benefits they bring in relation to soil fertility, pest and weed suppression, biodiverstiy and soil health. They are an important part of land management for horticultural enterprises, particularly in an organic context. Green manures can be grown as a single species or as a multi-species mix and they have numerous benefits. </p>
+    <p class="lead">{{ product.leading_info }}</p>
     <hr class="my-4"><table class="show_record_table table table-default mt-5">
         <tr>
             <td style="width: 50%;">Season</td>
-            <td>Winter or summer</td>
+            <td>{% if product.summer %}
+                Summer  
+                {% endif %}
+                {% if product.winter %}
+                Winter 
+                {% endif %}
+                </td>
         </tr>
         <tr>
             <td style="width: 50%;">Contains</td>
-            <td>Details</td>
+            <td>{% for elem in product.contains_common %}
+                {{- elem | title -}}
+                {{ "," if not loop.last else "" }} 
+                {% endfor %}</td>
         </tr>
+        {% if product.sowing_months %}
         <tr>
             <td style="width: 50%;">Sowing Months</td>
-            <td>Details</td>
+            <td>
+                {% for elem in product.sowing_months %}
+                {{- elem | title -}}
+                {{ "," if not loop.last else "" }} 
+                {% endfor %}
+            </td>
         </tr>
-        <tr>
-            <td style="width: 50%;">Weeks to Flowering</td>
-            <td>Details</td>
-        </tr>
-        <tr>
-            <td style="width: 50%;">Rate of Sowing</td>
-            <td>Details</td>
-        </tr>
+        {% endif %}
     </table>
     
 </div>
@@ -37,7 +45,7 @@
         {% endif %}
         <div class="col-md-6">
             <h4>Growing Notes</h4>
-            <p>Growing notes</p>      
+            <p>{{ product.prod_notes }}</p>      
         </div>
     </div>
     <div class="row">
