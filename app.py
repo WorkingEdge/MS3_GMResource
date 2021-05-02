@@ -119,7 +119,7 @@ def edit_record(record_id):
         # Create the object that will be inserted in the db
         updated_record = {
             "title": request.form.get("record_title"),
-            "common_name": request.form.get("common_name").lower(),
+            "common_name": common_name,
             "botanical_name": request.form.get("botanical_name"),
             "season": request.form.getlist("season"),
             "n_fixing": request.form.get("n_fixing"),
