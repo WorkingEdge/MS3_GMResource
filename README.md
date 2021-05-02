@@ -268,6 +268,8 @@ HTML was checked using the address/URI option on the [W3C HTML Validator](https:
 
 * Although the search functionality is working well, there is an issue with the sorting of returned results. A text index has been set up on the records collection with a weighting applied to different fields. This appears to be not working exactly as intended at the moment, particularly in relation to how it handles embedded (comments) content. Internet searches have shown this to be an issue that has caused problems for other users. I have not managed to fix it yet. However, from the point of view of the user, i think they would be unaware tht this feature is not working exactly as intended.
 
+* There is an issue when a user enters more than one 'common name' for a post topic. This displays ok but the related products are not picked up. This is poor design rather than implementation as it has been built to work with just one entry at a time. This would be something to fix in the next iteration of the app.
+
 # Deployment
 The deployment steps below are the procedure followed for this app. 
 The order of steps is based on that followed for the task manager walkthrough project.
