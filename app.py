@@ -345,17 +345,19 @@ def edit_product(product_id):
         # Create the object that will be inserted in the db
         updated_product = {
             "prod_name": request.form.get("product_name"),
+            "leading_info": request.form.get("leading_info"),
             "contains_common": common_names,
             "botanical_names": request.form.get("botanical_names"),
             "summer": request.form.get("summer"),
             "winter": request.form.get("winter"),
-            "n_fixing": request.form.get("winter"),
+            "n_fixing": request.form.get("n_fixing"),
             "added_by": session["session_user"],
             "user_id": user_id,
             "image_link": request.form.get("image_url"),
             "prod_notes": request.form.get("prod_notes"),
             "prod_price": request.form.get("prod_price"),
-            "updated_date": updated_date
+            "updated_date": updated_date,
+            "pollinator": request.form.get("pollinator_f")
         }
         mongo.db.products.update({
             "_id": ObjectId(product_id)}, {"$set": updated_product})
