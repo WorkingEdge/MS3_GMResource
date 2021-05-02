@@ -27,46 +27,44 @@
           <input type="text" class="form-control" id="botanical_name" placeholder="Botanical name" name="botanical_name" value="{{- record.botanical_name -}}">
         </div>
       </div>
-      
-      <div class="form-group">        
+      <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
+          {% if "Summer" in record.season %}
+          <p>Season: <span><label class="checkbox-inline" for="summer"
+            ><input type="checkbox" value="Summer" name="season" checked/> Summer</label
+          >
+          <label class="checkbox-inline" for="winter"
+            ><input type="checkbox" value="Winter" name="season" /> Winter</label
+          ></span></p>
+          {% endif %}
+          {% if "Winter" in record.season %}
+          <p>Season: <span><label class="checkbox-inline" for="summer"
+            ><input type="checkbox" value="Summer" name="season" /> Summer</label
+          >
+          <label class="checkbox-inline" for="winter"
+            ><input type="checkbox" value="Winter" name="season" checked/> Winter</label
+          ></span></p>
+          {% endif %}
+          {% if record.season == null %}
+          <p>Season: <span><label class="checkbox-inline" for="summer"
+            ><input type="checkbox" value="Summer" name="season" /> Summer</label
+          >
+          <label class="checkbox-inline" for="winter"
+            ><input type="checkbox" value="Winter" name="season" checked/> Winter</label
+          ></span></p>
+          {% endif%}
           
-        <label class="checkbox-inline" for="summer">
-          {% if record.summer == "yes" %}
-          <input type="checkbox" value="yes" name="summer" checked>
-          {% else %}
-          <input type="checkbox" value="yes" name="summer">
-          {% endif %}
-          Summer</label>
-
-        <label class="checkbox-inline" for="winter">
-        {% if record.winter == "yes" %}
-        <input type="checkbox" value="yes" name="winter" checked>
-        {% else %}
-        <input type="checkbox" value="yes" name="winter">
-        {% endif%}
-        Winter</label> 
-        
-        <div class="checkbox">
-        <label for="n_fixing">
-          {% if record.n_fixing == "yes" %}
-          <input type="checkbox" value="yes" name="n_fixing" checked>
-          {% else %}
-          <input type="checkbox" value="yes" name="n_fixing">
-          {% endif %}
-          N-fixing</label>
-          </div>
-        <div class="checkbox">
-          <label for="pollinator_f">
-              {% if record.pollinator == "yes" %}
-              <input type="checkbox" value="yes" name="pollinator_f" checked>
-              {% else %}
-              <input type="checkbox" value="yes" name="pollinator_f">
-              {% endif %}
-              Pollinator-friendly</label>
-          </div>
-      </div>
-      
+          <p>N-Fixing: <span><input type="radio" id="n-fixing_y" name="n_fixing" value="yes">
+            <label class="radio-inline" for="yes">Yes</label>
+            <input type="radio" id="n_fixing_n" name="n_fixing" value="no">
+            <label class="radio-inline" for="no">No</label></span></p>
+          
+          <p>Pollinator-friendly: <span><input type="radio" id="pollinator_y" name="pollinator" value="yes">
+            <label class="radio-inline" for="yes">Yes</label>
+            <input type="radio" id="pollinator_n" name="pollinator" value="no">
+            <label class="radio-inline" for="no">No</label></span></p>
+            
+        </div>
       </div>
       </div>
       
