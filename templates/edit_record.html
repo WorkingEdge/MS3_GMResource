@@ -56,16 +56,17 @@
           {% endif %}
           N-fixing</label>
           </div>
+        <div class="checkbox">
+          <label for="pollinator_f">
+              {% if record.pollinator == "yes" %}
+              <input type="checkbox" value="yes" name="pollinator_f" checked>
+              {% else %}
+              <input type="checkbox" value="yes" name="pollinator_f">
+              {% endif %}
+              Pollinator-friendly</label>
+          </div>
       </div>
-      <div class="checkbox">
-      <label for="pollinator_f">
-        {% if record.pollinator == "yes" %}
-        <input type="checkbox" value="yes" name="pollinator_f" checked>
-        {% else %}
-        <input type="checkbox" value="yes" name="pollinator_f">
-        {% endif %}
-        Pollinator-friendly</label>
-      </div>
+      
       </div>
       </div>
       
