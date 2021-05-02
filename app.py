@@ -97,7 +97,7 @@ def edit_record(record_id):
     record = mongo.db.records.find_one({"_id": ObjectId(record_id)})
     if request.method == "POST":
         updated_date = datetime.now()
-        common_name = request.form.get("common_name").lower()
+        # common_name = request.form.get("common_name").lower()
         user_id = mongo.db.users.find_one(
             {"username": session["session_user"]})["_id"]
         # Perform search to check if the entry exists in any product.
@@ -119,12 +119,12 @@ def edit_record(record_id):
         # Create the object that will be inserted in the db
         updated_record = {
             "title": request.form.get("record_title"),
-            "common_name": common_name,
+            "common_name": request.form.get("common_name").lower(),
             "botanical_name": request.form.get("botanical_name"),
+            "season": request.form.getlist("season"),
+            "n_fixing": request.form.get("n_fixing"),
+            "pollinator_friendly": request.form.get("pollinator"),
             "experience": request.form.get("experience"),
-            "summer": request.form.get("summer"),
-            "winter": request.form.get("winter"),
-            "season": request.form.get("season"),
             "added_by": session["session_user"],
             "user_id": user_id,
             "updated_date": updated_date,
