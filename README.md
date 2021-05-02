@@ -32,7 +32,10 @@ The Green Manure Resource is an online learning and experience-sharing space for
     - [UI-Content Sources](#ui-content-sources)
     - [IDE, Version Control, Storage, and Deployment](#ide-version-control-storage-and-deployment)
 - [Testing](#testing)
-    - [Smartbear Cross Browser Testing](#smartbear-cross-browser-testing)
+  - [Specific Test Cases](#specific-test-cases)
+  - [General UX Testing](#general-ux-testing)
+  - [Smartbear Cross Browser Testing](#smartbear-cross-browser-testing)
+- [Code Validation](#code-validation)
 - [Known Issues](#known-issues)
 - [Deployment](#deployment)
     - [Deploy to Heroku](#deploy-to-heroku)
@@ -44,10 +47,10 @@ The Green Manure Resource is an online learning and experience-sharing space for
 - [Appendix](#appendix)
 
 # Scenario Outline / Strategy
-This is the (fictional) scenario for which the site exists:
-
 Although the practice of restoring land with the use of certain crops is as old as the history of farming, it is a practice around which there is renewed interest, especially in the area of organic or regenerative farming and among small scale producers and homesteaders. The primary purpose of the site is to provide a dedicated online space for interested growers to share thoughts and experiences of using different green manure crops. Growers who have some interesting facts to relate can do so in an informal yet factual way and the information they provide is laid out in a consistent and easy to follow format.
-In parallel with this goal, the site is hosted by a fictinoal seed company:
+
+In parallel with this goal, the site is hosted by a fictional seed company:
+
 **MS3 Seeds** is a niche supplier of seeds, specialising in <a href="https://en.wikipedia.org/wiki/Green_manure" target="_blank">green manures</a>.
 It has set up this site to do the following:
 * Generate awareness for their company among the relevant community of growers
@@ -210,12 +213,17 @@ For the next iteration, the following features are on the wish-list:
 * [Icon Archive](https://iconarchive.com/browse.html) was used to source the favicon.
 
 ### IDE, Version Control, Storage, and Deployment
-Development was done in [GitPod](https://www.gitpod.io/), with version control using [git](https://git-scm.com/)(git add, git commit, git push), and files are stored in [GitHub](https://github.com/). 
-The live site is deployed using [Heroku](https://www.heroku.com/home) and uses autonatic deployment from the GitHub repo when new code is pushed.
+[GitPod](https://www.gitpod.io/) was used for all development
+[git](https://git-scm.com/)(git add, git commit, git push) is used to handle version control 
+[GitHub](https://github.com/) stores all the project files 
+[Heroku](https://www.heroku.com/home) was used for deploying the live site and the configuration ensures autonatic deployment from the GitHub repo when new code is pushed.
 
 # Testing
+## Specific Test Cases
+
 For individual test case details see [Testing](readme_assets/testing.md).
 
+## General UX Testing
 In addition to the specific test cases above, cross-browser and multi-device testing was carried out by myself and some family members. The purpose of these was to find any issues with display or functionality on mobile, tablet or laptop devices using a variety or browsers. 
 Test case: Test appearance across the site, particularly Home/landing page, individual post page, contact form:
 
@@ -232,7 +240,7 @@ Chrome on Android (Moto G7) -
 Chrome on Mac - 
 Safari on Mac - 
 
-### Smartbear Cross Browser Testing
+## Smartbear Cross Browser Testing
 The site has also been checked using a trial account with [SmartBear CrossBrowserTesting](https://crossbrowsertesting.com/).
 
 The trial version allows testing on a variety of virtual device and browser combinations. It facilitates live testing and screenshot testing.
@@ -244,11 +252,13 @@ Screenshot test [result](https://app.crossbrowsertesting.com/public/i484cf03e80e
 ![Smartbear SAcreenshot Test Result](readme_assets/readme_images/smartbear_screenshot_test.png)
 
 
+# Code Validation
+All code has been checked using the following tools.
+
+
 # Known Issues 
 
 * Although the search functionality is working well, there is an issue with the sorting of returned results. A text index has been set up on the records collection with a weighting applied to different fields. This appears to be not working exactly as intended at the moment, particularly in relation to how it handles embedded (comments) content. Internet searches have shown this to be an issue that has caused problems for other users. I have not managed to fix it yet. However, from the point of view of the user, i think they would be unaware tht this feature is not working exactly as intended.
-
-
 
 # Deployment
 The deployment steps below are the procedure followed for this app. 
