@@ -74,19 +74,19 @@
             <label class="radio-inline" for="no">No</label></span></p>
           {% end if %}
           <!-- Jinja control flow for prechecking pollinator friendly checkboxes on edit view -->
-          {% record.pollinator_friendly == "yes" %}
+          {% if record.pollinator_friendly == "yes" %}
           <p>Pollinator-friendly: <span><input type="radio" id="pollinator_y" name="pollinator" value="yes" checked>
             <label class="radio-inline" for="yes">Yes</label>
             <input type="radio" id="pollinator_n" name="pollinator" value="no">
             <label class="radio-inline" for="no">No</label></span></p>
           {% endif %}
-          {% record.pollinator_friendly == "no" %}
+          {% if record.pollinator_friendly == "no" %}
           <p>Pollinator-friendly: <span><input type="radio" id="pollinator_y" name="pollinator" value="yes">
             <label class="radio-inline" for="yes">Yes</label>
             <input type="radio" id="pollinator_n" name="pollinator" value="no"  checked>
             <label class="radio-inline" for="no">No</label></span></p>
           {% endif %}
-          {% record.pollinator_friendly == null %}
+          {% if record.pollinator_friendly == null %}
           <p>Pollinator-friendly: <span><input type="radio" id="pollinator_y" name="pollinator" value="yes">
             <label class="radio-inline" for="yes">Yes</label>
             <input type="radio" id="pollinator_n" name="pollinator" value="no">
