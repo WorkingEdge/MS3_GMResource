@@ -315,6 +315,7 @@ def add_product():
             "added_date": added_date,
             "image_link": request.form.get("image_url"),
             "prod_notes": request.form.get("prod_notes"),
+            "pollinator": request.form.get("pollinator_f"),
             "prod_price": request.form.get("prod_price")
         }
         mongo.db.products.insert_one(product)
