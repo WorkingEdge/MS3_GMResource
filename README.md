@@ -1,8 +1,13 @@
+# Green Manure Resource <!-- omit in toc -->
+
+The Green Manure Resource is an online learning and experience-sharing space for organic growers to share their thoughts on the use of different green manures. It is sponsored by a seed company that also presents product information on the site.
+
 <a href="https://ms3-gm-resources.herokuapp.com/" target="_blank">View the live project here</a>
 
+![GM Resources - MS3](readme_assets/readme_images/am_i_responsive.png)
 
-# Contents <!-- omit in toc -->  
-- [Scenario Outline](#scenario-outline)
+# Table of Contents <!-- omit in toc -->  
+- [Scenario Outline / Strategy](#scenario-outline--strategy)
 - [User Experience](#user-experience)
   - [User Stories by User Type](#user-stories-by-user-type)
     - [First-time or Infrequent Vistor](#first-time-or-infrequent-vistor)
@@ -38,9 +43,11 @@
 - [Notes](#notes)
 - [Appendix](#appendix)
 
-# Scenario Outline
+# Scenario Outline / Strategy
 This is the (fictional) scenario for which the site exists:
 
+Although the practice of restoring land with the use of certain crops is as old as the history of farming, it is a practice around which there is renewed interest, especially in the area of organic or regenerative farming and among small scale producers and homesteaders. The primary purpose of the site is to provide a dedicated online space for interested growers to share thoughts and experiences of using different green manure crops. Growers who have some interesting facts to relate can do so in an informal yet factual way and the information they provide is laid out in a consistent and easy to follow format.
+In parallel with this goal, the site is hosted by a fictinoal seed company:
 **MS3 Seeds** is a niche supplier of seeds, specialising in <a href="https://en.wikipedia.org/wiki/Green_manure" target="_blank">green manures</a>.
 It has set up this site to do the following:
 * Generate awareness for their company among the relevant community of growers
@@ -82,18 +89,25 @@ There are 3 user types currently envisaged for the site:
 
 # Design - UI
 ### Wireframes
-before development began, the basic layout of the site was set out in wireframes:
+Before development began, the basic layout of the site was set out in wireframes.
+
+The basic design follows a single column design and is consistent between mobile and desktop. The deviations occur on the home page, where the 'latest posts' cards are displayed in rows of 3 on Bootstrap md size and above, and singly on smaller screen sizes.
+Similarly, on the page displaying the contnet of a user post, the image (if provided) and 'Experience sectins are displayed next to each other horizontally on larger screns sizes and vertically on smaller screen sizes.
+
 * [Wireframe - Mobile or tablet](readme_assets/wireframes/MS3_GreenManure_Mobile.pdf)
 * [Wireframe - Desktop](readme_assets/wireframes/MS3_GreenManure_Desktop.pdf)
 
-As development progressed, the layout deviated in several respects. The main points of difference and the reason are as follows:
-
-
 ### Colour
-The main colours used are teal, gold, white. 
+The main colours used are teal, gold, white.
+Teal aligns with the 'natural, 'green' focus of the site.
+Gold is used sparingly for some hover events (social media icons) or minor UI elements (horizontal rule).
+White is used as the text icon colour against the teal background or against darker image backgounds. Otherwise, text is standard black. 
 
 ### Typography 
 The site uses several fonts:
+[Oswald](https://fonts.google.com/specimen/Oswald), [Raleway](https://fonts.google.com/specimen/Raleway) and [Goudy Bookletter 1911](https://fonts.google.com/specimen/Goudy+Bookletter+1911#standard-styles) are all Google fonts.
+Oswald and Raleway are used throughtout the site content to provide a neutral, modern look.
+Goudy Bookletter was chosen as a font to distinguish the brand of the sponsor, MS3 seeds. As such it is used in the page header and footer. The main aspect of the font that made it a good choice was the styling of the figure '3'. It sits across the bottom line of the text and is reminiscent of a germinating seed.
  
 
 ### Images
@@ -107,8 +121,6 @@ Latest posts are displayed as (Bootstrap) cards with image tops. The image in th
 **Note:** The deafult/fallback image is used only for the cards - inside the post itself, no image appears unless it has been specified by the user.
 
 # Design - Database
-![Collections in the databases](readme_assets/readme_images/ms3_gm_resources_db.png)
-
 The app uses MongoDB as the database. MongoDB is a NoSQL (non-relational) database and stores data in documents, as opposed to the tables of traditional relational databases. As such, it is capable of working with unstructured data. While the database is non-relational - connections between database 'collections' are established to aid clear data structure and avoid any future issues regarding the MongoDB size limit for a single document (16MB). 
 
 Essentially, the design was set up in accordance with the following MongoDB principle "data that is accessed together should be stored together". The rationale here is that if all the data returned for a given query can be returned in a single call to one db document, it allows for very fast/efficient operation. Along with this, manual references are established between collections to allow easy follow-on queries where these are likely. (For more info, see: https://docs.mongodb.com/manual/reference/database-references/#std-label-document-references)
@@ -120,6 +132,7 @@ An example of this in practice in the app is the record for a single user post:
 * Each comment entry is itself an object containing the 4 key:value pairs - comment text, commenter ID, date, and user name. The commenter_id is a reference to an ObjectId in the users collection.
 * A similar approach is taken with the 'conatained_in' key. This is an array of objects, with each object containing two key:value pairs. The first key value is the product_name for display together with the rest of the post data (no separate query required to get this). The second key:value pair contains the product_id as an ObjectId in the products collection.
 
+![DB Schema](readme_assets/readme_images/db_schema.png)
 
 # Features
 ### User Perspective
@@ -139,7 +152,7 @@ An example of this in practice in the app is the record for a single user post:
 * Users experience a clear, welcoming, and informative space
 * Users that are active on the site feel valued (eg custom message on reaching a certain number of posts)
 * When a user adds a post about a particular species, the system autiomatically searches the contents of all listed products to check if it is conatined in any of them. If it is, the name of the product is automatically added to the post content allowing a user to easily navigate from a post to a related product page.
-* Site navigation is dynamically generated depending on user status (not sigened in, signed in, signed in and admin) so that no unauthorized editing of product or price information is posible.
+* Site navigation is dynamically generated depending on user status (not signed in, signed in, signed in and admin) so that no unauthorized editing of product or price information is posible.
 * Contact form has validation so the database is not muddied with invalid or useless data
 * Sign in has validation so that a user cannot take a username already used
 * A footer provides additional contact info and links to social media
@@ -183,10 +196,12 @@ For the next iteration, the following features are on the wish-list:
 * [Javascript](https://developer.mozilla.org/en-US/docs/Glossary/JavaScript) is used to provide the support for EmailJS and form validation.
 
 ### Additional Services
+* [SmartBear Crossbrowser Testing](https://crossbrowsertesting.com/) was used for testing.
 * [EmailJS](https://www.emailjs.com/) provides the contact form -> email functionality. 
 * [TinyJPG](https://tinyjpg.com/) was used to comptress image files.
 * [Balsamiq](https://balsamiq.com/) was used to create wireframes.
 * [Randomkeygen](https://randomkeygen.com/) was used to generate the secret key.
+* [Google Slides](https://www.google.com/slides/about/) was used to create the DB schema.
     
 ### UI-Content Sources
 * [Unsplash](https://unsplash.com/) was used to source images. For specific credits, see the Credits section of this doc.
@@ -230,6 +245,10 @@ Screenshot test [result](https://app.crossbrowsertesting.com/public/i484cf03e80e
 
 
 # Known Issues 
+
+* Although the search functionality is working well, there is an issue with the sorting of returned results. A text index has been set up on the records collection with a weighting applied to different fields. This appears to be not working exactly as intended at the moment, particularly in relation to how it handles embedded (comments) content. Internet searches have shown this to be an issue that has caused problems for other users. I have not managed to fix it yet. However, from the point of view of the user, i think they would be unaware tht this feature is not working exactly as intended.
+
+
 
 # Deployment
 The deployment steps below are the procedure followed for this app. 
