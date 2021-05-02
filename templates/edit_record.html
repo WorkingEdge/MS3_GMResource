@@ -53,26 +53,26 @@
           <label class="checkbox-inline" for="winter"
             ><input type="checkbox" value="Winter" name="season" checked/> Winter</label
           ></span></p>
-          {% endif%}
+          {% endif %}
           <!-- Jinja control flow for prechecking n_fixing checkboxes on edit view -->
           {% if record.n_fixing == "yes" %}
           <p>N-Fixing: <span><input type="radio" id="n-fixing_y" name="n_fixing" value="yes" checked>
             <label class="radio-inline" for="yes">Yes</label>
             <input type="radio" id="n_fixing_n" name="n_fixing" value="no">
             <label class="radio-inline" for="no">No</label></span></p>
-          {% end if %}
+          {% endif %}
           {% if record.n_fixing == "no" %}
           <p>N-Fixing: <span><input type="radio" id="n-fixing_y" name="n_fixing" value="yes">
             <label class="radio-inline" for="yes">Yes</label>
             <input type="radio" id="n_fixing_n" name="n_fixing" value="no" checked>
             <label class="radio-inline" for="no">No</label></span></p>
-          {% end if %}
+          {% endif %}
           {% if record.n_fixing == null %}
           <p>N-Fixing: <span><input type="radio" id="n-fixing_y" name="n_fixing" value="yes">
             <label class="radio-inline" for="yes">Yes</label>
             <input type="radio" id="n_fixing_n" name="n_fixing" value="no">
             <label class="radio-inline" for="no">No</label></span></p>
-          {% end if %}
+          {% endif %}
           <!-- Jinja control flow for prechecking pollinator friendly checkboxes on edit view -->
           {% if record.pollinator_friendly == "yes" %}
           <p>Pollinator-friendly: <span><input type="radio" id="pollinator_y" name="pollinator" value="yes" checked>
