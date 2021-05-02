@@ -97,7 +97,7 @@ def edit_record(record_id):
     record = mongo.db.records.find_one({"_id": ObjectId(record_id)})
     if request.method == "POST":
         updated_date = datetime.now()
-        # common_name = request.form.get("common_name").lower()
+        common_name = request.form.get("common_name").lower()
         user_id = mongo.db.users.find_one(
             {"username": session["session_user"]})["_id"]
         # Perform search to check if the entry exists in any product.
