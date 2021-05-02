@@ -36,6 +36,8 @@ The Green Manure Resource is an online learning and experience-sharing space for
   - [General UX Testing](#general-ux-testing)
   - [Smartbear Cross Browser Testing](#smartbear-cross-browser-testing)
 - [Code Validation](#code-validation)
+    - [Python](#python)
+    - [HTML](#html)
 - [Known Issues](#known-issues)
 - [Deployment](#deployment)
     - [Deploy to Heroku](#deploy-to-heroku)
@@ -254,6 +256,12 @@ Screenshot test [result](https://app.crossbrowsertesting.com/public/i484cf03e80e
 
 # Code Validation
 All code has been checked using the following tools.
+### Python
+Code was pep8 validated using [PEP8 online](http://pep8online.com/)
+Initial results showed lots of minor errors around trailing whitespaces and long lines. These have all been cleaned up and the code now test without raising any errors. Initial result, pre-changes can be seen [here](readme_assets/code_validation/pep8_check_initial.txt).
+
+### HTML
+HTML was checked using the address/URI option on the [W3C HTML Validator](https://validator.w3.org/#validate_by_uri).
 
 
 # Known Issues 
