@@ -35,9 +35,9 @@ Note: Testing is ongoing with final changes to the appearance of the site. Some 
 ## Tests For First-Time or Infrequent User
 
 ### As a first-time visitor, the purpose and overall content of the site is clear and easy to navigate
-    *  The site feels informative, authorative, and welcoming
-    *  I can see additional contact info - phone, address, social media
-    *  I can read all content but I cannot comment on posts
+* The site feels informative, authorative, and welcoming
+* I can see additional contact info - phone, address, social media
+* I can read all content but I cannot comment on posts
 
 Test case steps:
    1. Go to the site URL and assess the home page. Should see clear info, easily accessible navigation, contact information in the footer and a separate contact page.
@@ -58,11 +58,8 @@ Test case steps:
 4. Try to register without a password - this should be prevented by client side validation.
 5. Try to register with all required fields filled - this should be successful and the app issues a message to say you have registered successfully and you are logged in. Verify you now have the option to add a post or a comment or another contributor's post.
    
-    
 *Result: When providing the required info I can register. When I do this, the additional navigation option to add a post is displayed and I can also add a comment on an existing post - ok.
         
-However, when I try to log in without a password to match the required pattern, the HTML validation catches it but there is no message to tell me what the requirement (pattern) is - test case not 100% ok. This should be fixed using a custom JS validation function. To do.
-
 ### As a new user trying to register, I cannot use a username already taken (server-side validation)
 Registration should use server-side validation to check that the entered username is not already taken.
 Test case steps: 
@@ -99,7 +96,7 @@ Test case step:
 3. The post should not be accepted.
 
 Result: ok - I get a key error: 'session_user' when trying to subvert the requirement to be logged in to make a post.
-To do: Make a custom error page to handle this.
+To do: Next iteration of the site should have custom error handling.
 
 ### As a non-registered or logged in user, I can use the Search functionality
 Any user should be able to use the search regardless of whether they are logged in or not.

@@ -35,9 +35,6 @@ The Green Manure Resource is an online learning and experience-sharing space for
   - [Specific Test Cases and Code Validation](#specific-test-cases-and-code-validation)
   - [General UX Testing](#general-ux-testing)
   - [Smartbear Cross Browser Testing](#smartbear-cross-browser-testing)
-- [Code Validation](#code-validation)
-    - [Python](#python)
-    - [HTML](#html)
 - [Known Issues](#known-issues)
 - [Deployment](#deployment)
     - [Deploy to Heroku](#deploy-to-heroku)
@@ -45,8 +42,13 @@ The Green Manure Resource is an online learning and experience-sharing space for
       - [Note on Environment Variables](#note-on-environment-variables)
   - [Forking](#forking)
 - [Credits](#credits)
-- [Notes](#notes)
-- [Appendix](#appendix)
+  - [Images](#images-1)
+  - [Code](#code)
+    - [Issue 1 - Inserting Comments in the DB Documents](#issue-1---inserting-comments-in-the-db-documents)
+    - [Issue 2 - Handling product Info](#issue-2---handling-product-info)
+    - [Issue 3 - Handling Updates](#issue-3---handling-updates)
+    - [Issue 4 - Delete Functionality for User Records with Modal Confirmation](#issue-4---delete-functionality-for-user-records-with-modal-confirmation)
+    - [Jumbotron Styling](#jumbotron-styling)
 
 # Scenario Outline / Strategy
 Although the practice of restoring land with the use of certain crops is as old as the history of farming, it is a practice around which there is renewed interest, especially in the area of organic or regenerative farming and among small scale producers and homesteaders. The primary purpose of the site is to provide a dedicated online space for interested growers to share thoughts and experiences of using different green manure crops. Growers who have some interesting facts to relate can do so in an informal yet factual way and the information they provide is laid out in a consistent and easy to follow format.
@@ -253,18 +255,6 @@ At the link you can view a recording of a live test on a virtual Mac OSX 10.14 u
 Screenshot test [result](https://app.crossbrowsertesting.com/public/i484cf03e80ef0a1/screenshots/z4e34afe96c476ba28bd):
 ![Smartbear SAcreenshot Test Result](readme_assets/readme_images/smartbear_screenshot_test.png)
 
-
-# Code Validation
-All code has been checked using the following tools.
-### Python
-Code was pep8 validated using [PEP8 online](http://pep8online.com/)
-Initial results showed lots of minor errors around trailing whitespaces and long lines. These have all been cleaned up and the code now test without raising any errors. Initial result, pre-changes can be seen [here](readme_assets/code_validation/pep8_check_initial.txt).
-
-### HTML
-HTML was checked using the address/URI option on the [W3C HTML Validator](https://validator.w3.org/#validate_by_uri).
-Some issues needed to be resolved - see details in Validating HTML.
-
-
 # Known Issues 
 
 * Although the search functionality is working well, there is an issue with the sorting of returned results. A text index has been set up on the records collection with a weighting applied to different fields. This appears to be not working exactly as intended at the moment, particularly in relation to how it handles embedded (comments) content. Internet searches have shown this to be an issue that has caused problems for other users. I have not managed to fix it yet. However, from the point of view of the user, i think they would be unaware tht this feature is not working exactly as intended.
@@ -389,12 +379,86 @@ Full deatils about forking a Github repository can be found here: https://docs.g
   
 # Credits
 
-# Notes
-* Turn off debug mode before submitting - in app.py
+## Images
+Images that are part of post content are all accompanied by a link to the source. These are not mentioned here.
 
+The other images used on the site (jumbotron/form background images and placeholder image for posts submitted by users without an image url) are from Unsplash contributors:
 
-# Appendix
-Background:
-Green manures and cover crops are an important part of land management for horticultural enterprises, particularly in an organic context. They have numerous benefits - for example, some green manures fix nitrogen from the air and reduce the need for the application of synthetic fertilizer. Others may be beneficial for pollinating insects or for soil conditioning.
+* [Lester Hine](https://unsplash.com/@lesterhine?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) 
+* [Sikes Photos](https://unsplash.com/@sikesphotos?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText")
+* [Dustin Humes](https://unsplash.com/@dustinhumes_photography?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
 
-There are many different species and species mixes that are considered green manures or cover crops and each one has a particular application and is suited for different conditions. For example, some are for winter growing, others for summer. Some summer green manures die back naturally with cold weather, others need to be stopped/killed before the next crop can be sown.
+## Code
+Code snippets are commented in the code where directly applicable. In addition, the following sources were very helpful in overcoming issues experienced during development:
+
+### Issue 1 - Inserting Comments in the DB Documents
+In relation to all things Mongo, the MongoDB [documentation](https://docs.mongodb.com/manual/) and the resources and teaching in the MongoDB University course [M001: MongoDB Basics](https://university.mongodb.com/courses/M001/about) were very helpful.
+For example:
+* Create a form to allow a logged-in user to add a comment from the show-record page.
+Tried this using a variable containing the comment object but it was returning an error:
+```TypeError: unhashable type: 'dict'```
+
+This was resolved by not using the variable and updating as follows:
+ ```py
+ mongo.db.records.update(
+            {"_id": ObjectId(record_id)},
+            {"$push": 
+                {"comments":
+                    {
+                    "comment_by": session["session_user"],
+                    "comment_text": request.form.get("comment_text"),
+                    "comment_date": comment_date,
+                }
+            }
+        }
+```
+
+Resources:
+* [StackOverflow](https://stackoverflow.com/questions/27874469/mongodb-push-in-nested-array)
+* [MongoDB]()https://docs.mongodb.com/manual/reference/operator/update/push/
+
+### Issue 2 - Handling product Info
+I wanted to add a search on the 'common name' input field so that when a user adds a record, the app checks for a match in the products and returns all products that contain the entered name:
+```py
+contained_in = list(mongo.db.products.find(
+       {"contains": common_name }))
+```
+
+Without ```list()```, this was returning an error:
+> Type Error - Index ‘name’ cannot be applied to cursor instances. 
+
+Resolved with help from [here](https://stackoverflow.com/questions/13210730/how-to-make-pymongos-find-return-a-list).
+
+The above code was embedding the returned data. Not ideal as the products documents may contain lots of info and the record may be in many products, adding to the size of the document.
+Therefore, better to have a reference to the ‘product’ document in the products collection.
+
+That is, changing from the code on the left, where the product data is being duplicated unnecessarily, to the code on the right where only the reference to the ObjectId in the products collection is contained in the records collection. This conforms to the schema design whereby data that is accessed together is stored together.
+![Structuring data in MongoDB](../MS3_GMResource/readme_assets/readme_images/reduce_content_embedded.png)
+
+Useful references for this:
+* http://www.compciv.org/guides/python/fundamentals/dictionaries-overview/#iterating-through-the-values
+* https://www.journaldev.com/33182/python-add-to-list#3-extend
+* https://java2blog.com/typeerror-list-indices-must-be-integers-not-str/
+* https://stackoverflow.com/questions/33656966/what-does-builtin-function-or-method-object-is-not-subscriptable-error-mean/33657052
+
+### Issue 3 - Handling Updates
+Updating a record causes all non-updated fields to be reset null - eg if I update a record, the comments that had been on the record are lost.
+This is fixed by using the ```$set``` operator:
+```py
+mongo.db.records.update({"_id": ObjectId(record_id)}, {"$set": updated_record})
+```
+Resources:
+* https://docs.mongodb.com/manual/reference/operator/update/set/
+* https://kb.objectrocket.com/mongo-db/update-mongodb-using-set-operator-1582
+
+### Issue 4 - Delete Functionality for User Records with Modal Confirmation
+Problem:
+The modal does not get the ‘record’ from the {% for record in records %} loop in the html block content. Error:
+```jinja2.exceptions.UndefinedError: 'record' is undefined```
+
+This was resolved with the help of tutor support and involved putting the modal inside the for loop and matching the entry to be deleted with the modal using the ```loop.index```.
+
+### Jumbotron Styling
+For jumbotron styling (background image and overlay), code snippet taken from: https://codepen.io/JacobLett/pen/vPQKWd
+
+Additional resources were consulted for more minor issues also, but these are not all included here.
