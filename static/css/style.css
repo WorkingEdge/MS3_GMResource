@@ -4,8 +4,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&display=swap');
 
 
-
-/*--------------------------------------------------------*/
 /*-------------------------------------------------------- MS3 Seeds Branding*/ 
 .ms3-text{
     font-family: "Goudy Bookletter 1911", sans-serif;
@@ -31,7 +29,6 @@
     border: 0;
     outline: 0;
 }
-
 /*-------------------------------------------------------- Subheading and search*/
 .sub-head-div{
     background-color: teal;
@@ -42,9 +39,7 @@
     font-family: "Goudy Bookletter 1911", sans-serif;
     padding-left: 30px;
 }
-
 /*--------------------------------------------------------General*/
-
 body{
     display: flex;
     min-height: 100vh;
@@ -54,6 +49,10 @@ body{
 }
 .btn-teal{
     background-color: teal;
+}
+.btn-teal:hover{
+    background-color: gold;
+    color: gray;
 }
 h3{
 margin-top: 5px;
@@ -68,7 +67,6 @@ h2{
 .gmr-lead{
     font-weight: 400;
 }
-
 /*-------------------------------------------------------- Jumbotron*/
 .jumbotron{
     margin-top: 10px;
@@ -109,7 +107,6 @@ h2{
     text-transform: uppercase;
     letter-spacing: 2px;
  }
-
 .card-body{
     background-color: #f8f9fa;
 }
@@ -119,7 +116,6 @@ h2{
 .card-body .btn-info{
     background-color: teal;
 }
-
  /*------------------------------------------------------ Tables for data display*/   
 .botanical_name{
     font-style: italic;
@@ -171,7 +167,6 @@ h2{
         object-fit: cover;
         margin-top: 5px;
     }
-
 /*--------------------------------------------------------Log in or registered already?*/
 .already p{
     margin-top: 5px;
@@ -183,7 +178,6 @@ h2{
 .already a{
     color:gold;
 }
-
 /*--------------------------------------------------------Footer*/    
 #ms3-footer{
     background-color: teal;
@@ -207,4 +201,3 @@ h2{
 .footer-element a:hover{
     color:gold;
 }
-
