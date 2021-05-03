@@ -15,7 +15,6 @@
 .main-head{
     background-color: teal;
     color: #fafafa;
-    
 }
 #txt-logo{
     color: #fafafa;
@@ -44,15 +43,22 @@
     padding-left: 30px;
 }
 
-/*--------------------------------------------------------*/
-/*--------------------------------------------------------*/
+/*--------------------------------------------------------General*/
 
 body{
     display: flex;
     min-height: 100vh;
     flex-direction: column;
     justify-content: space-between;
+    font-family: "Raleway", sans-serif;
 }
+.btn-teal{
+    background-color: teal;
+}
+h3{
+margin-top: 5px;
+}
+
 /*-------------------------------------------------------- Jumbotron*/
 .jumbotron{
     margin-top: 10px;
@@ -119,7 +125,6 @@ body{
 }
 
 
-
 .show_record_table_white{
     color:#fafafa;
     border-top: none;
@@ -130,16 +135,22 @@ body{
 .show_record_table_white a:hover{
     color:gold;
 }
-#myposts_table{
-    background-color: teal;
-    color: #fafafa;   
-}
-
-#myposts_table a{
-    color: #fafafa;
-}
-#myposts_table a:hover{
+/*--------------------------------- standard gmr table*/
+.gmr-table a{
     color: gold;
+    font-weight: 800;
+}
+.gmr-table a:hover{
+    color:#fafafa;
+}
+.gmr-table {
+    background-color: teal;
+    color: #fafafa;
+    font-family: "Raleway", sans-serif;
+}
+.gmr-table th{
+    font-family: "Oswald", sans-serif;
+    text-transform: uppercase;
 }
 /*---------------------------------------------------Cards for latest posts*/
 /* Tip to standardise the height of card images: https://stackoverflow.com/questions/37287153/how-to-get-images-in-bootstraps-card-to-be-the-same-height-width/53252725*/

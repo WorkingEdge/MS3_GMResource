@@ -39,12 +39,10 @@
   {% endfor %}
 </div>
 
-<table class="table table-default">
+<table class="table table-default gmr-table">
     <tr>
-        <th>#</th>
         <th>Name</th>
         <th>Contains</th>
-        <th>Note</th>
         <th>Price</th>
         {% if user_is_admin %}
         <th>Admin</th>
@@ -52,7 +50,6 @@
       </tr>
       {% for product in products %}
     <tr>
-        <td>{{ loop.index }}</td>
         <td><a href="{{ url_for('show_product', product_id = product._id) }}">{{ product.prod_name|title }}</a></td>
         <td>
           {% for elem in product.contains_common %}
@@ -61,7 +58,6 @@
           <!-- Source: https://stackoverflow.com/questions/11974318/how-to-output-a-comma-delimited-list-in-jinja-python-template-->
           {% endfor %}
         </td>
-        <td>{{ product.prod_notes}}</td>
         <td>{% if product.prod_price %} {# Check if a price has been entered for the product, if not print 'Contact us' #}
           {{ product.prod_price }}
           {% else %}
