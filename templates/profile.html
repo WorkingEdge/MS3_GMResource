@@ -15,10 +15,36 @@
     <p class = "lead">If you need to change your password or update your email address, please contact us using the contact form. <br>
       You can edit or delete your previous posts using the options below.
     </p>
-
 </div>
 
 <h2 class="text-center">My Posts</h2>
+<!-- Modals Div. Separate loop outside table to avoid html validation errors.
+      Order of items is persistent, so the index of items in this list and the table list point to the same record. -->
+<div>
+  {% for record in records %}
+  <div class="modal fade" id="confirmDeleteModal-{{ loop.index }}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModal-{{ loop.index }}" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Delete this record?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Deleting the record removes it permanently, together with all associated comments.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <form action="{{ url_for('delete_record', record_id = record._id) }}" method="POST">
+            <input type="submit" class="btn btn-danger" value="Delete"></form>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<!--Table to display the user's posts with edit/delete bttons in last col for each entry-->
 <table class="table table-default" id="myposts_table">
     <tr>
         <th>#</th>
@@ -26,44 +52,14 @@
         <th>Date</th>
         <th>Edit/Delete</th>
       </tr>
-
       {% for record in records %}
     <tr>
         <td> {{ loop.index }}</td>
         <td><a href="{{ url_for('show_record', record_id = record._id) }}">{{record.title}}</a></td>
-        
         <td>{{ record.added_date}}</td>
         <td><a class="btn btn-secondary btn-sm" href="{{ url_for('edit_record', record_id = record._id) }}">Edit</a>
           <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" 
           data-target="#confirmDeleteModal-{{ loop.index }}" data-routeinfo="{{ url_for('delete_record', record_id = record._id) }}">Delete</button></td>
-    </tr>
-    <!-- Place modal inside table to avoid HTML validation error-->
-    <tr style="display:none;">
-    <td></td>
-    <td></td>
-    <td></td>
-    <td>
-      <div class="modal fade" id="confirmDeleteModal-{{ loop.index }}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModal-{{ loop.index }}" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Delete this record?</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <p>Deleting the record removes it permanently, together with all associated comments.</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-              <form action="{{ url_for('delete_record', record_id = record._id) }}" method="POST">
-                <input type="submit" class="btn btn-danger" value="Delete"></form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </td>
     </tr>
       {% endfor %}
 </table>
