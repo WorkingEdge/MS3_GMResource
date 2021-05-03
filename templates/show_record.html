@@ -84,8 +84,8 @@
 <table class="table table-default">
     {% for comment in record.comments %}
     <tr>
-        <td>{{comment.comment_by}}</td>
-        <td>{{comment.comment_text|capitalize}}</td>
+        <td><p>{{comment.comment_by}} says: </p></td>
+        <td class="comment-text">{{comment.comment_text|capitalize}}</td>
     </tr>
     {% endfor %}
     </table>

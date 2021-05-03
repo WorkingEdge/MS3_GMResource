@@ -58,6 +58,12 @@ body{
 h3{
 margin-top: 5px;
 }
+h2{
+    margin-top: 10px;
+}
+.comment-text{
+    font-style: italic;
+}
 
 /*-------------------------------------------------------- Jumbotron*/
 .jumbotron{
@@ -123,8 +129,6 @@ margin-top: 5px;
 .show_record_table_black a:hover{
     color: gold;
 }
-
-
 .show_record_table_white{
     color:#fafafa;
     border-top: none;
@@ -135,7 +139,7 @@ margin-top: 5px;
 .show_record_table_white a:hover{
     color:gold;
 }
-/*--------------------------------- standard gmr table*/
+/*--------------------------------- Standard gmr table*/
 .gmr-table a{
     color: gold;
     font-weight: 800;
@@ -160,6 +164,18 @@ margin-top: 5px;
         object-fit: cover;
         margin-top: 5px;
     }
+
+/*--------------------------------------------------------Log in or registered already?*/
+.already p{
+    margin-top: 5px;
+    font-weight: 600;
+}
+.already a:hover{
+    color: #fafafa;
+}
+.already a{
+    color:gold;
+}
 
 /*--------------------------------------------------------Footer*/    
 #ms3-footer{
