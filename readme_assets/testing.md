@@ -24,7 +24,7 @@ Note: Testing is ongoing with final changes to the appearance of the site. Some 
   - [HTML](#html)
     - [Testing password-protected pages](#testing-password-protected-pages)
     - [Modals](#modals)
-- [Appendix](#appendix)
+    - [HTML Validation Reults as of 3/5/21:](#html-validation-reults-as-of-3521)
 
 
 
@@ -232,7 +232,7 @@ To get around this and validate the required pages, I chose to **View Source** o
 To generate modals for the delete confirmation functionality for a user post or a product (for admin user), a set of modals were generated inside the same jinja for loop as was used to generate rows in the table displaying the posts.
 This worked fine but did not pass the html validation as I could not not place the div element inside the ```<table>``` or ```<tr>```. If I placed the modals inside a ```<td>```, it led to issues with their display. To manage this, a new div was created above the table to house the modals. These are now generated in a separate jinja for loop ut based on the same list as the table rows. The HTML is now valid and the functionality works as expected.
 
-HTML Validation Reults as of 3/5/21:
+#### HTML Validation Reults as of 3/5/21:
 Page | Type of Check | Result
 -----|---------------|-------
 https://ms3-gm-resources.herokuapp.com/ | URL | Document checking completed. No errors or warnings to show.
@@ -242,34 +242,7 @@ http://ms3-gm-resources.herokuapp.com/login | URL | Document checking completed.
 http://ms3-gm-resources.herokuapp.com/contact | URL | Document checking completed. No errors or warnings to show.
 http://ms3-gm-resources.herokuapp.com/search_res | URL | Document checking completed. No errors or warnings to show.
 http://ms3-gm-resources.herokuapp.com/profile/jc_test1 | Text Input | Document checking completed. No errors or warnings to show.
+http://ms3-gm-resources.herokuapp.com/add_record | Text Input | After fixes: Document checking completed. No errors or warnings to show.
+http://ms3-gm-resources.herokuapp.com/products (As logged in admin) | Text Input | Document checking completed. No errors or warnings to show.
+http://ms3-gm-resources.herokuapp.com/show_record/608fccbf5365a8fea1715b2f | URL | After fixes: Document checking completed. No errors or warnings to show.
 
-
-
-
-
-
-## Appendix
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Initial set up followed the process usedin the walkthrough task manager app.
-
-After setting up the Db, the config, getting the MONGO_URI string etc, testing the app raised the following error:
- - insert mongo_not_defined.png
-
- This was caused by a missing constructor method: 
- mongo = PyMongo(app)
-
- Adding this resolved the issue and page loaded correctly showing a test record from the connected db:
- - insert resolved_mongo_not_defined.png
