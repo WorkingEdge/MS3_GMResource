@@ -72,7 +72,6 @@ h2{
     margin-top: 10px;
 }
 .bg-cover {
-        background-attachment: static;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
