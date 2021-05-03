@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="container-fluid">
+<div class="jumbotron bg-cover text-white" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%), url(../static/images/contact_us_tiny.jpg)">
 <div id="contact-form">
     <form id="ms3_registration" method="POST" action="{{ url_for('login') }}">
-        <h3>Log In</h3>
+        <h2 class="text-center">Log In</h2>
         <div class="form-group">
             <label for="username">Username</label>
             <input class="form-control" type="text" id="username" name="username" required /></div>
@@ -11,12 +13,15 @@
         <input class="form-control validate" type="password" id="password" name="password" pattern = "^[a-zA-Z0-9]{5,15}$" minlength="5" 
         maxlength = "15" required />
         <br />
-        <input type="submit" value="Log In" title="Log In" />
+        <input type="submit" value="Log In" title="Log In"/>
         <input type="reset" value="Cancel" title="Cancel">
     </form>
     <div class="row">
+        <div class="col already">
         <p>Not already registered? You can register <a href="{{ url_for('register') }}">here</a>.</p>
     </div>
+    </div>
+ </div>
 </div>
-
+</div>
 {% endblock%}

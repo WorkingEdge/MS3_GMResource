@@ -1,9 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="container-fluid">
+<div class="jumbotron bg-cover text-white" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%), url(../static/images/contact_us_tiny.jpg)">
+
 <div id="register-form">
     <form id="ms3_registration" method="POST" action="{{ url_for('register') }}">
-        <h3>Register</h3>
+        <h2 class="text-center">Register</h2>
         <div class="form-group">
             <label for="username">Username</label>
             <input class="form-control" type="text" id="username" name="username" required /></div>
@@ -18,8 +21,11 @@
         <input type="reset" value="Cancel" title="Cancel">
     </form>
     <div class="row">
+        <div class="col already">
         <p>Already registered? You can log in <a href="{{ url_for('login') }}">here</a>.</p>
     </div>
+    </div>
 </div>
-
+</div>
+</div>
 {% endblock%}
