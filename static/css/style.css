@@ -9,7 +9,7 @@
 /*-------------------------------------------------------- MS3 Seeds Branding*/ 
 .ms3-text{
     font-family: "Goudy Bookletter 1911", sans-serif;
-    font-weight: 600;
+    font-weight: 500;
 }
 /*-------------------------------------------------------- Navbar*/
 .main-head{
@@ -63,6 +63,10 @@ h2{
 }
 .comment-text{
     font-style: italic;
+}
+/*-------------------------------------------------------- Styled p text*/
+.gmr-lead{
+    font-weight: 400;
 }
 
 /*-------------------------------------------------------- Jumbotron*/
@@ -138,6 +142,9 @@ h2{
 }
 .show_record_table_white a:hover{
     color:gold;
+}
+.hr-teal{
+    background-color: teal;
 }
 /*--------------------------------- Standard gmr table*/
 .gmr-table a{
