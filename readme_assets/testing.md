@@ -25,6 +25,7 @@ Note: Testing is ongoing with final changes to the appearance of the site. Some 
     - [Testing password-protected pages](#testing-password-protected-pages)
     - [Modals](#modals)
     - [HTML Validation Reults as of 3/5/21:](#html-validation-reults-as-of-3521)
+    - [Example Testing Process for HTML Validation](#example-testing-process-for-html-validation)
 
 
 
@@ -245,4 +246,34 @@ http://ms3-gm-resources.herokuapp.com/profile/jc_test1 | Text Input | Document c
 http://ms3-gm-resources.herokuapp.com/add_record | Text Input | After fixes: Document checking completed. No errors or warnings to show.
 http://ms3-gm-resources.herokuapp.com/products (As logged in admin) | Text Input | Document checking completed. No errors or warnings to show.
 http://ms3-gm-resources.herokuapp.com/show_record/608fccbf5365a8fea1715b2f | URL | After fixes: Document checking completed. No errors or warnings to show.
+
+
+#### Example Testing Process for HTML Validation
+Logged in? Yes
+
+Page: Edit Post - in this case http://ms3-gm-resources.herokuapp.com/edit_record/608fd31bb78ab696c9c2e78a
+
+View source and check this using text input in the checker.
+
+Results:
+![HTML Validation Errors](../readme_assets/readme_images/example_test_result_html_validation.png)
+
+* Error: Any input descendant of a label element with a for attribute must have an ID value that matches that for attribute. (2)
+  * Straighforward fix to align label and ID values. This oocurs in the radio section of the form and a similar fix was already implemented for the 'Add post' page.
+
+* Attribute type not allowed on element textarea at this point.
+  * Ok - checked this and type is not a valid or required attribute for ```<textarea>```. See [HTML Spec](https://html.spec.whatwg.org/multipage/form-elements.html#the-textarea-element).
+  * Fix: remove the attribute
+
+* The element button must not appear as a descendant of the a element.
+  * Checked this and have it fixed on other pages earlier. The ``` <a> ``` tag cannot contain a button. The fix I have iplemented is to use a Bootstrap class on the href.
+  That involves changing from: ``` <a href="{{ url_for('show_profile', username = session['session_user'])}}">
+          <button type="button" class="btn btn-default">Cancel</button></a> ```
+          To:
+          ``` <a href="{{ url_for('show_profile', username = session['session_user'])}}" 
+              class="btn btn-default">
+              Cancel</a> ```
+
+* The value of the for attribute of the label element must be the ID of a non-hidden form control. (6)
+  * OK this is a straighforward realignment of the label and ID values.
 
