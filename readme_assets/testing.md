@@ -21,6 +21,7 @@ Note: Testing is ongoing with final changes to the appearance of the site. Some 
 - [Tests for Site Owner User Stories](#tests-for-site-owner-user-stories)
     - [When a user adds a post, the app automatically adds the related product info if applicable](#when-a-user-adds-a-post-the-app-automatically-adds-the-related-product-info-if-applicable)
 - [Code Validation](#code-validation)
+  - [Python](#python)
   - [HTML](#html)
     - [Testing password-protected pages](#testing-password-protected-pages)
     - [Modals](#modals)
@@ -216,22 +217,33 @@ Result: ok app performs as expected:
 
 ## Code Validation
 
+### Python
+The Python code in the project was validated using an online pep8 validator: [PEP8 online](http://pep8online.com/).
+The initial test caught a lot of trailing whitespaces and incorrect indents. 
+
+You can check the intial test results here: [Pep8](../readme_assets/code_validation/pep8_check_initial.txt)
+
+These have all been fixed and the code now tests without errors or warnings:
+
+![Pep8 Validation Result](../readme_assets/readme_images/pep8_validation_result.png)
+
 ### HTML
 Most of the HTML testing went smoothly. However, there were a couple of issues that required some work.
 
 #### Testing password-protected pages
 Typically, I used the check by addres option in the NuHTML Checker. However, this does not work with pages that are password-protected - such as a user's profile page when the user is logged in.
 An online search showed this to be the expected behaviour of the checker for security reasons:
-[Related Link 1](https://lists.w3.org/Archives/Public/www-validator/2019Jan/0014.html)
-[Related Link 2](https://lists.w3.org/Archives/Public/www-validator/2019Jan/0015.html)
-[Related Link 3](https://stackoverflow.com/questions/2052580/validate-markup-of-password-protected-sites-with-w3c)
+
+* [Related Link 1](https://lists.w3.org/Archives/Public/www-validator/2019Jan/0014.html)
+* [Related Link 2](https://lists.w3.org/Archives/Public/www-validator/2019Jan/0015.html)
+* [Related Link 3](https://stackoverflow.com/questions/2052580/validate-markup-of-password-protected-sites-with-w3c)
 
 To get around this and validate the required pages, I chose to **View Source** on the page and pasted this into the checker using the text input option. It seems to have worked well as a workaround. The alternative would be to download a local copy othe checker but time didn't allow to follow this course.
 ![Checking Password Protected Pages](../readme_assets/readme_images/url_textinput_pwd_pages.png)
 
 #### Modals
 To generate modals for the delete confirmation functionality for a user post or a product (for admin user), a set of modals were generated inside the same jinja for loop as was used to generate rows in the table displaying the posts.
-This worked fine but did not pass the html validation as I could not not place the div element inside the ```<table>``` or ```<tr>```. If I placed the modals inside a ```<td>```, it led to issues with their display. To manage this, a new div was created above the table to house the modals. These are now generated in a separate jinja for loop ut based on the same list as the table rows. The HTML is now valid and the functionality works as expected.
+This worked fine but did not pass the html validation as I could not not place the div element inside the ```<table>``` or ```<tr>```. If I placed the modals inside a ```<td>```, it led to issues with their display. To manage this, a new div was created above the table to house the modals. These are now generated in a separate jinja for loop but based on the same list as the table rows. The HTML is now valid and the functionality works as expected.
 
 #### HTML Validation Reults as of 3/5/21:
 Page | Type of Check | Result
@@ -249,6 +261,7 @@ http://ms3-gm-resources.herokuapp.com/show_record/608fccbf5365a8fea1715b2f | URL
 http://ms3-gm-resources.herokuapp.com/edit_record/608fd31bb78ab696c9c2e78a | Text Input | See example case below. After fixes: Document checking completed. No errors or warnings to show.
 http://ms3-gm-resources.herokuapp.com/edit_product/60741ece45ff995cf845f6b4 | Text Input | Document checking completed. No errors or warnings to show.
 http://ms3-gm-resources.herokuapp.com/show_product/60741ece45ff995cf845f6b4 | URL | After fix: Document checking completed. No errors or warnings to show.
+http://ms3-gm-resources.herokuapp.com/add_product | Text Input | After fixes: Document checking completed. No errors or warnings to show.
 
 
 
