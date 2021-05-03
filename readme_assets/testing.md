@@ -27,6 +27,8 @@ Note: Testing is ongoing with final changes to the appearance of the site. Some 
     - [Modals](#modals)
     - [HTML Validation Reults as of 3/5/21:](#html-validation-reults-as-of-3521)
 - [Example Testing Process for HTML Validation](#example-testing-process-for-html-validation)
+- [CSS Validation](#css-validation)
+- [JavaScript Validation](#javascript-validation)
 
 
 
@@ -309,3 +311,17 @@ After making the required changes to the file in GitPod, changes are saved, comm
 Result this time is no errors:
 
 ![After Validation Changes - Example Process](../readme_assets/readme_images/after_validation_changes_example.png) 
+
+## CSS Validation
+CSS was validated using the direct input option on the [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/validator).
+As of 3/5/21, no errors found in the CSS.
+
+## JavaScript Validation
+JS is used in the project to handle the email functionality together with eMailJS.
+The code was checked using [Beautify Tools](https://beautifytools.com/javascript-validator.php) and [JSHint](https://jshint.com/).
+The checks return a couple of warnings but these are integral to the instructionsin the eMailJS documentation and are not causing any errors. For example: "'emailjs' is not defined" referring to this code:
+```javascript
+function sendMail(ms3_contact_form){
+    emailjs.send("service_iiut1qe","template_1py6mif",{
+```
+I am satisfied that no errors exist in the code.

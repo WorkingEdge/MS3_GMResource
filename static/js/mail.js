@@ -1,5 +1,8 @@
 /*jshint esversion: 6*/
-//Send email using EmailJS template, report success on console and clear the form.
+// Send email using EmailJS template
+// Report success on console 
+// Clear the form
+// Show confirmation modal
 
 
 function sendMail(ms3_contact_form){
