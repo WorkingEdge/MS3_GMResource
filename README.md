@@ -49,6 +49,7 @@ The Green Manure Resource is an online learning and experience-sharing space for
     - [Issue 3 - Handling Updates](#issue-3---handling-updates)
     - [Issue 4 - Delete Functionality for User Records with Modal Confirmation](#issue-4---delete-functionality-for-user-records-with-modal-confirmation)
     - [Jumbotron Styling](#jumbotron-styling)
+  - [Acknowledgements](#acknowledgements)
 
 # Scenario Outline / Strategy
 Although the practice of restoring land with the use of certain crops is as old as the history of farming, it is a practice around which there is renewed interest, especially in the area of organic or regenerative farming and among small scale producers and homesteaders. The primary purpose of the site is to provide a dedicated online space for interested growers to share thoughts and experiences of using different green manure crops. Growers who have some interesting facts to relate can do so in an informal yet factual way and the information they provide is laid out in a consistent and easy to follow format.
@@ -462,3 +463,9 @@ This was resolved with the help of tutor support and involved putting the modal 
 For jumbotron styling (background image and overlay), code snippet taken from: https://codepen.io/JacobLett/pen/vPQKWd
 
 Additional resources were consulted for more minor issues also, but these are not all included here.
+
+## Acknowledgements
+I would like to acknowledge the following contributions to the project:
+* My mentor Antonio Rodriguez for his guidance
+* Tutor support (Johann and Scott) for their help with resolving an issue with modals (see above)
+* The [MS3 ReadMe](https://github.com/Daisy-McG/Motorbike-Event-Finder) of CI student Daisy McGirr as a model of how to tackle this part of the project
