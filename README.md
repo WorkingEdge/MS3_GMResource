@@ -434,7 +434,8 @@ The above code was embedding the returned data. Not ideal as the products docume
 Therefore, better to have a reference to the ‘product’ document in the products collection.
 
 That is, changing from the code on the left, where the product data is being duplicated unnecessarily, to the code on the right where only the reference to the ObjectId in the products collection is contained in the records collection. This conforms to the schema design whereby data that is accessed together is stored together.
-![Structuring data in MongoDB](../MS3_GMResource/readme_assets/readme_images/reduce_content_embedded.png)
+
+![Structuring data in MongoDB](readme_assets/readme_images/reduce_content_embedded.png)
 
 Useful references for this:
 * http://www.compciv.org/guides/python/fundamentals/dictionaries-overview/#iterating-through-the-values
