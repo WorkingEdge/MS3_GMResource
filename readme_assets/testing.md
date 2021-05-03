@@ -20,6 +20,10 @@ Note: Testing is ongoing with final changes to the appearance of the site. Some 
   - [As an admin user, I can add or edit products](#as-an-admin-user-i-can-add-or-edit-products)
 - [Tests for Site Owner User Stories](#tests-for-site-owner-user-stories)
     - [When a user adds a post, the app automatically adds the related product info if applicable](#when-a-user-adds-a-post-the-app-automatically-adds-the-related-product-info-if-applicable)
+- [Code Validation](#code-validation)
+  - [HTML](#html)
+    - [Testing password-protected pages](#testing-password-protected-pages)
+    - [Modals](#modals)
 - [Appendix](#appendix)
 
 
@@ -208,6 +212,39 @@ Test steps:
 Result: ok app performs as expected:
 
 ![Related Product Catch](../readme_assets/readme_images/test_related_product_catch.png)
+
+## Code Validation
+
+### HTML
+Most of the HTML testing went smoothly. However, there were a couple of issues that required some work.
+
+#### Testing password-protected pages
+Typically, I used the check by addres option in the NuHTML Checker. However, this does not work with pages that are password-protected - such as a user's profile page when the user is logged in.
+An online search showed this to be the expected behaviour of the checker for security reasons:
+[Related Link 1](https://lists.w3.org/Archives/Public/www-validator/2019Jan/0014.html)
+[Related Link 2](https://lists.w3.org/Archives/Public/www-validator/2019Jan/0015.html)
+[Related Link 3](https://stackoverflow.com/questions/2052580/validate-markup-of-password-protected-sites-with-w3c)
+
+To get around this and validate the required pages, I chose to **View Source** on the page and pasted this into the checker using the text input option. It seems to have worked well as a workaround. The alternative would be to download a local copy othe checker but time didn't allow to follow this course.
+![Checking Password Protected Pages](../readme_assets/readme_images/url_textinput_pwd_pages.png)
+
+#### Modals
+To generate modals for the delete confirmation functionality for a user post or a product (for admin user), a set of modals were generated inside the same jinja for loop as was used to generate rows in the table displaying the posts.
+This worked fine but did not pass the html validation as I could not not place the div element inside the ```<table>``` or ```<tr>```. If I placed the modals inside a ```<td>```, it led to issues with their display. To manage this, a new div was created above the table to house the modals. These are now generated in a separate jinja for loop ut based on the same list as the table rows. The HTML is now valid and the functionality works as expected.
+
+HTML Validation Reults as of 3/5/21:
+Page | Type of Check | Result
+-----|---------------|-------
+https://ms3-gm-resources.herokuapp.com/ | URL | Document checking completed. No errors or warnings to show.
+http://ms3-gm-resources.herokuapp.com/products | URL | Document checking completed. No errors or warnings to show.
+http://ms3-gm-resources.herokuapp.com/register | URL | Document checking completed. No errors or warnings to show.
+http://ms3-gm-resources.herokuapp.com/login | URL | Document checking completed. No errors or warnings to show.
+http://ms3-gm-resources.herokuapp.com/contact | URL | Document checking completed. No errors or warnings to show.
+http://ms3-gm-resources.herokuapp.com/search_res | URL | Document checking completed. No errors or warnings to show.
+http://ms3-gm-resources.herokuapp.com/profile/jc_test1 | Text Input | Document checking completed. No errors or warnings to show.
+
+
+
 
 
 

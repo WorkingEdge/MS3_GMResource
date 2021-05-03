@@ -32,7 +32,7 @@ The Green Manure Resource is an online learning and experience-sharing space for
     - [UI-Content Sources](#ui-content-sources)
     - [IDE, Version Control, Storage, and Deployment](#ide-version-control-storage-and-deployment)
 - [Testing](#testing)
-  - [Specific Test Cases](#specific-test-cases)
+  - [Specific Test Cases and Code Validation](#specific-test-cases-and-code-validation)
   - [General UX Testing](#general-ux-testing)
   - [Smartbear Cross Browser Testing](#smartbear-cross-browser-testing)
 - [Code Validation](#code-validation)
@@ -221,9 +221,9 @@ For the next iteration, the following features are on the wish-list:
 [Heroku](https://www.heroku.com/home) was used for deploying the live site and the configuration ensures autonatic deployment from the GitHub repo when new code is pushed.
 
 # Testing
-## Specific Test Cases
+## Specific Test Cases and Code Validation
 
-For individual test case details see [Testing](readme_assets/testing.md).
+For individual test case details and validation results see [Testing](readme_assets/testing.md).
 
 ## General UX Testing
 In addition to the specific test cases above, cross-browser and multi-device testing was carried out by myself and some family members. The purpose of these was to find any issues with display or functionality on mobile, tablet or laptop devices using a variety or browsers. 
@@ -262,6 +262,7 @@ Initial results showed lots of minor errors around trailing whitespaces and long
 
 ### HTML
 HTML was checked using the address/URI option on the [W3C HTML Validator](https://validator.w3.org/#validate_by_uri).
+Some issues needed to be resolved - see details in Validating HTML.
 
 
 # Known Issues 

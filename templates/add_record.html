@@ -54,21 +54,24 @@
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
           <p>Season: <span><label class="checkbox-inline" for="summer"
-            ><input type="checkbox" value="Summer" name="season" /> Summer</label
+            ><input id="summer" type="checkbox" value="Summer" name="season" /> Summer</label
           >
           <label class="checkbox-inline" for="winter"
-            ><input type="checkbox" value="Winter" name="season" /> Winter</label
+            ><input id="winter" type="checkbox" value="Winter" name="season" /> Winter</label
           ></span></p>
           
-          <p>N-Fixing: <span><input type="radio" id="n-fixing_y" name="n_fixing" value="yes">
-            <label class="radio-inline" for="yes">Yes</label>
-            <input type="radio" id="n_fixing_n" name="n_fixing" value="no">
-            <label class="radio-inline" for="no">No</label></span></p>
+          <p>N-Fixing: <span>
+            <input type="radio" id="n-fixing_y" name="n_fixing" value="yes">
+            <label class="radio-inline" for="n-fixing_y">Yes</label>
+            <input type="radio" id="n-fixing_n" name="n_fixing" value="no">
+            <label class="radio-inline" for="n-fixing_n">No</label>
+          </span>
+          </p>
           
           <p>Pollinator-friendly: <span><input type="radio" id="pollinator_y" name="pollinator" value="yes">
-            <label class="radio-inline" for="yes">Yes</label>
+            <label class="radio-inline" for="pollinator_y">Yes</label>
             <input type="radio" id="pollinator_n" name="pollinator" value="no">
-            <label class="radio-inline" for="no">No</label></span></p>
+            <label class="radio-inline" for="pollinator_n">No</label></span></p>
             
         </div>
       </div>
@@ -79,7 +82,6 @@
         >
         <div class="col-sm-10">
           <textarea
-            type="text"
             class="form-control"
             rows="5"
             id="experience"
@@ -119,12 +121,10 @@
 
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-          <button type="submit" class="btn btn-default">Submit</button>
           <a
             href="{{ url_for('show_profile', username = session['session_user'])}}"
-          >
-            <button type="button" class="btn btn-default">Cancel</button></a
-          >
+            class="btn btn-default">Submit</a>
+            <button type="button" class="btn btn-default">Cancel</button>
         </div>
       </div>
     </div>
