@@ -150,6 +150,7 @@ h2{
     color:#fafafa;
 }
 .gmr-table {
+    width:100%;
     background-color: teal;
     color: #fafafa;
     font-family: "Raleway", sans-serif;
