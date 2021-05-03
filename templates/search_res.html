@@ -2,10 +2,11 @@
 
 {% block content %}
 <br>
-{% if prod_results %}
-
 <h5>Search Results in Products</h5>
-<h6>Showing {{ showing_products }} of {{ no_of_products }}</h6>
+{% if prod_results %}
+<div class="search-results">
+
+<h6>Showing {{ showing_products }} of {{ showing_products }}</h6>
 
   {% for prod_result in prod_results %}
   <div class="card" >
@@ -15,12 +16,15 @@
       <a href="{{ url_for('show_product', product_id = prod_result._id) }}" class="card-link">Go to product</a>
     </div>
   </div>
-  
   {% endfor %}
-
-{% endif %}  
+</div>
+{% else %}
+<div>Sorry, no results found in Products. Pease try another search.</div>
+{% endif %}
+<br>
 <h5>Search Results in Posts</h5>
 {% if results %}
+<div class="search-results">
 <h6>Showing {{ showing_posts }} of {{ no_of_posts }}</h6>
 {% for result in results %}
 <div class="card" >
@@ -31,9 +35,11 @@
   </div>
 </div>
 {% endfor %}
-  
+
 {% else %}
-Sorry, no results found in Posts. Pease try another search.
+
+<div>Sorry, no results found in Posts. Pease try another search.</div>
+
 {% endif %}
 
 
