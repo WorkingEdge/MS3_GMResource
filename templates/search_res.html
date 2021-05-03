@@ -34,8 +34,9 @@
     <a href="{{ url_for('show_record', record_id = result._id) }}" class="card-link">Go to post</a>
   </div>
 </div>
-{% endfor %}
 
+{% endfor %}
+</div>
 {% else %}
 
 <div>Sorry, no results found in Posts. Pease try another search.</div>
