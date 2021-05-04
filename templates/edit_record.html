@@ -1,121 +1,319 @@
-{% extends "base.html" %}
-
-{% block content %}
-
+{% extends "base.html" %} {% block content %}
 
 <div class="container-fluid">
-    
-    <div class="jumbotron bg-cover text-white" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%), url(../static/images/jumbo_3_tiny.jpg)"><!-- Source of opacity styling for bg image: https://codepen.io/JacobLett/pen/vPQKWd -->
-      <h2 class="text-center">Edit Record</h2>
-    <form class="form-horizontal" method="POST" action="{{ url_for('edit_record', record_id = record._id) }}" >
-      
+  <div
+    class="jumbotron bg-cover text-white"
+    style="
+      background-image: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.6) 0%,
+          rgba(0, 0, 0, 0.6) 100%
+        ),
+        url(../static/images/jumbo_3_tiny.jpg);
+    "
+  >
+    <!-- Source of opacity styling for bg image: https://codepen.io/JacobLett/pen/vPQKWd -->
+    <h2 class="text-center">Edit Record</h2>
+    <form
+      class="form-horizontal"
+      method="POST"
+      action="{{ url_for('edit_record', record_id = record._id) }}"
+    >
       <div class="form-group">
         <label class="control-label col-sm-2" for="record_title">Title</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="record_title" placeholder="Post title" name="record_title" value="{{- record.title -}}">
+          <input
+            type="text"
+            class="form-control"
+            id="record_title"
+            placeholder="Post title"
+            name="record_title"
+            value="{{- record.title -}}"
+          />
         </div>
-      
+
         <div class="form-group">
-        <label class="control-label col-sm-2" for="common_name">Common Name</label>
+          <label class="control-label col-sm-2" for="common_name"
+            >Common Name</label
+          >
+          <div class="col-sm-10">
+            <input
+              type="text"
+              class="form-control"
+              id="common_name"
+              placeholder="Common name"
+              name="common_name"
+              value="{{- record.common_name -}}"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="botanical_name"
+            >Botanical Name</label
+          >
+          <div class="col-sm-10">
+            <input
+              type="text"
+              class="form-control"
+              id="botanical_name"
+              placeholder="Botanical name"
+              name="botanical_name"
+              value="{{- record.botanical_name -}}"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <!-- Jinja control flow for prechecking season checkboxes on edit view -->
+            {% if "Summer" in record.season %}
+            <p>
+              Season:
+              <span
+                ><label class="checkbox-inline" for="summer"
+                  ><input
+                    id="summer"
+                    type="checkbox"
+                    value="Summer"
+                    name="season"
+                    checked
+                  />
+                  Summer</label
+                >
+                <label class="checkbox-inline" for="winter"
+                  ><input
+                    id="winter"
+                    type="checkbox"
+                    value="Winter"
+                    name="season"
+                  />
+                  Winter</label
+                ></span
+              >
+            </p>
+            {% endif %} {% if "Winter" in record.season %}
+            <p>
+              Season:
+              <span
+                ><label class="checkbox-inline" for="summer"
+                  ><input
+                    id="summer"
+                    type="checkbox"
+                    value="Summer"
+                    name="season"
+                  />
+                  Summer</label
+                >
+                <label class="checkbox-inline" for="winter"
+                  ><input
+                    id="winter"
+                    type="checkbox"
+                    value="Winter"
+                    name="season"
+                    checked
+                  />
+                  Winter</label
+                ></span
+              >
+            </p>
+            {% endif %} {% if record.season == null %}
+            <p>
+              Season:
+              <span
+                ><label class="checkbox-inline" for="summer"
+                  ><input
+                    id="summer"
+                    type="checkbox"
+                    value="Summer"
+                    name="season"
+                  />
+                  Summer</label
+                >
+                <label class="checkbox-inline" for="winter"
+                  ><input
+                    id="winter"
+                    type="checkbox"
+                    value="Winter"
+                    name="season"
+                    checked
+                  />
+                  Winter</label
+                ></span
+              >
+            </p>
+            {% endif %}
+            <!-- Jinja control flow for prechecking n_fixing checkboxes on edit view -->
+            {% if record.n_fixing == "yes" %}
+            <p>
+              N-Fixing:
+              <span
+                ><input
+                  type="radio"
+                  id="n-fixing_y"
+                  name="n_fixing"
+                  value="yes"
+                  checked
+                />
+                <label class="radio-inline" for="n-fixing_y">Yes</label>
+                <input
+                  type="radio"
+                  id="n_fixing_n"
+                  name="n_fixing"
+                  value="no"
+                />
+                <label class="radio-inline" for="n_fixing_n">No</label></span
+              >
+            </p>
+            {% endif %} {% if record.n_fixing == "no" %}
+            <p>
+              N-Fixing:
+              <span
+                ><input
+                  type="radio"
+                  id="n-fixing_y"
+                  name="n_fixing"
+                  value="yes"
+                />
+                <label class="radio-inline" for="n-fixing_y">Yes</label>
+                <input
+                  type="radio"
+                  id="n_fixing_n"
+                  name="n_fixing"
+                  value="no"
+                  checked
+                />
+                <label class="radio-inline" for="n_fixing_n">No</label></span
+              >
+            </p>
+            {% endif %} {% if record.n_fixing == null %}
+            <p>
+              N-Fixing:
+              <span
+                ><input
+                  type="radio"
+                  id="n-fixing_y"
+                  name="n_fixing"
+                  value="yes"
+                />
+                <label class="radio-inline" for="n-fixing_y">Yes</label>
+                <input
+                  type="radio"
+                  id="n_fixing_n"
+                  name="n_fixing"
+                  value="no"
+                />
+                <label class="radio-inline" for="n_fixing_n">No</label></span
+              >
+            </p>
+            {% endif %}
+            <!-- Jinja control flow for prechecking pollinator friendly checkboxes on edit view -->
+            {% if record.pollinator_friendly == "yes" %}
+            <p>
+              Pollinator-friendly:
+              <span
+                ><input
+                  type="radio"
+                  id="pollinator_y"
+                  name="pollinator"
+                  value="yes"
+                  checked
+                />
+                <label class="radio-inline" for="pollinator_y">Yes</label>
+                <input
+                  type="radio"
+                  id="pollinator_n"
+                  name="pollinator"
+                  value="no"
+                />
+                <label class="radio-inline" for="pollinator_n">No</label></span
+              >
+            </p>
+            {% endif %} {% if record.pollinator_friendly == "no" %}
+            <p>
+              Pollinator-friendly:
+              <span
+                ><input
+                  type="radio"
+                  id="pollinator_y"
+                  name="pollinator"
+                  value="yes"
+                />
+                <label class="radio-inline" for="pollinator_y">Yes</label>
+                <input
+                  type="radio"
+                  id="pollinator_n"
+                  name="pollinator"
+                  value="no"
+                  checked
+                />
+                <label class="radio-inline" for="pollinator_n">No</label></span
+              >
+            </p>
+            {% endif %} {% if record.pollinator_friendly == null %}
+            <p>
+              Pollinator-friendly:
+              <span
+                ><input
+                  type="radio"
+                  id="pollinator_y"
+                  name="pollinator"
+                  value="yes"
+                />
+                <label class="radio-inline" for="pollinator_y">Yes</label>
+                <input
+                  type="radio"
+                  id="pollinator_n"
+                  name="pollinator"
+                  value="no"
+                />
+                <label class="radio-inline" for="pollinator_n">No</label></span
+              >
+            </p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="experience"
+          >Experience</label
+        >
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="common_name" placeholder="Common name" name="common_name" value="{{- record.common_name -}}">
-        </div>
-      </div>
-      
-      <div class="form-group">
-        <label class="control-label col-sm-2" for="botanical_name">Botanical Name</label>
-        <div class="col-sm-10">          
-          <input type="text" class="form-control" id="botanical_name" placeholder="Botanical name" name="botanical_name" value="{{- record.botanical_name -}}">
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-          <!-- Jinja control flow for prechecking season checkboxes on edit view -->
-          {% if "Summer" in record.season %}
-          <p>Season: <span><label class="checkbox-inline" for="summer"
-            ><input id="summer" type="checkbox" value="Summer" name="season" checked/> Summer</label
+          <textarea
+            class="form-control"
+            rows="5"
+            id="experience"
+            placeholder="Your experience with this plant"
+            name="experience"
           >
-          <label class="checkbox-inline" for="winter"
-            ><input id="winter" type="checkbox" value="Winter" name="season" /> Winter</label
-          ></span></p>
-          {% endif %}
-          {% if "Winter" in record.season %}
-          <p>Season: <span><label class="checkbox-inline" for="summer"
-            ><input id="summer" type="checkbox" value="Summer" name="season" /> Summer</label
+{{- record.experience -}}</textarea
           >
-          <label class="checkbox-inline" for="winter"
-            ><input id="winter" type="checkbox" value="Winter" name="season" checked/> Winter</label
-          ></span></p>
-          {% endif %}
-          {% if record.season == null %}
-          <p>Season: <span><label class="checkbox-inline" for="summer"
-            ><input id="summer" type="checkbox" value="Summer" name="season" /> Summer</label
-          >
-          <label class="checkbox-inline" for="winter"
-            ><input id="winter" type="checkbox" value="Winter" name="season" checked/> Winter</label
-          ></span></p>
-          {% endif %}
-          <!-- Jinja control flow for prechecking n_fixing checkboxes on edit view -->
-          {% if record.n_fixing == "yes" %}
-          <p>N-Fixing: <span><input type="radio" id="n-fixing_y" name="n_fixing" value="yes" checked>
-            <label class="radio-inline" for="n-fixing_y">Yes</label>
-            <input type="radio" id="n_fixing_n" name="n_fixing" value="no">
-            <label class="radio-inline" for="n_fixing_n">No</label></span></p>
-          {% endif %}
-          {% if record.n_fixing == "no" %}
-          <p>N-Fixing: <span><input type="radio" id="n-fixing_y" name="n_fixing" value="yes">
-            <label class="radio-inline" for="n-fixing_y">Yes</label>
-            <input type="radio" id="n_fixing_n" name="n_fixing" value="no" checked>
-            <label class="radio-inline" for="n_fixing_n">No</label></span></p>
-          {% endif %}
-          {% if record.n_fixing == null %}
-          <p>N-Fixing: <span><input type="radio" id="n-fixing_y" name="n_fixing" value="yes">
-            <label class="radio-inline" for="n-fixing_y">Yes</label>
-            <input type="radio" id="n_fixing_n" name="n_fixing" value="no">
-            <label class="radio-inline" for="n_fixing_n">No</label></span></p>
-          {% endif %}
-          <!-- Jinja control flow for prechecking pollinator friendly checkboxes on edit view -->
-          {% if record.pollinator_friendly == "yes" %}
-          <p>Pollinator-friendly: <span><input type="radio" id="pollinator_y" name="pollinator" value="yes" checked>
-            <label class="radio-inline" for="pollinator_y">Yes</label>
-            <input type="radio" id="pollinator_n" name="pollinator" value="no">
-            <label class="radio-inline" for="pollinator_n">No</label></span></p>
-          {% endif %}
-          {% if record.pollinator_friendly == "no" %}
-          <p>Pollinator-friendly: <span><input type="radio" id="pollinator_y" name="pollinator" value="yes">
-            <label class="radio-inline" for="pollinator_y">Yes</label>
-            <input type="radio" id="pollinator_n" name="pollinator" value="no"  checked>
-            <label class="radio-inline" for="pollinator_n">No</label></span></p>
-          {% endif %}
-          {% if record.pollinator_friendly == null %}
-          <p>Pollinator-friendly: <span><input type="radio" id="pollinator_y" name="pollinator" value="yes">
-            <label class="radio-inline" for="pollinator_y">Yes</label>
-            <input type="radio" id="pollinator_n" name="pollinator" value="no">
-            <label class="radio-inline" for="pollinator_n">No</label></span></p>
-          {% endif %}  
-        </div>
-      </div>
-      </div>
-      
-      <div class="form-group">
-        <label class="control-label col-sm-2" for="experience">Experience</label>
-        <div class="col-sm-10">
-          <textarea class="form-control" rows="5" id="experience" placeholder="Your experience with this plant" name="experience">{{- record.experience -}}</textarea>
         </div>
       </div>
 
       <div class="form-group">
         <label class="control-label col-sm-2" for="image_url">Image</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="image_url" placeholder="Image url" value="{{ record.image_link }}" name="image_url">
+          <input
+            type="text"
+            class="form-control"
+            id="image_url"
+            placeholder="Image url"
+            value="{{ record.image_link }}"
+            name="image_url"
+          />
         </div>
       </div>
-       
-      <div class="form-group">        
+
+      <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
           <button type="submit" class="btn btn-secondary btn-teal">Edit</button>
-          <a href="{{ url_for('show_profile', username = session['session_user'])}}" class="btn btn-secondary">
-          Cancel</a>
+          <a
+            href="{{ url_for('show_profile', username = session['session_user'])}}"
+            class="btn btn-secondary"
+          >
+            Cancel</a
+          >
         </div>
       </div>
     </form>

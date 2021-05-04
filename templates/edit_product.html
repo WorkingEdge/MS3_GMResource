@@ -1,117 +1,190 @@
-{% extends "base.html" %}
-
-{% block content %}
+{% extends "base.html" %} {% block content %}
 <div class="container-fluid">
-  <div class="jumbotron bg-cover text-white" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%), url(../static/images/jumbo_3_tiny.jpg)"> <!-- Source of opacity styling for bg image: https://codepen.io/JacobLett/pen/vPQKWd -->
+  <div
+    class="jumbotron bg-cover text-white"
+    style="
+      background-image: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.6) 0%,
+          rgba(0, 0, 0, 0.6) 100%
+        ),
+        url(../static/images/jumbo_3_tiny.jpg);
+    "
+  >
+    <!-- Source of opacity styling for bg image: https://codepen.io/JacobLett/pen/vPQKWd -->
     <h2 class="text-center">Update Product</h2>
-    
-    <form class="form-horizontal" method="POST" action="{{ url_for('edit_product', product_id = product._id) }}" >
-      
+
+    <form
+      class="form-horizontal"
+      method="POST"
+      action="{{ url_for('edit_product', product_id = product._id) }}"
+    >
       <div class="form-group">
-        
-        <label class="control-label col-sm-2" for="product_name">Product Name</label>
+        <label class="control-label col-sm-2" for="product_name"
+          >Product Name</label
+        >
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="product_name" placeholder="Product name" value="{{- product.prod_name -}}" name="product_name">
+          <input
+            type="text"
+            class="form-control"
+            id="product_name"
+            placeholder="Product name"
+            value="{{- product.prod_name -}}"
+            name="product_name"
+          />
         </div>
       </div>
       <div class="form-group">
-        <label class="control-label col-sm-2" for="leading_info">Headline Info</label>
+        <label class="control-label col-sm-2" for="leading_info"
+          >Headline Info</label
+        >
         <div class="col-sm-10">
-          <textarea type="text" class="form-control" rows="5" id="leading_info" placeholder="1 or 2 sentences as a leader." name="leading_info" required>
+          <textarea
+            type="text"
+            class="form-control"
+            rows="5"
+            id="leading_info"
+            placeholder="1 or 2 sentences as a leader."
+            name="leading_info"
+            required
+          >
             {{- product.leading_info -}}
           </textarea>
         </div>
       </div>
-      
-        <div class="form-group">
-        <label class="control-label col-sm-2" for="common_names">Common Names</label>
+
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="common_names"
+          >Common Names</label
+        >
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="common_names" placeholder="Common names" name="common_names" value="{% for elem in product.contains_common %}
+          <input
+            type="text"
+            class="form-control"
+            id="common_names"
+            placeholder="Common names"
+            name="common_names"
+            value="{% for elem in product.contains_common %}
           {{- elem | title -}}
           {{- ', ' if not loop.last else '' -}} 
-          {% endfor %}">
+          {% endfor %}"
+          />
         </div>
       </div>
 
       <div class="form-group">
-        <label class="control-label col-sm-2" for="botanical_names" value="{{- product.botanical_names -}}">Botanical Names (Optional)</label>
-        <div class="col-sm-10">          
-          <input type="text" class="form-control" id="botanical_names" placeholder="Botanical names" name="botanical_names">
+        <label
+          class="control-label col-sm-2"
+          for="botanical_names"
+          value="{{- product.botanical_names -}}"
+          >Botanical Names (Optional)</label
+        >
+        <div class="col-sm-10">
+          <input
+            type="text"
+            class="form-control"
+            id="botanical_names"
+            placeholder="Botanical names"
+            name="botanical_names"
+          />
         </div>
       </div>
-      
-      <div class="form-group">        
-        <div class="col-sm-offset-2 col-sm-10">
-        <label class="checkbox-inline" for="summer">
-            {% if product.summer == "yes" %}
-            <input type="checkbox" value="yes" name="summer" checked>
-            {% else %}
-            <input type="checkbox" value="yes" name="summer">
-            {% endif %}
-            Summer</label>
 
-        <label class="checkbox-inline" for="winter">
-            {% if product.winter == "yes" %}
-            <input type="checkbox" value="yes" name="winter" checked>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <label class="checkbox-inline" for="summer">
+            {% if product.summer == "yes" %}
+            <input type="checkbox" value="yes" name="summer" checked />
             {% else %}
-            <input type="checkbox" value="yes" name="winter">
-            {% endif %}
-            Winter</label> 
-      
-      
-  <div class="checkbox">
-    <label for="n_fixing">
-    {% if product.n_fixing == "yes" %}    
-    <input type="checkbox" value="yes" name="n_fixing" checked>
-    {% else %}
-    <input type="checkbox" value="yes" name="n_fixing">
-    {% endif %}
-    N-fixing</label>
-  </div>
-  
-  <div class="checkbox">
-    <label for="pollinator_f">
-        {% if product.pollinator == "yes" %}
-        <input type="checkbox" value="yes" name="pollinator_f" checked>
-        {% else %}
-        <input type="checkbox" value="yes" name="pollinator_f">
-        {% endif %}
-        Pollinator-friendly</label>
-  </div>
+            <input type="checkbox" value="yes" name="summer" />
+            {% endif %} Summer</label
+          >
+
+          <label class="checkbox-inline" for="winter">
+            {% if product.winter == "yes" %}
+            <input type="checkbox" value="yes" name="winter" checked />
+            {% else %}
+            <input type="checkbox" value="yes" name="winter" />
+            {% endif %} Winter</label
+          >
+
+          <div class="checkbox">
+            <label for="n_fixing">
+              {% if product.n_fixing == "yes" %}
+              <input type="checkbox" value="yes" name="n_fixing" checked />
+              {% else %}
+              <input type="checkbox" value="yes" name="n_fixing" />
+              {% endif %} N-fixing</label
+            >
+          </div>
+
+          <div class="checkbox">
+            <label for="pollinator_f">
+              {% if product.pollinator == "yes" %}
+              <input type="checkbox" value="yes" name="pollinator_f" checked />
+              {% else %}
+              <input type="checkbox" value="yes" name="pollinator_f" />
+              {% endif %} Pollinator-friendly</label
+            >
+          </div>
         </div>
       </div>
-      
-    <div class="form-group">
+
+      <div class="form-group">
         <label class="control-label col-sm-2" for="experience">Notes</label>
         <div class="col-sm-10">
-          <textarea type="text" class="form-control" rows="5" id="prod_notes" placeholder="Product notes" name="prod_notes">{{- product.prod_notes -}}</textarea>
+          <textarea
+            type="text"
+            class="form-control"
+            rows="5"
+            id="prod_notes"
+            placeholder="Product notes"
+            name="prod_notes"
+          >
+{{- product.prod_notes -}}</textarea
+          >
         </div>
       </div>
 
       <div class="form-group">
         <label class="control-label col-sm-2" for="price">Price</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="prod_price" placeholder="Price" name="prod_price" value = "{{- product.prod_price -}}">
+          <input
+            type="text"
+            class="form-control"
+            id="prod_price"
+            placeholder="Price"
+            name="prod_price"
+            value="{{- product.prod_price -}}"
+          />
         </div>
       </div>
-      
-       
+
       <div class="form-group">
         <label class="control-label col-sm-2" for="image_url">Image</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="image_url" placeholder="Image URL" name="image_url" value="{{- product.image_link -}}">
+          <input
+            type="text"
+            class="form-control"
+            id="image_url"
+            placeholder="Image URL"
+            name="image_url"
+            value="{{- product.image_link -}}"
+          />
         </div>
       </div>
-      <div class="form-group">        
+      <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-          <button type="submit" class="btn btn-secondary btn-teal">Submit</button>
+          <button type="submit" class="btn btn-secondary btn-teal">
+            Submit
+          </button>
           <a href="{{ url_for('show_products')}}">
-            <button type="button" class="btn btn-secondary">Cancel</button></a>
-          
+            <button type="button" class="btn btn-secondary">Cancel</button></a
+          >
         </div>
       </div>
     </form>
   </div>
-  </div>
+</div>
 
 {% endblock%}

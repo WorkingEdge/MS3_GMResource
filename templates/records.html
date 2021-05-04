@@ -1,41 +1,81 @@
-{% extends "base.html" %}
-
-{% block content %}
-<div class="jumbotron bg-cover text-white" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%), url(../static/images/jumbo_3_tiny.jpg)"><!-- Source of opacity styling for bg image: https://codepen.io/JacobLett/pen/vPQKWd -->
-    <h1 class="jumbo-header-neutral">What are green manures?</h1>
-    <p class="lead">Green manures are plant species grown before, after, or between cash crops for the benefits they bring in relation to soil fertility, pest and weed suppression, biodiverstiy, and soil health. They can be an important part of land management for horticultural enterprises and farms, particularly in an organic context. Green manures can be grown as a single species or as a multi-species mix.</p>
-    <hr class="my-4">
-    <p class="jumbotron-para-reg">There are many different species and species mixes that are considered green manures or cover crops and each one has a particular application and is suited for different conditions. Some green manures, like clover, fix nitrogen from the air and reduce the need for the application of synthetic fertilizer. Others may be beneficial for pollinating insects or for soil conditioning.</p>
-    <h3 class="jumbo-header-neutral">About the site</h3>
-<div class="row mb-5">
+{% extends "base.html" %} {% block content %}
+<div
+  class="jumbotron bg-cover text-white"
+  style="
+    background-image: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.6) 0%,
+        rgba(0, 0, 0, 0.6) 100%
+      ),
+      url(../static/images/jumbo_3_tiny.jpg);
+  "
+>
+  <!-- Source of opacity styling for bg image: https://codepen.io/JacobLett/pen/vPQKWd -->
+  <h1 class="jumbo-header-neutral">What are green manures?</h1>
+  <p class="lead">
+    Green manures are plant species grown before, after, or between cash crops
+    for the benefits they bring in relation to soil fertility, pest and weed
+    suppression, biodiverstiy, and soil health. They can be an important part of
+    land management for horticultural enterprises and farms, particularly in an
+    organic context. Green manures can be grown as a single species or as a
+    multi-species mix.
+  </p>
+  <hr class="my-4" />
+  <p class="jumbotron-para-reg">
+    There are many different species and species mixes that are considered green
+    manures or cover crops and each one has a particular application and is
+    suited for different conditions. Some green manures, like clover, fix
+    nitrogen from the air and reduce the need for the application of synthetic
+    fertilizer. Others may be beneficial for pollinating insects or for soil
+    conditioning.
+  </p>
+  <h3 class="jumbo-header-neutral">About the site</h3>
+  <div class="row mb-5">
     <div class="col">
-    <p class="jumbotron-para-reg">
-        The purpose of the site is to be a repository of information about green manures. We welcome growers of all levels of experience to share their experiences about different species and growing techniques and to learn from each other. The site is sponsored by <span class="ms3-text">MS3 Seeds</span> and we take the ooportunity that gives us to present new information about seed mixes available to buy from <span class="ms3-text">MS3 Seeds</span>. There is no requirement to become a customer of <span class="ms3-text">MS3 Seeds</span> to use the site. Welcome!
-    </p>
-    </div>
-</div>
-    </div>
-<div class="container">
-    <div class="cards-header"><h3>Latest Posts</h3></div>
-<div class="row">
-    {% for record in records %}
-    <div class="card col-md-4">
-        {% if record.image_link %}
-    <img src="{{ record.image_link }}" class="card-img-top latest-post-image mt-0" alt="Image for the green manure that is the topic of this post.">
-        {% else %}
-        <img src="../static/images/jumbo_2_tiny.jpg" class="card-img-top latest-post-image mt-0" alt="Placeholder image for posts without a dedicated image.">
-        {% endif %}    
-    <div class="card-body">
-      <h5 class="card-title">{{record.title}}</h5>
-      <p class="card-text">About: {{record.common_name}}</p>
-      <p class="card-text">Contrubuted by user: {{record.added_by}}</p>
-      <a href="{{ url_for('show_record', record_id = record._id) }}" class="btn btn-info stretched-link">Details</a>
+      <p class="jumbotron-para-reg">
+        The purpose of the site is to be a repository of information about green
+        manures. We welcome growers of all levels of experience to share their
+        experiences about different species and growing techniques and to learn
+        from each other. The site is sponsored by
+        <span class="ms3-text">MS3 Seeds</span> and we take the ooportunity that
+        gives us to present new information about seed mixes available to buy
+        from <span class="ms3-text">MS3 Seeds</span>. There is no requirement to
+        become a customer of <span class="ms3-text">MS3 Seeds</span> to use the
+        site. Welcome!
+      </p>
     </div>
   </div>
-  {% endfor %}
 </div>
+<div class="container">
+  <div class="cards-header"><h3>Latest Posts</h3></div>
+  <div class="row">
+    {% for record in records %}
+    <div class="card col-md-4">
+      {% if record.image_link %}
+      <img
+        src="{{ record.image_link }}"
+        class="card-img-top latest-post-image mt-0"
+        alt="Image for the green manure that is the topic of this post."
+      />
+      {% else %}
+      <img
+        src="../static/images/jumbo_2_tiny.jpg"
+        class="card-img-top latest-post-image mt-0"
+        alt="Placeholder image for posts without a dedicated image."
+      />
+      {% endif %}
+      <div class="card-body">
+        <h5 class="card-title">{{record.title}}</h5>
+        <p class="card-text">About: {{record.common_name}}</p>
+        <p class="card-text">Contrubuted by user: {{record.added_by}}</p>
+        <a
+          href="{{ url_for('show_record', record_id = record._id) }}"
+          class="btn btn-info stretched-link"
+          >Details</a
+        >
+      </div>
+    </div>
+    {% endfor %}
+  </div>
 </div>
-
-
 {% endblock%}
-

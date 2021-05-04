@@ -1,16 +1,16 @@
 {% extends "base.html" %} {% block content %}
 <div class="container-fluid">
-  
   <h2 class="text-center">New Product</h2>
 
   <form
     class="form-horizontal"
     method="POST"
-    action="{{ url_for('add_product') }}">
-
+    action="{{ url_for('add_product') }}"
+  >
     <div class="form-group">
       <label class="control-label col-sm-2" for="product_name"
-        >Product Name</label>
+        >Product Name</label
+      >
       <div class="col-sm-10">
         <input
           type="text"
@@ -18,12 +18,14 @@
           id="product_name"
           placeholder="Product name"
           name="product_name"
-          required/>
+          required
+        />
       </div>
     </div>
     <div class="form-group">
       <label class="control-label col-sm-2" for="leading_info"
-        >Headline Info</label>
+        >Headline Info</label
+      >
       <div class="col-sm-10">
         <textarea
           class="form-control"
@@ -37,7 +39,8 @@
     </div>
     <div class="form-group">
       <label class="control-label col-sm-2" for="common_names"
-        >Common Names</label>
+        >Common Names</label
+      >
       <div class="col-sm-10">
         <input
           type="text"
@@ -45,40 +48,52 @@
           id="common_names"
           placeholder="Common names"
           name="common_names"
-          required/>
+          required
+        />
       </div>
     </div>
 
     <div class="form-group">
       <label class="control-label col-sm-2" for="botanical_names"
-        >Botanical Names</label>
+        >Botanical Names</label
+      >
       <div class="col-sm-10">
         <input
           type="text"
           class="form-control"
           id="botanical_names"
           placeholder="Botanical names"
-          name="botanical_names"/>
+          name="botanical_names"
+        />
       </div>
     </div>
 
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
-
         <label class="checkbox-inline" for="summer"
-          ><input id="summer" type="checkbox" value="yes" name="summer" /> Summer</label>
+          ><input id="summer" type="checkbox" value="yes" name="summer" />
+          Summer</label
+        >
         <label class="checkbox-inline" for="winter"
-          ><input id="winter" type="checkbox" value="yes" name="winter" /> Winter</label>
+          ><input id="winter" type="checkbox" value="yes" name="winter" />
+          Winter</label
+        >
 
         <div class="checkbox">
           <label for="n_fixing"
             ><input id="n_fixing" type="checkbox" value="yes" name="n_fixing" />
-            N-fixing</label>
+            N-fixing</label
+          >
         </div>
 
         <div class="checkbox">
           <label for="pollinator_f"
-            ><input id="pollinator_f" type="checkbox" value="yes" name="pollinator_f" />
+            ><input
+              id="pollinator_f"
+              type="checkbox"
+              value="yes"
+              name="pollinator_f"
+            />
             Pollinator-friendly</label
           >
         </div>

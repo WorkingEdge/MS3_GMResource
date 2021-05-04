@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>> -->
     <script
-  src="https://code.jquery.com/jquery-3.6.0.min.js"
-  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-  crossorigin="anonymous"></script>
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -18,120 +19,158 @@
       integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="../static/css/style.css" type="text/css">
+    <link rel="stylesheet" href="../static/css/style.css" type="text/css" />
     <link
       rel="icon"
       type="image/png"
       href="../static/images/ms3_plant_favicon.ico"
     />
-{% block head %} {% endblock %}
+    {% block head %} {% endblock %}
     <title>Green Manure Resource</title>
   </head>
-  
+
   <body>
     <!-- Navbar - from Bootstrap with custom CSS -->
     <div class="container-fluid main-head">
       <div class="nav-container">
-      <nav class="navbar navbar-light navbar-expand-md mr-auto">
-      <a class="navbar-brand ml-0" href="{{ url_for('get_records') }}"><h4 id="txt-logo">Green Manure Resource</h4></a>
-      
-      <button
-        id="hambuger-box"
-        class="navbar-toggler ml-auto"
-        type="button"
-        data-toggle="collapse"
-        data-target="#collapsibleGMNav"
-      >
-        <span><i class="fas fa-bars"></i></span>
-      </button>
+        <nav class="navbar navbar-light navbar-expand-md mr-auto">
+          <a class="navbar-brand ml-0" href="{{ url_for('get_records') }}"
+            ><h4 id="txt-logo">Green Manure Resource</h4></a
+          >
 
-      <div class="collapse navbar-collapse" id="collapsibleGMNav">
-        <ul class="navbar-nav navbar-right text-right ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('get_records') }}">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('show_products') }}">Products</a>
-          </li>
-          {% if session.session_user %}
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('logout') }}">Log Out</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('add_record') }}">Add</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('show_profile', username = session['session_user'])}}">Profile</a>
-          </li>
-          {% else %}
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('register') }}">Register</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('login') }}">Log In</a>
-          </li> 
-          {% endif %}
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('contact') }}">Contact Us</a>
-          </li>
-        </ul>
+          <button
+            id="hambuger-box"
+            class="navbar-toggler ml-auto"
+            type="button"
+            data-toggle="collapse"
+            data-target="#collapsibleGMNav"
+          >
+            <span><i class="fas fa-bars"></i></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="collapsibleGMNav">
+            <ul class="navbar-nav navbar-right text-right ml-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('get_records') }}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('show_products') }}"
+                  >Products</a
+                >
+              </li>
+              {% if session.session_user %}
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('logout') }}">Log Out</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('add_record') }}">Add</a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href="{{ url_for('show_profile', username = session['session_user'])}}"
+                  >Profile</a
+                >
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('register') }}"
+                  >Register</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('login') }}">Log In</a>
+              </li>
+              {% endif %}
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('contact') }}"
+                  >Contact Us</a
+                >
+              </li>
+            </ul>
+          </div>
+        </nav>
       </div>
-    </nav>
-  </div>
     </div>
-<!-- Search bar-->
-<div class="container-fluid">
-  <div class="row sub-head-div">
-    <div class="col-md-6 sub-title"><h5>For Growers by Growers - Sponsored by MS3 Seeds</h5></div>
-    <div class="col-md-6 search">
-      <form id="ms3_search" method="POST" action="{{ url_for('search_res') }}">
-        <div class="input-group rounded">
-          <input type="search" id="search_term"
-          class="form-control rounded" placeholder="Search this site..." aria-label="Search"
-            aria-describedby="search-addon" name="search_term"/>
-            <input type="submit"  class="btn btn-light ml-2" id="search-addon" value = "Search"/>
+    <!-- Search bar-->
+    <div class="container-fluid">
+      <div class="row sub-head-div">
+        <div class="col-md-6 sub-title">
+          <h5>For Growers by Growers - Sponsored by MS3 Seeds</h5>
         </div>
-    </form>
+        <div class="col-md-6 search">
+          <form
+            id="ms3_search"
+            method="POST"
+            action="{{ url_for('search_res') }}"
+          >
+            <div class="input-group rounded">
+              <input
+                type="search"
+                id="search_term"
+                class="form-control rounded"
+                placeholder="Search this site..."
+                aria-label="Search"
+                aria-describedby="search-addon"
+                name="search_term"
+              />
+              <input
+                type="submit"
+                class="btn btn-light ml-2"
+                id="search-addon"
+                value="Search"
+              />
+            </div>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
-  <!-- Following div to show flash messages sourced from: https://pythonprogramming.net/flash-flask-tutorial/. Customization applied.-->
-  <div class="container" style="min-height:100%; width:80%">
-    {% with messages = get_flashed_messages() %}
-      {% if messages %}
-        {% for message in messages %}
-        <div class="alert alert-warning alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">OK</span></button>
+    <!-- Following div to show flash messages sourced from: https://pythonprogramming.net/flash-flask-tutorial/. Customization applied.-->
+    <div class="container" style="min-height: 100%; width: 80%">
+      {% with messages = get_flashed_messages() %} {% if messages %} {% for
+      message in messages %}
+      <div class="alert alert-warning alert-dismissible" role="alert">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="alert"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">OK</span>
+        </button>
         {{message}}
+      </div>
+      {% endfor %} {% endif %} {% endwith %}
+    </div>
+    <!-- End flash  div from https://pythonprogramming.net/flash-flask-tutorial/-->
+
+    <main class="container">{% block content %} {% endblock %}</main>
+    <div style="flex-grow: 1"></div>
+    <footer id="ms3-footer" class="container-fluid">
+      <div class="row">
+        <div class="col-md-4 footer-element">
+          <i class="fas fa-phone-volume"></i> 090 0087654321
         </div>
-      {% endfor %}
-      {% endif %}
-    {% endwith %}
-    </div>
-<!-- End flash  div from https://pythonprogramming.net/flash-flask-tutorial/-->    
-    
-<main class="container">
+        <div class="col-md-4 footer-element">
+          <p>MS3 Seeds, 100 Stony Park, Galway</p>
+        </div>
+        <div class="col-md-4 footer-element">
+          <a
+            href="https://github.com/WorkingEdge/MS3_GMResource"
+            target="_blank"
+            ><span><i class="fab fa-github fa-2x"></i></span
+          ></a>
+          <a href="https://www.instagram.com/" target="_blank"
+            ><span><i class="fab fa-instagram fa-2x"></i></span
+          ></a>
+        </div>
+      </div>
+    </footer>
 
-      {% block content %} {% endblock %}
-    
-</main>
-<div style="flex-grow:1"></div>
-<footer id="ms3-footer" class="container-fluid">
-  <div class="row" >
-    <div class="col-md-4 footer-element"><i class="fas fa-phone-volume"></i>  090 0087654321</div>
-    <div class="col-md-4 footer-element">
-      <p>MS3 Seeds, 100 Stony Park, Galway</p>
-</div>
-    <div class="col-md-4 footer-element">
-      <a href="https://github.com/WorkingEdge/MS3_GMResource" target="_blank"><span><i class="fab fa-github fa-2x"></i></span></a>
-      <a href="https://www.instagram.com/" target="_blank"><span><i class="fab fa-instagram fa-2x"></i></span></a>
-    </div>
-  </div>
-</footer>
-
-
-
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
   </body>
-
 </html>
