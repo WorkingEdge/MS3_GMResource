@@ -369,6 +369,20 @@ def contact():
     return render_template("contact.html")
 
 
+# Custom Error Handling
+# Based on:
+# https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-vii-error-handling
+# https://flask.palletsprojects.com/en/1.1.x/patterns/errorpages/
+@app.errorhandler(404)
+def not_found(error):
+    return render_template("not_found_404.html"), 404
+
+
+@app.errorhandler(500)
+def internal_error(error):
+    return render_template('db_error_500.html'), 500
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
