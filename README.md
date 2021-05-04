@@ -48,8 +48,10 @@ The Green Manure Resource is an online learning and experience-sharing space for
     - [Issue 2 - Handling product Info](#issue-2---handling-product-info)
     - [Issue 3 - Handling Updates](#issue-3---handling-updates)
     - [Issue 4 - Delete Functionality for User Records with Modal Confirmation](#issue-4---delete-functionality-for-user-records-with-modal-confirmation)
-    - [Jumbotron Styling](#jumbotron-styling)
+    - [Issue 5 - Jumbotron Styling](#issue-5---jumbotron-styling)
+    - [Issue 6 - Custom Error Pages](#issue-6---custom-error-pages)
   - [Acknowledgements](#acknowledgements)
+  - [Disclaimer](#disclaimer)
 
 # Scenario Outline / Strategy
 Although the practice of restoring land with the use of certain crops is as old as the history of farming, it is a practice around which there is renewed interest, especially in the area of organic or regenerative farming and among small scale producers and homesteaders. The primary purpose of the site is to provide a dedicated online space for interested growers to share thoughts and experiences of using different green manure crops. Growers who have some interesting facts to relate can do so in an informal yet factual way and the information they provide is laid out in a consistent and easy to follow format.
@@ -164,6 +166,7 @@ An example of this in practice in the app is the record for a single user post:
 * Contact form has validation so the database is not muddied with invalid or useless data
 * Sign in has validation so that a user cannot take a username already used
 * A footer provides additional contact info and links to social media
+* Custom error pages (404 and 500)
 
 ### General
 * Site displays well and is user-friendly on all device sizes (responsive design)
@@ -235,13 +238,13 @@ Test case: Test appearance across the site, particularly Home/landing page, indi
 Opera on laptop (Linux Ubuntu) - tested appearance, search, contact form. Result: ok
 Firefox on laptop (Linux Ubuntu) - as above
 Chrome on laptop (Linux Ubuntu) - as above
-Chrome laptop (Windows) - 
-Firefox on laptop (Windows) - 
+Chrome laptop (Windows) - as above
+Firefox on laptop (Windows) - as above
 IE on laptop (Windows)
-Safari on iPad - 
+Safari on iPad - as above
 Chrome on iPad - 
 Safari on iPhone - 
-Chrome on Android (Moto G7) - 
+Chrome on Android (Moto G7) - as above 
 Chrome on Mac - 
 Safari on Mac - 
 
@@ -460,13 +463,25 @@ The modal does not get the ‘record’ from the {% for record in records %} loo
 
 This was resolved with the help of tutor support and involved putting the modal inside the for loop and matching the entry to be deleted with the modal using the ```loop.index```.
 
-### Jumbotron Styling
+### Issue 5 - Jumbotron Styling
 For jumbotron styling (background image and overlay), code snippet taken from: https://codepen.io/JacobLett/pen/vPQKWd
 
 Additional resources were consulted for more minor issues also, but these are not all included here.
+
+### Issue 6 - Custom Error Pages
+The ciustome error handling was based on the following:
+[Miguel grinberg Flask Tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-vii-error-handling)
+[Flask documentation](https://flask.palletsprojects.com/en/1.1.x/patterns/errorpages/)
+
+***
 
 ## Acknowledgements
 I would like to acknowledge the following contributions to the project:
 * My mentor Antonio Rodriguez for his guidance
 * Tutor support (Johann and Scott) for their help with resolving an issue with modals (see above)
 * The [MS3 ReadMe](https://github.com/Daisy-McG/Motorbike-Event-Finder) of CI student Daisy McGirr as a model of how to tackle this part of the project
+
+***
+
+## Disclaimer
+This project is for educational purposes only. 
