@@ -43,6 +43,7 @@ The Green Manure Resource is an online learning and experience-sharing space for
   - [Forking](#forking)
 - [Credits](#credits)
   - [Images](#images-1)
+  - [Content](#content)
   - [Code](#code)
     - [Issue 1 - Inserting Comments in the DB Documents](#issue-1---inserting-comments-in-the-db-documents)
     - [Issue 2 - Handling product Info](#issue-2---handling-product-info)
@@ -233,20 +234,18 @@ For individual test case details and validation results see [Testing](readme_ass
 
 ## General UX Testing
 In addition to the specific test cases above, cross-browser and multi-device testing was carried out by myself and some family members. The purpose of these was to find any issues with display or functionality on mobile, tablet or laptop devices using a variety or browsers. 
-Test case: Test appearance across the site, particularly Home/landing page, individual post page, contact form:
+Test case: Test appearance across the site, particularly home/landing page, individual post page, contact form:
 
 Opera on laptop (Linux Ubuntu) - tested appearance, search, contact form. Result: ok
 Firefox on laptop (Linux Ubuntu) - as above
 Chrome on laptop (Linux Ubuntu) - as above
 Chrome laptop (Windows) - as above
 Firefox on laptop (Windows) - as above
-IE on laptop (Windows)
+Microsoft Edge on laptop (Windows) - as above
 Safari on iPad - as above
-Chrome on iPad - 
-Safari on iPhone - 
 Chrome on Android (Moto G7) - as above 
-Chrome on Mac - 
-Safari on Mac - 
+Chrome on Mac - as above
+Safari on Mac - as above
 
 ## Smartbear Cross Browser Testing
 The site has also been checked using a trial account with [SmartBear CrossBrowserTesting](https://crossbrowsertesting.com/).
@@ -261,7 +260,7 @@ Screenshot test [result](https://app.crossbrowsertesting.com/public/i484cf03e80e
 
 # Known Issues 
 
-* Although the search functionality is working well, there is an issue with the sorting of returned results. A text index has been set up on the records collection with a weighting applied to different fields. This appears to be not working exactly as intended at the moment, particularly in relation to how it handles embedded (comments) content. Internet searches have shown this to be an issue that has caused problems for other users. I have not managed to fix it yet. However, from the point of view of the user, i think they would be unaware tht this feature is not working exactly as intended.
+* Although the search functionality is working well, there is an issue with the sorting of returned results. A text index has been set up on the records collection with a weighting applied to different fields. This appears to be not working exactly as intended at the moment, particularly in relation to how it handles embedded (comments) content. Internet searches have shown this to be an issue that has caused problems for other users. I have not managed to fix it yet. However, from the point of view of the user, i think they would be unaware that this feature is not working exactly as intended.
 
 * There is an issue when a user enters more than one 'common name' for a post topic. This displays ok but the related products are not picked up. This is poor design rather than implementation as it has been built to work with just one entry at a time. This would be something to fix in the next iteration of the app.
 
@@ -392,6 +391,12 @@ The other images used on the site (jumbotron/form background images and placehol
 * [Sikes Photos](https://unsplash.com/@sikesphotos?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText")
 * [Dustin Humes](https://unsplash.com/@dustinhumes_photography?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
 
+## Content
+Information for populating the fields in the app as test content is sourced from:
+  * https://www.plantlife.org.uk/uk/discover-wild-plants-nature/how-to-grow-yellow-rattle-rhinanthus-minor
+  * https://www.theorganiccentre.ie/shop/seedcatalogue/organic-green-manure-seeds?gclid=Cj0KCQjw4cOEBhDMARIsAA3XDRgo7FAWkQ9FNIITf6wDO6ZkOyytERSgJPdSwzdrmSIQE1C9kh18ti0aAn2YEALw_wcB
+  * https://www.permaculture.co.uk/articles/using-green-manures-orchards
+  
 ## Code
 Code snippets are commented in the code where directly applicable. In addition, the following sources were very helpful in overcoming issues experienced during development:
 
